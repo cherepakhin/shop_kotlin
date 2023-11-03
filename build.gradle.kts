@@ -23,7 +23,7 @@ buildscript {
 }
 
 plugins {
-    val kotlinVersion = "1.8.0"
+    val kotlinVersion = "1.8.21"
     id("org.springframework.boot") version "2.5.6"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
