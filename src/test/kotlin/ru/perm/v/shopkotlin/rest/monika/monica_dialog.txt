@@ -1,0 +1,145 @@
+можешь сделать code review java кода?
+
+Конечно, я могу провести code review Java кода. Пожалуйста, отправьте мне код, и я посмотрю на него.
+
+Нужно написать тесты к
+package ru.perm.v.shopkotlin.rest
+
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
+import javassist.NotFoundException
+import org.slf4j.LoggerFactory
+import org.springframework.cache.annotation.CacheEvict
+import org.springframework.cache.annotation.Cacheable
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
+import ru.perm.v.shopkotlin.dto.GroupProductDTO
+import ru.perm.v.shopkotlin.entity.GroupProductEntity
+import ru.perm.v.shopkotlin.repository.GroupProductRepository
+
+@RestController
+@RequestMapping("/group_product")
+@Api(tags = ["group-product-api"])
+class GroupProductRest(val repository: GroupProductRepository) {
+
+    private val logger = LoggerFactory.getLogger(this.javaClass.name)
+
+    /**
+     * get all groups product
+     */
+    @GetMapping("/")
+    @Cacheable("allGroupProductDTO")
+    @ApiOperation("Get all groups of product")
+    fun all(): List<GroupProductDTO> {
+        logger.info("GET all GroupProductDTO")
+        val groups: List<GroupProductEntity> = repository.findAllByOrderByNAsc();
+        if (groups.isEmpty()) {
+            throw NotFoundException("No group products found.")
+        }
+        return groups.map { entity ->
+            GroupProductDTO(entity.n, entity.name, entity.parentN, entity.haveChilds)
+        }
+//        Error: .toList() лишний. Уже в list после map. Похоже особенности kotlin.
+//        Нужно groups заколлектить в List и уже после как обычно маппить
+//        взято отсюда https://www.baeldung.com/java-stream-immutable-collection.
+//        Хрень в ".collect(toList())" он же вроде и так List
+//        return groups.stream()
+//            .map { entity ->
+//                GroupProductDTO(entity.n, entity.name, entity.parentN, entity.haveChilds)
+//            }.toList()
+    }
+
+    @GetMapping("/clear_cache")
+    @CacheEvict("allGroupProductDTO", allEntries = true)
+    @ApiOperation("Clear cache application")
+    fun clearCache(): String {
+        return "cleared"
+    }
+
+    @GetMapping("/find")
+    @ApiOperation("Find groups by name")
+    //TODO NO TEST!
+    fun findByName(name: String): List<GroupProductDTO> {
+        val groups = repository.findByNameContaining(name).toList()
+        if (groups.isEmpty()) {
+            throw NotFoundException("No group products found.")
+        }
+        return groups.map { entity ->
+            GroupProductDTO(entity.n, entity.name, entity.parentN, entity.haveChilds)
+        }
+    }
+}
+
+Конечно, я могу помочь написать тесты для этого кода. Ниже представлен пример тестов для методов all и findByName:
+
+Копировать
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
+import org.junit.jupiter.api.Test
+import org.mockito.Mockito.*
+import ru.perm.v.shopkotlin.dto.GroupProductDTO
+import ru.perm.v.shopkotlin.entity.GroupProductEntity
+import ru.perm.v.shopkotlin.repository.GroupProductRepository
+
+class GroupProductRestTest {
+
+    private val repository = mock(GroupProductRepository::class.java)
+    private val groupProductRest = GroupProductRest(repository)
+
+    @Test
+    fun testAll() {
+        val group1 = GroupProductEntity(1, "Group 1", null, false)
+        val group2 = GroupProductEntity(2, "Group 2", null, false)
+        val group3 = GroupProductEntity(3, "Group 3", null, false)
+        `when`(repository.findAllByOrderByNAsc()).thenReturn(listOf(group1, group2, group3))
+
+        val expected = listOf(
+            GroupProductDTO(1, "Group 1", null, false),
+            GroupProductDTO(2, "Group 2", null, false),
+            GroupProductDTO(3, "Group 3", null, false)
+        )
+
+        val result = groupProductRest.all()
+
+        assertEquals(expected, result)
+        verify(repository).findAllByOrderByNAsc()
+    }
+
+    @Test
+    fun testAllWithNoGroups() {
+        `when`(repository.findAllByOrderByNAsc()).thenReturn(emptyList())
+
+        assertThrows(NotFoundException::class.java) {
+            groupProductRest.all()
+        }
+    }
+
+    @Test
+    fun testFindByName() {
+        val group1 = GroupProductEntity(1, "Group 1", null, false)
+        val group2 = GroupProductEntity(2, "Group 2", null, false)
+        `when`(repository.findByNameContaining("Group")).thenReturn(listOf(group1, group2))
+
+        val expected = listOf(
+            GroupProductDTO(1, "Group 1", null, false),
+            GroupProductDTO(2, "Group 2", null, false)
+        )
+
+        val result = groupProductRest.findByName("Group")
+
+        assertEquals(expected, result)
+        verify(repository).findByNameContaining("Group")
+    }
+
+    @Test
+    fun testFindByNameWithNoGroups() {
+        `when`(repository.findByNameContaining("Group")).thenReturn(emptyList())
+
+        assertThrows(NotFoundException::class.java) {
+            groupProductRest.findByName("Group")
+        }
+    }
+}
+В этих тестах используется фреймворк JUnit5 и библиотека Mockito для создания мок объекта репозитория. Также в тестах используется класс NotFoundException, который нужно импортировать из пакета javassist.
+

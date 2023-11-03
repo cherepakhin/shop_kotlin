@@ -1,0 +1,55 @@
+а интеграционный тест?
+
+Конечно, я могу помочь написать интеграционный тест для этого кода. Ниже представлен пример интеграционного теста для метода all:
+
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.cache.CacheManager
+import org.springframework.test.context.ActiveProfiles
+import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import ru.perm.v.shopkotlin.dto.GroupProductDTO
+import ru.perm.v.shopkotlin.entity.GroupProductEntity
+import ru.perm.v.shopkotlin.repository.GroupProductRepository
+
+@SpringBootTest
+@AutoConfigureMockMvc
+@ActiveProfiles("test")
+class GroupProductRestIntegrationTest {
+
+    @Autowired
+    private lateinit var mockMvc: MockMvc
+
+    @Autowired
+    private lateinit var repository: GroupProductRepository
+
+    @Autowired
+    private lateinit var cacheManager: CacheManager
+
+    @Test
+    fun testAll() {
+        val group1 = GroupProductEntity(1, "Group 1", null, false)
+        val group2 = GroupProductEntity(2, "Group 2", null, false)
+        val group3 = GroupProductEntity(3, "Group 3", null, false)
+        repository.saveAll(listOf(group1, group2, group3))
+
+        val expected = listOf(
+            GroupProductDTO(1, "Group 1", null, false),
+            GroupProductDTO(2, "Group 2", null, false),
+            GroupProductDTO(3, "Group 3", null, false)
+        )
+
+        // Call the API endpoint using MockMvc
+        val result = mockMvc.perform(get("/group_product/"))
+            .andExpect(status().isOk)
+            .andReturn().response.contentAsString
+
+        // Assert that the response matches the expected result
+        assertEquals(expected.toString(), result)
+
+        // Assert that the response was cached
+        assertEquals(expected, cacheManager.getCache("allGroupProductDTO")?.get(…[omitted]
