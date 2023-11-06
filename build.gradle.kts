@@ -20,6 +20,7 @@ buildscript {
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
+
 }
 
 plugins {
@@ -106,6 +107,7 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+//    exclude("*IntegrationTest")
 }
 
 //// remove suffix 'plain' in sonar repository

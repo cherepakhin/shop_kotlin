@@ -39,6 +39,16 @@
 ./gradlew test
 ````
 
+Примеры отбора тестов:
+
+````shell
+./gradlew test --tests '*EntityTest'
+./gradlew test --tests '*Rest*'
+./gradlew test --tests ProductDTOTest
+./gradlew test --tests '*IntegrationTest'
+````
+
+
 ### Покрытие тестами
 
 Использован [jacoco](https://www.eclemma.org/jacoco/). Отчет формируется при прогоне тестов
@@ -46,8 +56,7 @@
 ````shell
 ./gradlew test jacocoTestReport
 ````
-
-Отчет будет в папке build/reports/jacoco/test/html
+Отчет будет в папке build/reports/jacoco/test/html. В отчете **НЕТ** информации о результатах тестирования, только протестирован участок кода или нет.
 
 ![jacoco](doc/jacoco.png)
 
