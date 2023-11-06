@@ -48,6 +48,22 @@
 ./gradlew test --tests '*IntegrationTest'
 ````
 
+Включено протоколирование тестов build.gradle.kts:
+
+````xml
+...
+tasks.withType<Test> {
+    useJUnitPlatform()
+    // Show test log
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+    ...
+}
+````
+
+с events("standardOut", "started", "passed", "skipped", "failed") логируется вывод в консоль.
+
 
 ### Покрытие тестами
 
@@ -56,6 +72,7 @@
 ````shell
 ./gradlew test jacocoTestReport
 ````
+
 Отчет будет в папке build/reports/jacoco/test/html. В отчете **НЕТ** информации о результатах тестирования, только протестирован участок кода или нет.
 
 ![jacoco](doc/jacoco.png)

@@ -107,7 +107,15 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-//    exclude("*IntegrationTest")
+    // Show test log
+    testLogging {
+//        events("standardOut", "started", "passed", "skipped", "failed")
+        events("passed", "skipped", "failed")
+    }
+//    if (project.hasProperty('excludeTests')) {
+//        exclude project.property('excludeTests')
+//    }
+    exclude("**IntegrationTest")
 }
 
 //// remove suffix 'plain' in sonar repository
