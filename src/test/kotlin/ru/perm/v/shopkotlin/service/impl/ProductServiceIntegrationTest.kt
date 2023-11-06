@@ -2,11 +2,9 @@ package ru.perm.v.shopkotlin.service.impl
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
-import org.springframework.test.context.junit.jupiter.SpringExtension
 import ru.perm.v.shopkotlin.dto.ProductDTO
 import ru.perm.v.shopkotlin.filter.ProductFilter
 import ru.perm.v.shopkotlin.repository.ProductRepository
@@ -57,10 +55,8 @@ class ProductServiceIntegrationTest {
         val filter = ProductFilter(listOf(51), "Monitor1", listOf("name")) // for Desktop1, HDD1, Monitor1, Notebook1
         val filteredProducts = productService.getByFilter(filter)
         assertEquals(1, filteredProducts.size)
-//        assertEquals("Desktop1", filteredProducts.get(0).name)
-//        assertEquals("HDD1", filteredProducts.get(1).name)
-//        assertEquals("Monitor1", filteredProducts.get(2).name)
-//        assertEquals("Notebook1", filteredProducts.get(3).name)
+        assertEquals(51, filteredProducts.get(0).n)
+        assertEquals("Monitor1", filteredProducts.get(0).name)
     }
 
     @Test
