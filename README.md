@@ -53,13 +53,24 @@
 ````xml
 ...
 tasks.withType<Test> {
-    useJUnitPlatform()
+    ...
     // Show test log
     testLogging {
         events("passed", "skipped", "failed")
     }
     ...
 }
+````
+
+Вывод в консоль:
+
+````text
+...
+ProductServiceImplMockTest > getByGroupProductN() PASSED
+ProductServiceIntegrationTest > existByN() PASSED
+ProductServiceIntegrationTest > notExistByN() PASSED
+ProductServiceIntegrationTest > checkSortByName_ByDslFilterByName() PASSED
+...
 ````
 
 с events("standardOut", "started", "passed", "skipped", "failed") логируется вывод в консоль.
