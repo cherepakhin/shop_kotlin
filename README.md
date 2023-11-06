@@ -504,3 +504,20 @@ const val MY_CONST_VAL = 2
 - **MY_VAL** станет приватной переменной, для доступа к которой будет создан геттер
 - **MY_CONST_VAL** будет заинлайнена, то есть компилятор заменит все полученные значения этой переменной на само значение
 - [Kotlin const, var, and val Keywords](https://www.baeldung.com/kotlin/const-var-and-val-keywords)
+
+**Ошибка "ERROR: Cannot resume build because FlowNode 19"**
+
+Ответ тут [https://community.jenkins.io/t/error-cannot-resume-build-because-flownode-19/9477/3](https://community.jenkins.io/t/error-cannot-resume-build-because-flownode-19/9477/3)
+
+В двух словах: добавить в Jenkinsfile "максмальную выживаемость"  
+
+````
+...
+pipeline {
+
+    agent any
+    options {
+        durabilityHint 'MAX_SURVIVABILITY'
+    }
+...
+````
