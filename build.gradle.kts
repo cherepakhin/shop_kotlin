@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "ru.perm.v"
 // change to publishing on change version
-version = "0.1.16"
+version = "0.1.17"
 description = "shop_kotlin"
 
 java.sourceCompatibility = JavaVersion.VERSION_11
