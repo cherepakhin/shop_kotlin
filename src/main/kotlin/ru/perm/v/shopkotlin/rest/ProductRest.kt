@@ -3,7 +3,6 @@ package ru.perm.v.shopkotlin.rest
 import io.swagger.annotations.ApiOperation
 import io.swagger.v3.oas.annotations.Parameter
 import org.slf4j.LoggerFactory
-import org.springframework.cache.annotation.Cacheable
 import org.springframework.web.bind.annotation.*
 import ru.perm.v.shopkotlin.dto.ProductDTO
 import ru.perm.v.shopkotlin.service.ProductService
@@ -47,15 +46,9 @@ class ProductRest(val productService: ProductService) {
         return productService.create(productDTO)
     }
 
-    @GetMapping("/")
-    @ApiOperation("Get all products")
-    fun getAll(): List<ProductDTO> {
-        return productService.getAll()
-    }
-
     @GetMapping("/{n}")
     @ApiOperation("Get Product by N")
-    @Cacheable("allProductDTO")
+//    @Cacheable("allProductDTO")
     fun getByN(
         @Parameter(
             description = "N(ID) Product."
@@ -64,6 +57,12 @@ class ProductRest(val productService: ProductService) {
         n: Long
     ): ProductDTO {
         return productService.getByN(n)
+    }
+
+    @GetMapping("/")
+    @ApiOperation("Get all products")
+    fun getAll(): List<ProductDTO> {
+        return productService.getAll()
     }
 
     @PostMapping(path = ["/{n}"], consumes = ["application/json"], produces = ["application/json"])
