@@ -28,6 +28,8 @@ class ProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
 
     // Used "@MockBean" for REMOVE ERROR for MockMvc
     // "... available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: ..."
+    // @MockBean is mock for SPRING BEAN! Must be added @ExtendWith(SpringExtension::class @WebMvcTest(ProductRest::class))
+    // else get error "... available: expected at least 1 bean"
     @MockBean
     private lateinit var mockProductService: ProductService
 
