@@ -464,7 +464,7 @@ SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 - тип свойства не может быть нулевым и примитивным;
 - у свойства не должно быть пользовательских геттеров и сеттеров;
 - с версии Kotlin 1.2 можно применять к свойствам верхнего уровня и локальным переменным.
-- сообщает что инициализация будет как-то сделана (в примере ниже аннотациями @Mock, @InjectMocks). @Mock mockProductService будут инъектированы в @InjectMocks productRest. Пример:
+- сообщает что инициализация будет как-то сделана (в примере ниже аннотациями @Mock, @InjectMocks). @Mock mockProductService будут инжектированы в @InjectMocks productRest. Пример:
 
 ````kotlin
 internal class ProductRestTest { 
