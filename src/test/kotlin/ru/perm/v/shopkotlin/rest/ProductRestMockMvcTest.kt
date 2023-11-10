@@ -50,7 +50,7 @@ class ProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
         val product = ProductDTO(10L, "NAME_10", -1L)
         doReturn(product).`when`(mockProductService).create(product)
 
-        val mes = mockMvc.perform(
+        val message = mockMvc.perform(
             MockMvcRequestBuilders
                 .post("/product")
                 .accept(MediaType.APPLICATION_JSON)
@@ -59,10 +59,10 @@ class ProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
         )
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andReturn()
+        val messageAsString = message.response.contentAsString;
+        assertEquals("{\"n\":10,\"name\":\"NAME_10\",\"groupDtoN\":-1}", messageAsString)
 
-        assertEquals("{\"n\":10,\"name\":\"NAME_10\",\"groupDtoN\":-1}", mes.response.contentAsString)
-
-        val receivedProductDTO = mapper.readValue<ProductDTO>(mes.response.contentAsString)
+        val receivedProductDTO = mapper.readValue<ProductDTO>(messageAsString)
         assertEquals(product, receivedProductDTO)
     }
 
