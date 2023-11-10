@@ -3,6 +3,8 @@ package ru.perm.v.shopkotlin.rest
 import io.swagger.annotations.ApiOperation
 import io.swagger.v3.oas.annotations.Parameter
 import org.slf4j.LoggerFactory
+import org.springframework.cache.annotation.CacheEvict
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.web.bind.annotation.*
 import ru.perm.v.shopkotlin.dto.ProductDTO
 import ru.perm.v.shopkotlin.service.ProductService
@@ -48,7 +50,7 @@ class ProductRest(val productService: ProductService) {
 
     @GetMapping("/{n}")
     @ApiOperation("Get Product by N")
-//    @Cacheable("allProductDTO")
+    @Cacheable("products")
     fun getByN(
         @Parameter(
             description = "N(ID) Product."
@@ -66,7 +68,8 @@ class ProductRest(val productService: ProductService) {
     }
 
     @PostMapping(path = ["/{n}"], consumes = ["application/json"], produces = ["application/json"])
-//    @CacheEvict(value = "product", key = "#productDTO.id")
+//    @CacheEvict("products")
+//    @CacheEvict(value = ["product"], key = "#product.n")
     @ApiOperation("Update Product")
     fun update(
         @PathVariable
@@ -83,7 +86,7 @@ class ProductRest(val productService: ProductService) {
     }
 
     @DeleteMapping("/{n}")
-//    @CacheEvict(value = "product", key = "#productDTO.id")
+    @CacheEvict(value = ["products"], key = "#n")
     fun deleteById(
         @Parameter(
             description = "N(ID) Product."

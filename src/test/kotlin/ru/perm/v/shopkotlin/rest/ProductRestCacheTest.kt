@@ -17,17 +17,34 @@ class ProductRestCacheTest(@Autowired val productRest: ProductRest) {
     lateinit var productService: ProductService
 
     @Test
-    fun getAll() {
-        val product1 = ProductDTO(1, "NAME_1", -1)
-        val product2 = ProductDTO(2, "NAME_2", -1)
+    fun getByN() {
+        val N = 1L;
+        val product1 = ProductDTO(N, "NAME_1", -1)
 
-        Mockito.`when`(productService.getAll()).thenReturn(listOf(product1, product2))
+        Mockito.`when`(productService.getByN(N)).thenReturn(product1)
+        // call 3 times
+        productRest.getByN(N)
+        productRest.getByN(N)
+        val dto = productRest.getByN(N)
 
-        productRest.getAll()
-        productRest.getAll()
-        val products = productRest.getAll()
-
-        assertEquals(2, products.size)
-        verify(productService, times(3)).getAll()
+        assertEquals(N, dto.n)
+        // but productService.getByN(N) was called only 1 time
+        verify(productService, times(1)).getByN(N)
     }
+
+
+//    @Test
+//    fun getAll() {
+//        val product1 = ProductDTO(1, "NAME_1", -1)
+//        val product2 = ProductDTO(2, "NAME_2", -1)
+//
+//        Mockito.`when`(productService.getAll()).thenReturn(listOf(product1, product2))
+//
+//        productRest.getAll()
+//        productRest.getAll()
+//        val products = productRest.getAll()
+//
+//        assertEquals(2, products.size)
+//        verify(productService, times(3)).getAll()
+//    }
 }
