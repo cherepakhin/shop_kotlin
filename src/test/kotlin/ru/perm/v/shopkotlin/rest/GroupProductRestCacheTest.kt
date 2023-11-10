@@ -51,10 +51,10 @@ class GroupProductRestCacheTest(@Autowired val groupProductRest: GroupProductRes
         verify(groupProductService, times(1)).getByN(ID)
     }
 
-    @Disabled // Work only in manual mode
+//    @Disabled // Работает только при ручном запуске. См.ниже комментарий
     @Test
     fun checkWorkCacheOnGetSubGroups() {
-        val ID = 1L
+        val ID = 11234567L
         val SUB_GROUP_10 = GroupProductDTO(10L, "NAME_10")
         val SUB_GROUP_11 = GroupProductDTO(11L, "NAME_11")
 
