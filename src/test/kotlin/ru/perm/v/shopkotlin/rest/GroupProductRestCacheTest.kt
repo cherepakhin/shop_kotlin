@@ -1,6 +1,5 @@
 package ru.perm.v.shopkotlin.rest
 
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
 import org.mockito.kotlin.times
@@ -51,7 +50,7 @@ class GroupProductRestCacheTest(@Autowired val groupProductRest: GroupProductRes
         verify(groupProductService, times(1)).getByN(ID)
     }
 
-//    @Disabled // Работает только при ручном запуске. См.ниже комментарий
+    //    @Disabled // Работает только при ручном запуске. См.ниже комментарий
     @Test
     fun checkWorkCacheOnGetSubGroups() {
         val ID = 11234567L
