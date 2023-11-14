@@ -20,6 +20,9 @@ class CacheConfig : CachingConfigurerSupport() {
         val cacheManager = SimpleCacheManager()
         val caches: MutableList<Cache> = ArrayList<Cache>()
         caches.add(ConcurrentMapCache("products"))
+        caches.add(ConcurrentMapCache("group_products"))
+        caches.add(ConcurrentMapCache("product_echo"))
+        caches.add(ConcurrentMapCache("allGroupProductDTO"))
         cacheManager.setCaches(caches)
         return cacheManager
     }

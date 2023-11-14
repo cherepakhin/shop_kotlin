@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.Cacheable
 import org.springframework.web.bind.annotation.*
 import ru.perm.v.shopkotlin.dto.ProductDTO
 import ru.perm.v.shopkotlin.service.ProductService
+import java.lang.String.format
 import javax.validation.ConstraintViolation
 import javax.validation.Validation
 
@@ -27,12 +28,14 @@ class ProductRest(val productService: ProductService) {
 
     @GetMapping("/echo/{mes}")
     @ApiOperation("Simple echo test")
+    @Cacheable("product_echo")
     fun echoMessage(
         @Parameter(
             description = "Any string. will be returned in response."
         )
         @PathVariable mes: String
     ): String {
+        logger.info(format("echo %s",mes))
         return mes
     }
 
@@ -63,6 +66,7 @@ class ProductRest(val productService: ProductService) {
 
     @GetMapping("/")
     @ApiOperation("Get all products")
+    @Cacheable("products")
     fun getAll(): List<ProductDTO> {
         return productService.getAll()
     }
@@ -86,7 +90,8 @@ class ProductRest(val productService: ProductService) {
     }
 
     @DeleteMapping("/{n}")
-    @CacheEvict(value = ["products"], key = "#n")
+    @CacheEvict(value = ["products"], key = "#n") // no error, variant 1
+//    @CacheEvict(cacheNames = ["products"], key = "#n") // no error, variant 2
     fun deleteById(
         @Parameter(
             description = "N(ID) Product."

@@ -74,7 +74,7 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
     }
 
     @GetMapping("/{n}")
-    @Cacheable("allGroupProductDTO")
+    @Cacheable("group_products")
     @ApiOperation("Get GroupProduct by ID")
     fun getById(
         @Parameter(
@@ -118,7 +118,7 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
     }
 
     @GetMapping("/clear_cache")
-    @CacheEvict("allGroupProductDTO", allEntries = true)
+    @CacheEvict("group_products", allEntries = true)
     @ApiOperation("Clear cache application")
     fun clearCache(): String {
         return "cleared"
