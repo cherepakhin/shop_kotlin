@@ -181,6 +181,4 @@ class GroupProductRestBitoTest {
         verify(groupProductService, never()).deleteByN(groupId)
     }
 
-    // Add more test cases for other methods
-
 }
