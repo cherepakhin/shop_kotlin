@@ -1,4 +1,4 @@
-package ru.perm.v.shopkotlin.service.impl
+package ru.perm.v.shopkotlin.rest
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
@@ -8,11 +8,12 @@ import org.mockito.Mockito.*
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import ru.perm.v.shopkotlin.dto.GroupProductDTO
-import ru.perm.v.shopkotlin.rest.GroupProductRest
 import ru.perm.v.shopkotlin.service.GroupProductService
 import ru.perm.v.shopkotlin.service.ProductService
-import javax.validation.Validation
 
+/**
+ * Tests generated Bito (ChatGPT)
+ */
 @SpringBootTest
 class GroupProductRestBitoTest {
 
@@ -23,8 +24,6 @@ class GroupProductRestBitoTest {
     private lateinit var productService: ProductService
 
     private lateinit var groupProductRest: GroupProductRest
-
-    private val validator = Validation.buildDefaultValidatorFactory().validator
 
     @BeforeEach
     fun setUp() {
