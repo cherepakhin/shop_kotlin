@@ -1,4 +1,4 @@
-package ru.perm.v.shopkotlin.rest
+package ru.perm.v.shopkotlin.rest.bitotest
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
@@ -8,6 +8,7 @@ import org.mockito.Mockito.*
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import ru.perm.v.shopkotlin.dto.GroupProductDTO
+import ru.perm.v.shopkotlin.rest.GroupProductRest
 import ru.perm.v.shopkotlin.service.GroupProductService
 import ru.perm.v.shopkotlin.service.ProductService
 
