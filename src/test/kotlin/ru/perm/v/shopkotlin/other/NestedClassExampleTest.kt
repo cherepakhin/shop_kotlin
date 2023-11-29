@@ -21,6 +21,7 @@ class NestedClassExampleTest {
         val err = NestedClassExample.Error("code1", "name1")
         err.name = "name"
         example.errors = listOf(err)
+
         assertEquals(1, example.errors.size)
         assertEquals("name", example.errors.get(0).name)
     }
