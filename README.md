@@ -431,6 +431,57 @@ $ ./gradlew bootRun --args='--spring.profiles.active=dev'
 SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 ````
 
+### Docker
+
+Создание docker image делается встроенными средствами gradle:
+
+````shell
+./gradlew bootBuildImage
+
+...
+
+    [creator]     Saving docker.io/library/shop_kotlin:0.1.18...
+    [creator]     *** Images (f80a4e623a3d):
+    [creator]           docker.io/library/shop_kotlin:0.1.18
+Successfully built image 'docker.io/library/shop_kotlin:0.1.18'
+...
+
+````
+
+Запуск docker image:
+
+````shell
+$ docker run -p 8780:8780 docker.io/library/shop_kotlin:0.1.18
+
+````
+
+````shell
+$ docker container ls
+CONTAINER ID   IMAGE                COMMAND              CREATED          STATUS          PORTS                    NAMES
+6544af7b0adb   shop_kotlin:0.1.18   "/cnb/process/web"   12 seconds ago   Up 11 seconds   0.0.0.0:8780->8780/tcp   brave_sutherland
+
+````
+
+Проверка:
+
+````shell
+$ http http://127.0.0.1:8780/api/echo/aaa
+
+HTTP/1.1 200 
+Connection: keep-alive
+Content-Length: 3
+Content-Type: text/plain;charset=UTF-8
+Date: Thu, 30 Nov 2023 15:36:25 GMT
+Keep-Alive: timeout=60
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+
+aaa
+
+````
+
+
 ### TODO
 
 - ~~cache on rest (сделано)~~

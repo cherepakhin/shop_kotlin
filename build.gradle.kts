@@ -161,6 +161,6 @@ tasks.register("myTask2") {
 tasks.register("helloUserCmd") {
     val user: String? = System.getenv("USER")
     project.exec {
-        commandLine("echo", "Hello,", "$user!") //  run shell command
+        commandLine("echo", "Hello,", "$user!") // ./gradlew helloUserCmd -> run shell command
     }
 }
