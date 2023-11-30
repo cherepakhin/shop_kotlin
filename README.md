@@ -196,7 +196,7 @@ $docker system prune -af
 
 #### ИЛИ средствами gradle:
 
-Создание docker image делается встроенными средствами gradle:
+Создание docker image:
 
 ````shell
 ./gradlew bootBuildImage
@@ -214,9 +214,10 @@ Successfully built image 'docker.io/library/shop_kotlin:0.1.18'
 Запуск docker image:
 
 ````shell
-$ docker run -p 8780:8780 docker.io/library/shop_kotlin:0.1.18
+$ docker run -p 8780:8780 -p 8788:8788  docker.io/library/shop_kotlin:0.1.18
 
 ````
+(8780 - основной порт, 8788 - spring actuator)
 
 ````shell
 $ docker container ls
