@@ -149,3 +149,18 @@ publishing {
 springBoot {
     mainClass.set("ru.perm.v.shopkotlin.ShopKotlinApplication")
 }
+
+tasks.register("myTask1") {
+    println("echo from myTask1. For run use: ./gradlew myTask1")
+}
+
+tasks.register("myTask2") {
+    println("echo from myTask2. For run use: ./gradlew myTask2")
+}
+
+tasks.register("helloUserCmd") {
+    val user: String? = System.getenv("USER")
+    project.exec {
+        commandLine("echo", "Hello,", "$user!") //  run shell command
+    }
+}
