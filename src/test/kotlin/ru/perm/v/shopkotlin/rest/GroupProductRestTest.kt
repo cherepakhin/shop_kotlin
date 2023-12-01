@@ -157,7 +157,7 @@ class GroupProductRestTest {
             controller.findByName(GROUP_NAME)
         }
         assertEquals(
-            "Group product not found with name: GROUP_NAME",
+            "Group product not found with name=GROUP_NAME",
             excpt.message
         )
         Mockito.verify(mockGroupProductService, Mockito.times(1))

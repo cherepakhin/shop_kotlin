@@ -206,7 +206,7 @@ internal class ProductServiceImplMockTest {
         val excpt = assertThrows<Exception> {
             productService.getByN(PRODUCT_N)
         }
-        assertEquals("Product with n=100 not exist", excpt.message)
+        assertEquals("Product not found with id=100", excpt.message)
     }
 
     @Test

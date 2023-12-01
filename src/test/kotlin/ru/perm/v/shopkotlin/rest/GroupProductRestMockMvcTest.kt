@@ -140,12 +140,13 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
     fun deleteForNotExist() {
         val N = 100L
         `when`(mockedGroupProductService.existsByN(N)).thenReturn(false)
-        val message = assertThrows<Exception> {
+        val excpt = assertThrows<Exception> {
             mockMvc.perform(
                 MockMvcRequestBuilders.delete("/group_product/" + N)
             )
-        }.message
+        }
 
-        assertTrue(message?.contains("Group product not found with id: 100") ?: false)
+        assertEquals("Request processing failed; nested exception is java.lang.Exception: Group product not found with id=100", excpt.message)
+//        assertTrue(message?.equals("Group product not found with id=100") ?: false)
     }
 }

@@ -1,12 +1,11 @@
 package ru.perm.v.shopkotlin.service.impl
 
 import com.querydsl.core.BooleanBuilder
-import lombok.AllArgsConstructor
-import lombok.NoArgsConstructor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Lazy
 import org.springframework.data.querydsl.QSort
 import org.springframework.stereotype.Service
+import ru.perm.v.shopkotlin.consts.ErrMessages
 import ru.perm.v.shopkotlin.dto.ProductDTO
 import ru.perm.v.shopkotlin.entity.ProductEntity
 import ru.perm.v.shopkotlin.entity.QProductEntity
@@ -59,7 +58,7 @@ class ProductServiceImpl :ProductService {
             val entity = product.get()
             return ProductDTO(entity.n, entity.name, entity.groupProductN)
         } else {
-            throw Exception(String.format("Product with n=%s not exist", n))
+            throw Exception(String.format(ErrMessages.NOT_FOUND_PRODUCT_BY_ID, n))
         }
     }
 
