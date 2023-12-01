@@ -32,6 +32,7 @@ open class ProductEntity {
         if (this === other) return true
         if (other !is ProductEntity) return false
 
+        if (n != other.n) return false
         if (name != other.name) return false
         if (groupProductN != other.groupProductN) return false
 
@@ -39,10 +40,10 @@ open class ProductEntity {
     }
 
     override fun hashCode(): Int {
-        var result = name.hashCode()
+        var result = n.hashCode()
+        result = 31 * result + name.hashCode()
         result = 31 * result + groupProductN.hashCode()
         return result
     }
-
 
 }

@@ -38,7 +38,8 @@ class ProductServiceImpl :ProductService {
         if (!groupService.existsByN(dto.groupDtoN)) {
             throw Exception(String.format("GroupProduct with n=%s not exist", dto.groupDtoN))
         }
-        val savedProduct = repository.save(ProductEntity(dto.name, dto.groupDtoN))
+        val n = repository.getNextN()
+        val savedProduct = repository.save(ProductEntity(n, dto.name, dto.groupDtoN))
         return ProductDTO(savedProduct.n, savedProduct.name, savedProduct.groupProductN)
     }
 

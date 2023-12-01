@@ -44,12 +44,12 @@ internal class ProductServiceImplMockTest {
         Mockito.`when`(groupProductService.existsByN(GROUP_PRODUCT_N)).thenReturn(true)
         Mockito.`when`(productRepository.getNextN()).thenReturn(PRODUCT_NEXT_N)
         val newProductWithCalcN = ProductEntity(PRODUCT_NEXT_N, "NAME", GROUP_PRODUCT_N)
-        Mockito.`when`(productRepository.save(newProductWithCalcN)).thenReturn(newProductWithCalcN)
+        Mockito.`when`(productRepository.save(ProductEntity(PRODUCT_NEXT_N,"NAME", GROUP_PRODUCT_N))).thenReturn(newProductWithCalcN)
 
         val savedProduct = productService.create(ProductDTO(-1L, "NAME", GROUP_PRODUCT_N))
 
         assertEquals(ProductDTO(PRODUCT_NEXT_N, "NAME", GROUP_PRODUCT_N), savedProduct)
-        Mockito.verify(productRepository, times(1)).save(newProductWithCalcN)
+        Mockito.verify(productRepository, times(1)).save(ProductEntity(PRODUCT_NEXT_N, "NAME", GROUP_PRODUCT_N))
     }
 
     @Test
