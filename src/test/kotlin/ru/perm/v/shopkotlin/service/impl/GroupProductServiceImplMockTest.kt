@@ -103,7 +103,7 @@ internal class GroupProductServiceImplMockTest {
         val excpt = assertThrows<Exception> {
             service.update(testGroup)
         }
-        assertEquals("GroupProduct with n=101 not exist", excpt.message)
+        assertEquals("Group product not found with id: 101", excpt.message)
     }
 
     @Test
@@ -133,7 +133,7 @@ internal class GroupProductServiceImplMockTest {
         val excpt = assertThrows<Exception> {
             service.deleteByN(N)
         }
-        assertEquals("GroupProduct with n=100 not exist", excpt.message)
+        assertEquals("Group product not found with id: 100", excpt.message)
         verify(repository, never()).deleteByN(N)
     }
 
@@ -191,6 +191,6 @@ internal class GroupProductServiceImplMockTest {
         val excpt = assertThrows<Exception> {
             service.getByN(GROUP_ID)
         }
-        assertEquals("GroupProduct with n=100 not exist", excpt.message)
+        assertEquals("Group product not found with id: 100", excpt.message)
     }
 }

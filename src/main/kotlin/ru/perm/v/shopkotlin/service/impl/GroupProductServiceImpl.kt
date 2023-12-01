@@ -3,6 +3,7 @@ package ru.perm.v.shopkotlin.service.impl
 import com.querydsl.core.BooleanBuilder
 import org.springframework.data.querydsl.QSort
 import org.springframework.stereotype.Service
+import ru.perm.v.shopkotlin.consts.ErrMessages
 import ru.perm.v.shopkotlin.dto.GroupProductDTO
 import ru.perm.v.shopkotlin.entity.GroupProductEntity
 import ru.perm.v.shopkotlin.entity.QGroupProductEntity
@@ -19,7 +20,6 @@ class GroupProductServiceImpl(
     val repository: GroupProductRepository,
     val productService: ProductService
 ) : GroupProductService {
-
     override fun create(groupProductDTO: GroupProductDTO): GroupProductDTO {
         val n = repository.getNextN()
         val groupProductEntity = GroupProductEntity(
@@ -46,7 +46,7 @@ class GroupProductServiceImpl(
                 groupProductEntity.haveChilds
             )
         } else {
-            throw Exception(String.format("GroupProduct with n=%s not exist", n))
+            throw Exception(String.format(ErrMessages.NOT_FOUND_GROUP_BY_ID, n))
         }
         //NOTE: В kotlin, при проверке на существование, можно короче, через '?'. Так:
         // val groupProductEntity = repository.getByN(n)?: throw Exception(String.format("GroupProduct with n=%s not exist ", n))
@@ -106,7 +106,7 @@ class GroupProductServiceImpl(
     @Throws(Exception::class)
     override fun update(groupProductDTO: GroupProductDTO): GroupProductDTO {
         if (!existsByN(groupProductDTO.n)) {
-            throw Exception(String.format("GroupProduct with n=%s not exist", groupProductDTO.n))
+            throw Exception(String.format(ErrMessages.NOT_FOUND_GROUP_BY_ID, groupProductDTO.n))
         }
         val groupProductEntity = GroupProductEntity(
             groupProductDTO.n, groupProductDTO.name, groupProductDTO.parentN, groupProductDTO.haveChilds
@@ -123,7 +123,7 @@ class GroupProductServiceImpl(
     @Throws(Exception::class)
     override fun deleteByN(n: Long) {
         if (!existsByN(n)) {
-            throw Exception(String.format("GroupProduct with n=%s not exist", n))
+            throw Exception(String.format(ErrMessages.NOT_FOUND_GROUP_BY_ID, n))
         }
         repository.deleteByN(n)
     }
