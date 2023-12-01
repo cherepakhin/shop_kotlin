@@ -32,22 +32,29 @@ internal class GroupProductEntityTest {
 
     @Test
     fun notEqualsName() {
-        val group1 = GroupProductEntity(0, "NAME1", -1)
-        val group2 = GroupProductEntity(0, "NAME", -1)
+        val group1 = GroupProductEntity(0, "NAME1", -1, true)
+        val group2 = GroupProductEntity(0, "NAME", -1, true)
         assertNotEquals(group1, group2)
     }
 
     @Test
     fun notEqualsN() {
-        val group1 = GroupProductEntity(0, "NAME1", -1)
-        val group2 = GroupProductEntity(0, "NAME", -1)
+        val group1 = GroupProductEntity(0, "NAME", -1, false)
+        val group2 = GroupProductEntity(1, "NAME", -1, false)
         assertNotEquals(group1, group2)
     }
 
     @Test
     fun notEqualsParentN() {
-        val group1 = GroupProductEntity(0, "NAME1", -1)
-        val group2 = GroupProductEntity(0, "NAME", -1)
+        val group1 = GroupProductEntity(0, "NAME", -1,false)
+        val group2 = GroupProductEntity(0, "NAME", 0, false)
+        assertNotEquals(group1, group2)
+    }
+
+    @Test
+    fun notEqualsHaveChilds() {
+        val group1 = GroupProductEntity(0, "NAME1", -1,false)
+        val group2 = GroupProductEntity(0, "NAME1", -1, true)
         assertNotEquals(group1, group2)
     }
 }
