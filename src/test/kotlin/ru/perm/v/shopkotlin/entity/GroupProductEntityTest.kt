@@ -1,6 +1,7 @@
 package ru.perm.v.shopkotlin.entity
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.Test
 
 internal class GroupProductEntityTest {
@@ -20,5 +21,33 @@ internal class GroupProductEntityTest {
     fun checkEqualHash() {
         val group1 = GroupProductEntity(0, "NAME", -1)
         assertEquals(GroupProductEntity(0, "NAME", -1, false).hashCode(), group1.hashCode())
+    }
+
+    @Test
+    fun equals() {
+        val group1 = GroupProductEntity(0, "NAME", -1)
+        val group2 = GroupProductEntity(0, "NAME", -1)
+        assertEquals(group1, group2)
+    }
+
+    @Test
+    fun notEqualsName() {
+        val group1 = GroupProductEntity(0, "NAME1", -1)
+        val group2 = GroupProductEntity(0, "NAME", -1)
+        assertNotEquals(group1, group2)
+    }
+
+    @Test
+    fun notEqualsN() {
+        val group1 = GroupProductEntity(0, "NAME1", -1)
+        val group2 = GroupProductEntity(0, "NAME", -1)
+        assertNotEquals(group1, group2)
+    }
+
+    @Test
+    fun notEqualsParentN() {
+        val group1 = GroupProductEntity(0, "NAME1", -1)
+        val group2 = GroupProductEntity(0, "NAME", -1)
+        assertNotEquals(group1, group2)
     }
 }
