@@ -48,7 +48,7 @@
 ./gradlew test --tests '*TestIntegration'
 ````
 
-Прогнать все, кроме интеграционных:
+Прогнать все, кроме интеграционных (имена интеграционных тестов должны заканчиватся ..TestIntegration):
 
 ````shell
 ./gradlew clean test --tests *Test
