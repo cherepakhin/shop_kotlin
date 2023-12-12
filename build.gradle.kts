@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "ru.perm.v"
 // change to publishing on change version
-version = "0.1.19"
-description = "shop_kotlin_changed_description"
+version = "0.1.20"
+description = "shop kotlin description"
 
 java.sourceCompatibility = JavaVersion.VERSION_11
 
