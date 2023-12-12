@@ -125,21 +125,39 @@ ProductServiceIntegrationTest > checkSortByName_ByDslFilterByName() PASSED
 
 <span style="background-color: red">Красным</span> или <span style="background-color:yellow">желтым</span> выделены непротестированные участки кода, зеленым <span style="background-color:green">протестировано</span>.
 
-### Запуск
+### Тестовый запуск
 
-Выполнять из каталога проекта.
+запуск:
 
 ````shell
 ./gradlew bootRun
 ````
 
-или
+### Создание запускаемого файла и его запуск
+
+Создание:
 
 ````shell
-java -jar build/libs/shop_kotlin-0.1.2.jar
+./gradlew bootJar
+````
+(**bootJar** не **bootRun!!!**)
+
+Собранный файл будет в папке **./build/libs/**
+
+запуск:
+
+````shell
+shop_kotlin/$ java -jar build/libs/shop_kotlin-0.1.20.jar
 ````
 
-Примеры тестов [httpie](https://httpie.io/)
+или так:
+
+````shell
+cd shop_kotlin/build/libs 
+shop_kotlin/build/libs$ java -jar shop_kotlin-0.1.20.jar
+````
+
+### Примеры тестов [httpie](https://httpie.io/)
 
 Echo запрос для простой проверки работоспособности:
 
