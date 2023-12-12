@@ -400,10 +400,10 @@ $http :8780/api/group_product/
 ./gradlew publish
 ````
 
-Путь к репозиторию установлен в build.gradle
+Путь к репозиторию установлен в build.gradle.kts:
 
 ````shell
-url = uri('http://v.perm.ru:8881/repository/ru.perm.v.shop_kotlin/')
+url = uri("http://v.perm.ru:8082/repository/ru.perm.v/")
 ````
 
 Для установки переменных доступа к Nexus repository выполнить в shell:
