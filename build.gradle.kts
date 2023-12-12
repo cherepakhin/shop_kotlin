@@ -104,6 +104,19 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
 }
 
+//tasks.test{
+//    filter{
+//////skip classes test with name ends IntegrationTest
+//        excludeTestsMatching("**/*IntegrationTest")
+//    }
+//
+//}
+
+// WORKED!
+//tasks.withType<Test> {
+//    exclude("**/*IntegrationTest**")
+//}
+
 tasks.withType<Test> {
     useJUnitPlatform()
     // Show test log
@@ -114,7 +127,10 @@ tasks.withType<Test> {
 //    if (project.hasProperty('excludeTests')) {
 //        exclude project.property('excludeTests')
 //    }
-    exclude("**IntegrationTest")
+    filter {
+        exclude("*IntegrationTest*")
+    }
+
 }
 
 //// remove suffix 'plain' in sonar repository

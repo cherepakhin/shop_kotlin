@@ -26,7 +26,7 @@ import kotlin.test.assertTrue
 // BUT, my database is "in memory database!". Therefore, next string is commented
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 
-internal class GroupProductServiceIntegrationTest {
+internal class GroupProductServiceTestIntegration {
 
     @Autowired
     lateinit var groupProductRepository: GroupProductRepository

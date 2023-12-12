@@ -13,7 +13,7 @@ import kotlin.test.assertEquals
  * с использованием @DataJpaTest.
  */
 @DataJpaTest
-class ProductRepositoryDataJpaIntegrationTest {
+class ProductRepositoryDataJpaTestIntegration {
     @Autowired
     lateinit var productRepository: ProductRepository;
 

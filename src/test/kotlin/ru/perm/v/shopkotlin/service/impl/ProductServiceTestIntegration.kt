@@ -18,7 +18,7 @@ import ru.perm.v.shopkotlin.service.GroupProductService
 // BUT, my database is "in memory database". Therefore, next string is commented
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 
-class ProductServiceIntegrationTest {
+class ProductServiceTestIntegration {
 
     @Autowired
     lateinit var productRepository: ProductRepository

@@ -45,7 +45,34 @@
 ./gradlew test --tests '*EntityTest'
 ./gradlew test --tests '*Rest*'
 ./gradlew test --tests ProductDTOTest
-./gradlew test --tests '*IntegrationTest'
+./gradlew test --tests '*TestIntegration'
+````
+
+Прогнать все, кроме интеграционных:
+
+````shell
+./gradlew clean test --tests *Test
+
+````
+
+Только интеграционные:
+
+````shell
+./gradlew clean test --tests *TestIntegration*
+./gradlew clean test --tests *TestIntegration
+````
+
+Другие примеры:
+
+````shell
+gradle test --tests org.gradle.SomeTest.someSpecificFeature
+gradle test --tests *SomeTest.someSpecificFeature
+gradle test --tests *SomeSpecificTest
+gradle test --tests all.in.specific.package*
+gradle test --tests *IntegTest
+gradle test --tests *IntegTest*ui*
+gradle test --tests *IntegTest.singleMethod
+gradle someTestTask --tests *UiTest someOtherTestTask --tests *WebTest*ui
 ````
 
 Включено протоколирование тестов build.gradle.kts:

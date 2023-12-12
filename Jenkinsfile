@@ -12,9 +12,15 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Unit tests') {
             steps {
-                sh './gradlew test'
+                sh './gradlew clean test --tests *Test'
+            }
+        }
+
+        stage('Integration tests') {
+            steps {
+                sh './gradlew clean test --tests *TestIntegration'
             }
         }
 

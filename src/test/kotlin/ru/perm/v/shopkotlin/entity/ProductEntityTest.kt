@@ -53,6 +53,6 @@ internal class ProductEntityTest {
         val product2 = ProductEntity(1L,"name", 1L)
 
         assertEquals(product1.hashCode(), product2.hashCode())
-        assert(product1.hashCode() === product2.hashCode())
+        assert(product1.hashCode() == product2.hashCode())
     }
 }
