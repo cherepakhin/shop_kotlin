@@ -72,7 +72,6 @@ class ProductRestMachinetTest(@Autowired private val mockMvc: MockMvc) {
                 .content(mapper.writeValueAsString(productDTO))
         )
             .andReturn()
-//        assertEquals("", result.response.contentAsString)
         val receivedProductDTO = mapper.readValue<ProductDTO>(result.response.contentAsString)
         assertEquals(productDTO, receivedProductDTO)
     }
