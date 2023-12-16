@@ -34,4 +34,12 @@ internal class ProductDTOTest {
 
         assertNotEquals(product1, product2) // as in java
     }
+
+    @Test
+    fun testHashCode() {
+        val product1 = ProductDTO(100L, "NAME1", 1L)
+        val product2 = ProductDTO(100L, "NAME1", 1L)
+
+        assertEquals(product1.hashCode(),product2.hashCode())
+    }
 }

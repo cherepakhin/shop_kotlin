@@ -13,7 +13,7 @@ import ru.perm.v.shopkotlin.service.GroupProductService
 import ru.perm.v.shopkotlin.service.ProductService
 
 /**
- * Service будет возвращать DTO. Для ухода от lazy.
+ * The Service will return the DTO. To get away from lazy.
  */
 @Service
 class GroupProductServiceImpl(
