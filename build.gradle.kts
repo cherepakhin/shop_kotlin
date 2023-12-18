@@ -98,6 +98,7 @@ dependencies {
 // prometheus - metrics
     implementation("io.micrometer:micrometer-registry-prometheus")
 
+// external dependency from private repository
     implementation("ru.perm.v:shop_kotlin_extdto:0.0.2@jar")
 //    implementation("ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
 
