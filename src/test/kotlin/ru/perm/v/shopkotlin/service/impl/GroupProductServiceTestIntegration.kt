@@ -1,7 +1,6 @@
 package ru.perm.v.shopkotlin.service.impl
 
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
@@ -47,7 +46,7 @@ class GroupProductServiceTestIntegration {
         assertEquals(1, groups.get(0).n)
     }
 
-// not work in jenkins. error: file:///home/vasi/.jenkins/workspace/shop_kotlin_pipe/src/test/kotlin/ru/perm/v/shopkotlin/service/impl/GroupProductServiceTestIntegration.kt:58:48 Unresolved reference. None of the following candidates is applicable because of receiver type mismatch:
+    // not work in jenkins. error: file:///home/vasi/.jenkins/workspace/shop_kotlin_pipe/src/test/kotlin/ru/perm/v/shopkotlin/service/impl/GroupProductServiceTestIntegration.kt:58:48 Unresolved reference. None of the following candidates is applicable because of receiver type mismatch:
 //    public inline fun <T> Enumeration<TypeVariable(T)>.toList(): List<TypeVariable(T)> defined in kotlin.collections
 //    public fun <T> Array<out TypeVariable(T)>.toList(): List<TypeVariable(T)> defined in kotlin.collections
 //    public fun BooleanArray.toList(): List<Boolean> defined in kotlin.collections
@@ -61,7 +60,11 @@ class GroupProductServiceTestIntegration {
 
         val groups = groupProductService.repository.findAllByOrderByNAsc()
 
-        val ids:List<Long> = groups.stream().map { it.n }.toList()
+        val ids: MutableList<Long> = ArrayList()
+        for (g in groups) {
+            ids.add(g.n)
+        }
+//        val ids:List<Long> = groups.stream().map { it.n }.toList()
 
         assertContentEquals(listOf(1L, 2L, 3L, 4L, 5L, 6L, 7L), ids)
     }
