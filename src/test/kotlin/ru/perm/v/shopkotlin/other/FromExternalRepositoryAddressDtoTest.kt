@@ -7,7 +7,7 @@ import kotlin.test.assertEquals
 /**
  * Test access to external nexus repository url = uri("http://192.168.1.20:8082/repository/ru.perm.v")
  */
-class AddressFromExtDtoTest {
+class FromExternalRepositoryAddressDtoTest {
     @Test
     internal fun testAccess() {
         val addr1 = AddressExtDto(1L, "NAME");
