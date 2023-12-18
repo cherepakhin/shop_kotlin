@@ -28,7 +28,7 @@ import kotlin.test.assertTrue
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 
 @Disabled
-internal class GroupProductServiceTestIntegration {
+class GroupProductServiceTestIntegration {
 
     @Autowired
     lateinit var groupProductRepository: GroupProductRepository
