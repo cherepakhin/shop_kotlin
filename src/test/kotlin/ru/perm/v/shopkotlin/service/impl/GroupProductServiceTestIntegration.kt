@@ -163,6 +163,7 @@ class GroupProductServiceTestIntegration {
         assertEquals(4, subGroupIds.size)
 
         // в kotlin можно так сравнивать списки
+        assertEquals(listOf(2L, 5L, 6L, 7L), subGroupIds.toList())
         assertEquals(listOf(2L, 5L, 6L, 7L).toSet(), subGroupIds.toSet())
         // и даже так
         assertTrue(listOf(2L, 5L, 6L, 7L) == subGroupIds)
