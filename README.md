@@ -406,7 +406,7 @@ $http :8780/api/group_product/
 
 Сборка происходит в Jenkins, развернутом на домашнем сервере. Pipeline для Jenkins описан в файле [./Jenkinsfile](Jenkinsfile)
 
-![jenkins](doc/jenkins_build.png)
+![jenkins](doc/jenkins_build_4_step.png)
 
 > Установка и настройка домашнего Jenkins описана в [http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd](http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd)
 
