@@ -26,8 +26,6 @@ import kotlin.test.assertTrue
 // BUT, my database is H2, therefore @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 // BUT, my database is "in memory database!". Therefore, next string is commented
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-
-@Disabled
 class GroupProductServiceTestIntegration {
 
     @Autowired
@@ -57,16 +55,16 @@ class GroupProductServiceTestIntegration {
 //    public fun CharArray.toList(): List<Char> defined in kotlin.collections
 //    public fun CharSequence.toList(): List<Char> defined in kotlin.text
 //    public fun DoubleArray.toList(): List<Double> defined in kotlin.collections
-//    @Test
-//    fun demoQueryDslCheckIds() {
-//        val groupProductService = GroupProductServiceImpl(groupProductRepository, productService)
-//
-//        val groups = groupProductService.repository.findAllByOrderByNAsc().toList()
-//
-//        val ids = groups.stream().map { it.n }.toList()
-//
-//        assertContentEquals(listOf(1, 2, 3, 4, 5, 6, 7), ids)
-//    }
+    @Test
+    fun demoQueryDslCheckIds() {
+        val groupProductService = GroupProductServiceImpl(groupProductRepository, productService)
+
+        val groups = groupProductService.repository.findAllByOrderByNAsc()
+
+        val ids = groups.stream().map { it.n }.toList()
+
+        assertContentEquals(listOf(1, 2, 3, 4, 5, 6, 7), ids)
+    }
 
     @Test
     fun getByDslFilter() {
