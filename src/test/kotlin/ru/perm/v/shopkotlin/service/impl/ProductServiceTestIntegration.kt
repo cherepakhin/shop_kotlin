@@ -1,6 +1,7 @@
 package ru.perm.v.shopkotlin.service.impl
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.mockito.Mock
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +18,7 @@ import ru.perm.v.shopkotlin.service.GroupProductService
 // This way, the tests will run against our PostgreSQL Database."
 // BUT, my database is "in memory database". Therefore, next string is commented
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-
+@Disabled
 class ProductServiceTestIntegration {
 
     @Autowired

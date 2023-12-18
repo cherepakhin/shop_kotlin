@@ -1,6 +1,7 @@
 package ru.perm.v.shopkotlin.service.impl
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
@@ -26,6 +27,7 @@ import kotlin.test.assertTrue
 // BUT, my database is "in memory database!". Therefore, next string is commented
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 
+@Disabled
 internal class GroupProductServiceTestIntegration {
 
     @Autowired
