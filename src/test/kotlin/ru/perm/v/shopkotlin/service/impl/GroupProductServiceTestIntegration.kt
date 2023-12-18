@@ -17,6 +17,7 @@ import kotlin.test.assertContentEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
+//TODO: create import.sql for test
 @ExtendWith(SpringExtension::class)
 @DataJpaTest
 // "Normally, Spring Boot will start an IN-MEMORY(!!!) database for @DataJpaTest-Tests.
