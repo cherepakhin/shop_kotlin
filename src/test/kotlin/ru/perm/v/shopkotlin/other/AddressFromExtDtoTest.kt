@@ -12,5 +12,6 @@ class AddressFromExtDtoTest {
     internal fun testAccess() {
         val addr1 = AddressExtDto(1L, "NAME");
         assertEquals(1L, addr1.n)
+        assertEquals("NAME", addr1.name)
     }
 }
