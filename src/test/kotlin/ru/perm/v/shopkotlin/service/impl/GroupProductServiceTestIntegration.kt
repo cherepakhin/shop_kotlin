@@ -61,9 +61,9 @@ class GroupProductServiceTestIntegration {
 
         val groups = groupProductService.repository.findAllByOrderByNAsc()
 
-        val ids = groups.stream().map { it.n }.toList()
+        val ids:List<Long> = groups.stream().map { it.n }.toList()
 
-        assertContentEquals(listOf(1, 2, 3, 4, 5, 6, 7), ids)
+        assertContentEquals(listOf(1L, 2L, 3L, 4L, 5L, 6L, 7L), ids)
     }
 
     @Test
