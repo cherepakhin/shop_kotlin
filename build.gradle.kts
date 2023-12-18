@@ -99,7 +99,8 @@ dependencies {
     implementation("io.micrometer:micrometer-registry-prometheus")
 
 // external dependency from private repository
-    implementation("ru.perm.v:shop_kotlin_extdto:0.0.2@jar")
+    implementation("ru.perm.v:shop_kotlin_extdto:0.0.2")
+//    implementation("ru.perm.v:shop_kotlin_extdto:0.0.2.jar") // jar! ???
 //    implementation("ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
 
     api("com.querydsl:querydsl-apt:5.0.0:jpa")
