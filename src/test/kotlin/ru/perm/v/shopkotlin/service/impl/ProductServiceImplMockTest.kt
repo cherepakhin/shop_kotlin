@@ -232,4 +232,14 @@ internal class ProductServiceImplMockTest {
 
         assertEquals(0, products.size)
     }
+
+    @Test
+    fun getCountOfProductNames() {
+        val COUNT_NAMES = 100L;
+        Mockito.`when`(productRepository.getCountOfProductNames())
+            .thenReturn(COUNT_NAMES)
+
+        assertEquals(COUNT_NAMES, productService.getCountOfProductNames())
+    }
+
 }
