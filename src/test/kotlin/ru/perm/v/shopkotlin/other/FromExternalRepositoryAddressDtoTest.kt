@@ -5,7 +5,7 @@ import ru.perm.v.shopkotlin.extdto.AddressExtDto
 import kotlin.test.assertEquals
 
 /**
- * Test access to external nexus repository url = uri("http://192.168.1.20:8082/repository/ru.perm.v")
+ * Test access to library from external nexus repository url = uri("http://192.168.1.20:8082/repository/ru.perm.v")
  */
 class FromExternalRepositoryAddressDtoTest {
     @Test
