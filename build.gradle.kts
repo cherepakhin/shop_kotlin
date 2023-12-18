@@ -23,6 +23,27 @@ buildscript {
 
 }
 
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+
+//      ERR  url = uri("http://192.168.1.20:8082/repository/ru.perm.v/ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
+//      ERR  url = uri("http://192.168.1.20:8082/ru.perm.v/ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
+//      ERR  url = uri("http://192.168.1.20:8082/ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
+
+        url = uri("http://192.168.1.20:8082/repository/ru.perm.v") //OK
+        isAllowInsecureProtocol = true
+        credentials {
+            username = "admin"
+            password = "pass"
+
+//            username = System.getenv("NEXUS_CI_USER") ?: extra.properties["nexus-ci-username"] as String?
+//            password = System.getenv("NEXUS_CI_PASS") ?: extra.properties["nexus-ci-password"] as String?
+        }
+    }
+}
+
 plugins {
     val kotlinVersion = "1.8.21"
     id("org.springframework.boot") version "2.5.6"
@@ -76,6 +97,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 // prometheus - metrics
     implementation("io.micrometer:micrometer-registry-prometheus")
+
+    implementation("ru.perm.v:shop_kotlin_extdto:0.0.2@jar")
+//    implementation("ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
 
     api("com.querydsl:querydsl-apt:5.0.0:jpa")
     kapt("jakarta.annotation:jakarta.annotation-api")
