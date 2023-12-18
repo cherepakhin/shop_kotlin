@@ -201,7 +201,7 @@ http POST :8780/api/product/ < ./src/test/json_test/product.json
 
 ### Integration tests
 
-Два варианта тестирование - c Spring @DataJpaTest и через RestAssured (это bdd тестирование). Совершенно разные тесты, для совершенно разных целей. DataJpaTest на уровне БД, RestAssured - сквозное тестирование от rest до БД. 
+Два варианта тестирование - c Spring @DataJpaTest и через RestAssured (это bdd тестирование). Совершенно разные тесты, для совершенно разных целей. DataJpaTest на уровне БД, RestAssured - сквозное тестирование от rest до БД. Проект для с RestAssured тестами: [https://github.com/cherepakhin/shop_kotlin_reastassured_test](https://github.com/cherepakhin/shop_kotlin_reastassured_test) 
 
 #### DataJpaTest
 
