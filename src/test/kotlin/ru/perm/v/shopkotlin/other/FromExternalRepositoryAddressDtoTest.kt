@@ -9,8 +9,9 @@ import kotlin.test.assertEquals
  */
 class FromExternalRepositoryAddressDtoTest {
     @Test
-    internal fun testAccess() {
+    internal fun isAccessToExternalDto() {
         val addr1 = AddressExtDto(1L, "NAME");
+
         assertEquals(1L, addr1.n)
         assertEquals("NAME", addr1.name)
     }
