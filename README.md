@@ -33,6 +33,14 @@
 </ul>
 В качестве базы данных использовать in memory database, например H2.
 
+### Статический анализатор Idea Analize
+
+Проверка кода. Вызывается из контекстного меню Analize - Inspect Code.
+
+### Статический анализатор SonarCube
+
+[https://github.com/cherepakhin/shop_kotlin/doc/use_sonarqube.md](https://github.com/cherepakhin/shop_kotlin/doc/use_sonarqube.md)
+
 ### Unit тестирование
 
 ````shell

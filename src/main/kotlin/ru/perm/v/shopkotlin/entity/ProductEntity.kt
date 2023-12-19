@@ -17,12 +17,17 @@ class ProductEntity(
     @Column(name = "group_product_n", nullable = false)
     val groupProductN: Long = -1
 ) {
-// constructor was need for queryDsl. By default query Dsl use simple constructor ProductEntity()
-//    constructor(n: Long, name: String, groupProductN: Long) {
-//        this.n = n
-//        this.name = name
-//        this.groupProductN = groupProductN
-//    }
+
+/*
+the constructor ProductEntity() was needed for old version queryDsl.
+By default, the query Dsl use simple constructor ProductEntity()
+
+constructor(n: Long, name: String, groupProductN: Long) {
+    this.n = n
+    this.name = name
+    this.groupProductN = groupProductN
+}
+*/
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
