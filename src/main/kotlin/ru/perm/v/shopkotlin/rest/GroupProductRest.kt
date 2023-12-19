@@ -174,7 +174,7 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
         if (!groupProductService.existsByN(n)) {
             throw Exception(format(NOT_FOUND_GROUP_BY_ID, n))
         }
-        if (!groupProductService.getSubGroups(n).isEmpty()) {
+        if (groupProductService.getSubGroups(n).isNotEmpty()) {
             throw Exception(format(HAVE_SUBGROUPS, n))
         }
         if (productService.getByGroupProductN(n).isNotEmpty()) {
