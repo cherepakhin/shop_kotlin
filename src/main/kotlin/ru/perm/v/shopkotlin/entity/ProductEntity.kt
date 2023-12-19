@@ -9,14 +9,14 @@ class ProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // hibernate sequence by next max
     @Column(name = "n", nullable = false)
     // column name must is not "id", "id" is key word
-    var n: Long = -1L
+    val n: Long
 
     @Column(name = "name", nullable = false)
-    var name: String = ""
+    val name: String
 
     @Column(name = "group_product_n", nullable = false)
-    var groupProductN: Long = -1
-    // need constructor fro queryDsl. By default query Dsl use simple constructor ProductEntity()
+    val groupProductN: Long
+    // need constructor for queryDsl. By default query Dsl use simple constructor ProductEntity()
     constructor(n: Long, name: String, groupProductN: Long) {
         this.n = n
         this.name = name
