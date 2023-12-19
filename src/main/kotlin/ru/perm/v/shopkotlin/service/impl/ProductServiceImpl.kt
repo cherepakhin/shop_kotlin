@@ -14,14 +14,34 @@ import ru.perm.v.shopkotlin.repository.ProductRepository
 import ru.perm.v.shopkotlin.service.GroupProductService
 import ru.perm.v.shopkotlin.service.ProductService
 
+
+// On "./gradlew bootRun" for this code have ERROR:
+//APPLICATION FAILED TO START
+//***************************
+//
+//Description:
+//
+//The dependencies of some of the beans in the application context form a cycle:
+//
+//groupProductRest defined in file [/home/vasi/prog/kotlin/shop/shop_kotlin/build/classes/kotlin/main/ru/perm/v/shopkotlin/rest/GroupProductRest.class]
+//┌─────┐
+//|  groupProductServiceImpl defined in file [/home/vasi/prog/kotlin/shop/shop_kotlin/build/classes/kotlin/main/ru/perm/v/shopkotlin/service/impl/GroupProductServiceImpl.class]
+//↑     ↓
+//|  productServiceImpl defined in file [/home/vasi/prog/kotlin/shop/shop_kotlin/build/classes/kotlin/main/ru/perm/v/shopkotlin/service/impl/ProductServiceImpl.class]
+//└─────┘
+
+//@Service
+//class ProductServiceImpl(
+//    val repository: ProductRepository,
+//    val  groupService: GroupProductService
+//) :ProductService {
+// That's why I do it this way:
 @Service
 class ProductServiceImpl :ProductService {
-    @Autowired
     lateinit var repository: ProductRepository;
-    @Lazy
     lateinit var groupService: GroupProductService;
 
-    constructor()
+    constructor() // NEED FOR SPRING BEAN!!!
 
     constructor(repository: ProductRepository, groupService: GroupProductService) {
         this.repository = repository
