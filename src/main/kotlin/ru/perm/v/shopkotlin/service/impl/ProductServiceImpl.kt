@@ -36,16 +36,9 @@ import ru.perm.v.shopkotlin.service.ProductService
 // That's why I do it this way:
 @Service
 class ProductServiceImpl : ProductService {
+
     lateinit var repository: ProductRepository;
     lateinit var groupService: GroupProductService;
-
-    constructor() // NEED FOR SPRING BEAN!!!
-
-    constructor(repository: ProductRepository, groupService: GroupProductService) {
-        this.repository = repository
-        this.groupService = groupService
-    }
-
 
     /**
      * ID in input dto will be ignored. ID will calculate
