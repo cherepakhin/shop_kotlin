@@ -16,14 +16,9 @@ class ProductEntity {
 
     @Column(name = "group_product_n", nullable = false)
     var groupProductN: Long = -1
-
+    // need constructor fro queryDsl. By default query Dsl use simple constructor ProductEntity()
     constructor(n: Long, name: String, groupProductN: Long) {
         this.n = n
-        this.name = name
-        this.groupProductN = groupProductN
-    }
-
-    constructor(name: String, groupProductN: Long) {
         this.name = name
         this.groupProductN = groupProductN
     }
