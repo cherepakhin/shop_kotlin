@@ -37,8 +37,13 @@ import ru.perm.v.shopkotlin.service.ProductService
 @Service
 class ProductServiceImpl : ProductService {
 
-    lateinit var repository: ProductRepository;
-    lateinit var groupService: GroupProductService;
+    var repository: ProductRepository;
+    var groupService: GroupProductService;
+
+    constructor(repository: ProductRepository, groupService: GroupProductService) {
+        this.repository = repository
+        this.groupService = groupService
+    }
 
     /**
      * ID in input dto will be ignored. ID will calculate
