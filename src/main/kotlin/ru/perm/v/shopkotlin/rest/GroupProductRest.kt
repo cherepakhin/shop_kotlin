@@ -68,7 +68,7 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
             violations.forEach { violation ->
                 messageError = messageError.plus(violation.message + "\n")
             }
-            throw Exception("Group product with n: ${groupProductDTO.toString()} has errors: ${messageError}")
+            throw Exception("Group product with n: $groupProductDTO has errors: $messageError")
         }
         return groupProductService.create(groupProductDTO)
     }
