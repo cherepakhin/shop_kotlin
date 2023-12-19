@@ -1,8 +1,6 @@
 package ru.perm.v.shopkotlin.service.impl
 
 import com.querydsl.core.BooleanBuilder
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.annotation.Lazy
 import org.springframework.data.querydsl.QSort
 import org.springframework.stereotype.Service
 import ru.perm.v.shopkotlin.consts.ErrMessages
@@ -37,7 +35,7 @@ import ru.perm.v.shopkotlin.service.ProductService
 //) :ProductService {
 // That's why I do it this way:
 @Service
-class ProductServiceImpl :ProductService {
+class ProductServiceImpl : ProductService {
     lateinit var repository: ProductRepository;
     lateinit var groupService: GroupProductService;
 
@@ -47,7 +45,6 @@ class ProductServiceImpl :ProductService {
         this.repository = repository
         this.groupService = groupService
     }
-
 
 
     /**
