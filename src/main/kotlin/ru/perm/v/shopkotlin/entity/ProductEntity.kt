@@ -4,24 +4,25 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "product")
-class ProductEntity {
+class ProductEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // hibernate sequence by next max
     @Column(name = "n", nullable = false)
     // column name must is not "id", "id" is key word
-    val n: Long
+    val n: Long = -1,
 
     @Column(name = "name", nullable = false)
-    val name: String
+    val name: String = "",
 
     @Column(name = "group_product_n", nullable = false)
-    val groupProductN: Long
-    // need constructor for queryDsl. By default query Dsl use simple constructor ProductEntity()
-    constructor(n: Long, name: String, groupProductN: Long) {
-        this.n = n
-        this.name = name
-        this.groupProductN = groupProductN
-    }
+    val groupProductN: Long = -1
+) {
+// constructor was need for queryDsl. By default query Dsl use simple constructor ProductEntity()
+//    constructor(n: Long, name: String, groupProductN: Long) {
+//        this.n = n
+//        this.name = name
+//        this.groupProductN = groupProductN
+//    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
