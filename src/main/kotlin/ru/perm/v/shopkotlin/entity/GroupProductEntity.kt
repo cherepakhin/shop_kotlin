@@ -4,18 +4,18 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "group_product")
-open class GroupProductEntity(
+class GroupProductEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "n")
     // COLUMN NAME MUST IS NOT "ID", "ID" IS KEY WORD IN h2database
-    open val n: Long = -1,
+    val n: Long = -1,
     @Column(name = "name", nullable = false)
-    open val name: String = "",
+    val name: String = "",
     @Column(name = "parent_n", nullable = false)
-    open val parentN: Long = -1,
+    val parentN: Long = -1,
     @Column(name = "have_childs", nullable = false)
-    open val haveChilds: Boolean = false
+    val haveChilds: Boolean = false
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
