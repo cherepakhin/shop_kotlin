@@ -84,7 +84,7 @@ class ProductRest(val productService: ProductService) {
         @RequestBody
         product: ProductDTO
     ): ProductDTO {
-        logger.info("UPDATE:" + product.toString())
+        logger.info("UPDATE:$product")
         validate(product)
         return productService.update(product)
     }
@@ -98,7 +98,7 @@ class ProductRest(val productService: ProductService) {
         )
         @PathVariable
         n: Long
-    ): Unit {
+    ) {
         productService.delete(n)
     }
 
@@ -117,7 +117,7 @@ class ProductRest(val productService: ProductService) {
             violations.forEach { violation ->
                 messageError = messageError.plus(violation.message + "\n")
             }
-            throw Exception("${productDTO.toString()} has errors: ${messageError}")
+            throw Exception("$productDTO has errors: $messageError")
         }
     }
 
