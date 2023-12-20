@@ -559,6 +559,7 @@ SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 - Pagination
 - ~~Grafana (сделано)~~
 - ElasticSearch
+- Авторизация
 
 **Примечания:**
 
