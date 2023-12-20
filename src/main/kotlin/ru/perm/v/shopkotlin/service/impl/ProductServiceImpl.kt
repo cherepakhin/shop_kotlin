@@ -35,15 +35,7 @@ import ru.perm.v.shopkotlin.service.ProductService
 //) :ProductService {
 // That's why I do it this way:
 @Service
-class ProductServiceImpl : ProductService {
-
-    var repository: ProductRepository;
-    var groupService: GroupProductService;
-
-    constructor(repository: ProductRepository, groupService: GroupProductService) {
-        this.repository = repository
-        this.groupService = groupService
-    }
+class ProductServiceImpl(var productRepository: ProductRepository, var groupService: GroupProductService) : ProductService {
 
     /**
      * ID in input dto will be ignored. ID will calculate
@@ -53,8 +45,8 @@ class ProductServiceImpl : ProductService {
         if (!groupService.existsByN(dto.groupDtoN)) {
             throw Exception(String.format("GroupProduct with n=%s not exist", dto.groupDtoN))
         }
-        val n = repository.getNextN()
-        val savedProduct = repository.save(ProductEntity(n, dto.name, dto.groupDtoN))
+        val n = productRepository.getNextN()
+        val savedProduct = productRepository.save(ProductEntity(n, dto.name, dto.groupDtoN))
         return ProductDTO(savedProduct.n, savedProduct.name, savedProduct.groupProductN)
     }
 
@@ -63,13 +55,13 @@ class ProductServiceImpl : ProductService {
         //        return repository.findAllByGroupProductNOrderByNAsc(n).stream()
         //            .map { ProductDTO(it.n, it.name, it.groupProductN) }.toList()
         // В kotlin можно проще. без .toList()
-        return repository.findAllByGroupProductNOrderByNAsc(n)
+        return productRepository.findAllByGroupProductNOrderByNAsc(n)
             .map { ProductDTO(it.n, it.name, it.groupProductN) }
     }
 
     @Throws(Exception::class)
     override fun getByN(n: Long): ProductDTO {
-        val product = repository.findById(n)
+        val product = productRepository.findById(n)
         if (product.isPresent) {
             val entity = product.get()
             return ProductDTO(entity.n, entity.name, entity.groupProductN)
@@ -79,7 +71,7 @@ class ProductServiceImpl : ProductService {
     }
 
     override fun getByNs(ids: List<Long>): List<ProductDTO> {
-        return repository.findAllById(ids).map { ProductDTO(it.n, it.name, it.groupProductN) }
+        return productRepository.findAllById(ids).map { ProductDTO(it.n, it.name, it.groupProductN) }
     }
 
 
@@ -95,29 +87,29 @@ class ProductServiceImpl : ProductService {
 
         // example sort
         // val entities = repository.findAll(booleanBuilder, QSort.by("name", "n"))
-        val entities = repository.findAll(booleanBuilder, QSort.by(filter.listSortBy.joinToString(",")))
+        val entities = productRepository.findAll(booleanBuilder, QSort.by(filter.listSortBy.joinToString(",")))
 
         val dtos = entities.map { ProductDTO(it.n, it.name, it.groupProductN) }
         return dtos
     }
 
     override fun getByName(name: String): List<ProductDTO> {
-        return repository.findByNameContainingOrderByName(name)
+        return productRepository.findByNameContainingOrderByName(name)
             .map { ProductDTO(it.n, it.name, it.groupProductN) }
 
     }
 
     override fun getCountOfProductNames(): Long {
-        return repository.getCountOfProductNames()
+        return productRepository.getCountOfProductNames()
     }
 
     override fun getAll(): List<ProductDTO> {
-        return repository.findAllByOrderByNAsc()
+        return productRepository.findAllByOrderByNAsc()
             .map { ProductDTO(it.n, it.name, it.groupProductN) }
     }
 
     override fun existByN(n: Long): Boolean {
-        return repository.findById(n).isPresent
+        return productRepository.findById(n).isPresent
     }
 
     @Throws(Exception::class)
@@ -128,7 +120,7 @@ class ProductServiceImpl : ProductService {
         if (!existByN(dto.n)) {
             throw Exception(String.format("Product with n=%s not exist", dto.n))
         }
-        val savedProduct = repository.save(ProductEntity(dto.n, dto.name, dto.groupDtoN))
+        val savedProduct = productRepository.save(ProductEntity(dto.n, dto.name, dto.groupDtoN))
         return ProductDTO(savedProduct.n, savedProduct.name, savedProduct.groupProductN)
     }
 
@@ -137,6 +129,6 @@ class ProductServiceImpl : ProductService {
         if (!existByN(n)) {
             throw Exception(String.format("Product with n=%s not exist", n))
         }
-        repository.deleteById(n)
+        productRepository.deleteById(n)
     }
 }

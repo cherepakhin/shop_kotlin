@@ -1,7 +1,7 @@
 package ru.perm.v.shopkotlin.service.impl
 
 import com.querydsl.core.BooleanBuilder
-import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.annotation.Lazy
 import org.springframework.data.querydsl.QSort
 import org.springframework.stereotype.Service
 import ru.perm.v.shopkotlin.consts.ErrMessages
@@ -17,28 +17,14 @@ import ru.perm.v.shopkotlin.service.ProductService
  * The Service will return the DTO. To get away from lazy.
  */
 @Service
-class GroupProductServiceImpl: GroupProductService {
-    // PROPER INITIALIZATION. NEED FOR SPRING.
+class GroupProductServiceImpl(
+    @Lazy val repository: GroupProductRepository,
+    @Lazy val productService: ProductService
+) : GroupProductService {
+    // @Lazy PROPER INITIALIZATION. NEED FOR SPRING.
     // Error: The dependencies of some of the beans in the application context form a cycle:
     // ProductService depends on GroupProductService AND GroupProductService depends on ProductService
-    // SEE ProductServiceImpl
-    @Autowired
-    lateinit var repository: GroupProductRepository;
-    @Autowired
-    lateinit var productService: ProductService;
-//    ERROR IN RUNTIME. COMMENT DO NOT DELETE
-//    constructor(@Autowired repository: GroupProductRepository, @Autowired productService: ProductService) {
-//        this.repository = repository
-//        this.productService = productService
-//    }
-
-//    ERROR IN RUNTIME. COMMENT DO NOT DELETE
-//    constructor(repository: GroupProductRepository) {
-//        this.repository = repository
-//    } // DON'T DELETE!!!. NEED FOR SPRING. Error: The dependencies of some of the beans in the application context form a cycle:
-
-
-
+    // see: https://www.baeldung.com/circular-dependencies-in-spring
     override fun create(groupProductDTO: GroupProductDTO): GroupProductDTO {
         val n = repository.getNextN()
         val groupProductEntity = GroupProductEntity(

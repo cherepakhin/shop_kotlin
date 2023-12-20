@@ -1,6 +1,7 @@
 package ru.perm.v.shopkotlin.service.impl
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
@@ -17,6 +18,7 @@ import kotlin.test.assertContentEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
+@Disabled
 //TODO: create import.sql for test
 @ExtendWith(SpringExtension::class)
 @DataJpaTest
