@@ -54,6 +54,7 @@
 ./gradlew test --tests '*Rest*'
 ./gradlew test --tests ProductDTOTest
 ./gradlew test --tests '*TestIntegration'
+./gradlew test --tests '*MockMvcTest'
 ````
 
 ### Интеграционное тестирование
