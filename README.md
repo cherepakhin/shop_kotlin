@@ -228,6 +228,8 @@ http POST :8780/api/product/ < ./src/test/json_test/product.json
 
 [Dockerfile](Dockerfile)
 
+Работа с Docker:
+
 ```shell
 # create docker image
 $./docker_build.sh
