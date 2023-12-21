@@ -347,9 +347,16 @@ CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS
 e081bb1f500c   prom/prometheus   "/bin/prometheus --c…"   4 minutes ago   Up 4 minutes   0.0.0.0:9090->9090/tcp   reverent_newton
 ````
 
-Подключение к Prometheus из браузера [http://127.0.0.1:9090/graph](http://127.0.0.1:9090/graph)
+Подключение к Prometheus из браузера:  [http://127.0.0.1:9090/graph](http://127.0.0.1:9090/graph)
 
-[Подробнее о Prometheus](doc/prometheus/prometheus.md)
+Основной экран:
+192.168.1.57 - адрес хоста с prometheus
+http://192.168.1.57:9090/
+
+![Основной экран](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus_main_screen.png)
+
+Меню: Status/Targets
+![Статус](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus_status_targets.png)
 
 Просмотр логов контейнера prometheus (e08 id контейнера)
 
