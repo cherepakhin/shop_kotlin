@@ -317,7 +317,7 @@ Spring Actuator предназначен для получения информ�
 На моем сервере запущен Prometheus. Пример секции для опроса приложения в файле [prometheus.yml](https://github.com/cherepakhin/shop_kotlin/prometheus.yml). Для просмотра получаемых prometheus-ом метрик можно выполнить:
 
 ````shell
-$http http://127.0.0.1:8788/api/actuator/prometheus
+$**http http://127.0.0.1:8788/api/actuator/prometheus**
 ````
 (Использован [httpie](https://httpie.io/))
 
@@ -347,7 +347,7 @@ CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS
 e081bb1f500c   prom/prometheus   "/bin/prometheus --c…"   4 minutes ago   Up 4 minutes   0.0.0.0:9090->9090/tcp   reverent_newton
 ````
 
-Подключение к Prometheus из браузера:  [http://127.0.0.1:9090/graph](http://127.0.0.1:9090/graph)
+Подключение к Prometheus из браузера:  [http://192.168.1.57:9090/graph](http://192.168.1.57:9090/graph)
 
 Основной экран:
 192.168.1.57 - адрес хоста с prometheus
@@ -357,6 +357,14 @@ http://192.168.1.57:9090/
 
 Меню: Status/Targets
 ![Статус](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/prometheus_status_targets.png)
+
+Приложение остановлено:
+
+![Приложение остановлено](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/shop_kotlin_down.png)
+
+Приложение запущено:
+
+![Приложение остановлено](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/shop_kotlin_up.png)
 
 Просмотр логов контейнера prometheus (e08 id контейнера)
 
