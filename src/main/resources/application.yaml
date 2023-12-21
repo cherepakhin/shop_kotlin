@@ -1,5 +1,5 @@
 server:
-  port: ${API_PORT:8780}
+  port: ${API_PORT:8980}
   servlet:
     context-path: "/api"
   # For include message error to http response!!!
@@ -86,6 +86,6 @@ management:
       percentiles-histogram:
         "[http.server.requests]": true
   server:
-    port: 8788
+    port: 8988
 
 
