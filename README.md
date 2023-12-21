@@ -353,10 +353,10 @@ e081bb1f500c   prom/prometheus   "/bin/prometheus --c…"   4 minutes ago   Up 4
 192.168.1.57 - адрес хоста с prometheus
 http://192.168.1.57:9090/
 
-![Основной экран](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus_main_screen.png)
+![Основной экран](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/prometheus_main_screen.png)
 
 Меню: Status/Targets
-![Статус](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus_status_targets.png)
+![Статус](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/prometheus_status_targets.png)
 
 Просмотр логов контейнера prometheus (e08 id контейнера)
 
