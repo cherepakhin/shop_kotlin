@@ -1,4 +1,4 @@
-# Config for Prometheus on v.perm.ru(192.168.1.20).
+# This is DEMO Config for Prometheus from v.perm.ru(192.168.1.20) /etc/prometheus/prometheus.yml.
 
 global:
   scrape_interval:     15s # By default, scrape targets every 15 seconds.
