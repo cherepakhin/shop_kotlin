@@ -349,7 +349,7 @@ e081bb1f500c   prom/prometheus   "/bin/prometheus --c…"   4 minutes ago   Up 4
 
 Подключение к Prometheus из браузера [http://127.0.0.1:9090/graph](http://127.0.0.1:9090/graph)
 
-![prometheus.png](doc/prometheus.png)
+[Подробнее о Prometheus](doc/prometheus/prometheus.md)
 
 Просмотр логов контейнера prometheus (e08 id контейнера)
 
