@@ -317,7 +317,7 @@ Spring Actuator предназначен для получения информ�
 На моем сервере запущен Prometheus. Пример секции для опроса приложения в файле [prometheus.yml](https://github.com/cherepakhin/shop_kotlin/prometheus.yml). Для просмотра получаемых prometheus-ом метрик можно выполнить:
 
 ````shell
-$**http http://127.0.0.1:8788/api/actuator/prometheus**
+$ http http://127.0.0.1:8788/api/actuator/prometheus**
 ````
 (Использован [httpie](https://httpie.io/))
 
@@ -331,7 +331,7 @@ jvm_threads_daemon_threads 13.0
 ...
 ````
 
-Запуск prometheus:
+#### Запуск prometheus в docker:
 
 ```shell
 docker run -d -p 9090:9090 -v "/$(pwd)/for_prometheus/prometheus.yml":/etc/prometheus/prometheus.yml prom/prometheus
