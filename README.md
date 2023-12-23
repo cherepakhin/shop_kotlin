@@ -356,7 +356,7 @@ e081bb1f500c   prom/prometheus   "/bin/prometheus --c…"   4 minutes ago   Up 4
 192.168.1.20 - адрес хоста с prometheus
 http://192.168.1.20:9090/targets
 
-![Основной экран](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/prometheus_main_screen.png)
+![Основной экран](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/prometheus_1_20_9090.png)
 
 Меню: Status/Targets
 ![Статус](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/prometheus_status_targets.png)
