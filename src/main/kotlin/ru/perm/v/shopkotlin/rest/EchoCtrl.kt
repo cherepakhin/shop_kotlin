@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController
 class EchoCtrl {
     private val logger = LoggerFactory.getLogger(this.javaClass.name)
     private var counter = 0L
-    private val MAX_VALUE_COUNTER = 100000L // for yandex_tank test
+    private val MaxValueCounter = 100000L // for yandex_tank test
 
     @GetMapping("/{mes}")
     @ApiOperation("echo message")
@@ -23,7 +23,7 @@ class EchoCtrl {
         @PathVariable("mes")
         @ApiParam(name = "mes", value = "any string") mes: String
     ): String {
-        if (counter + 1 > MAX_VALUE_COUNTER) {
+        if (counter + 1 > MaxValueCounter) {
             counter = 0L
         } else {
             counter += 1L
