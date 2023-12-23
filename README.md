@@ -616,8 +616,8 @@ $ ./gradlew bootRun --args='--spring.profiles.active=dev'
 SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 ````
 
-<a id="todd"/>
-###TODO
+<a id="todo"></a>
+### TODO
 
 - ~~cache on rest (сделано)~~
 - ~~RestAssured tests (сделано)~~ (https://github.com/cherepakhin/shop_kotlin_reastassured_test)
