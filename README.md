@@ -28,7 +28,7 @@
 [Логирование](#logging)<br/>
 [Spring профили](#profiles)<br/>
 
-[TODO](#todo)<br/>
+[TODO](#td)<br/>
 [Примечания](#tose)<br/>
 [Ссылки](#links)<br/>
 
@@ -616,7 +616,7 @@ $ ./gradlew bootRun --args='--spring.profiles.active=dev'
 SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 ````
 
-<a id="todo"/>
+<a id="td"/>
 ### TODO
 
 - ~~cache on rest (сделано)~~
