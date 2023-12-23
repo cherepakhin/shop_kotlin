@@ -1,7 +1,7 @@
 server:
   port: ${API_PORT:8980}
   servlet:
-    context-path: "/api"
+    context-path: "/shop_kotlin/api"
   # For include message error to http response!!!
   error:
     include-message: always
