@@ -451,14 +451,14 @@ vasi@v$ sudo service grafana-server stop
 
 user(pass): admin/admin
 
-<a id="swagger"/>
+<a id="swagger"></a>
 ### Swagger
 
 Адрес [http://127.0.0.1:8780/api/swagger-ui/](http://127.0.0.1:8780/api/swagger-ui/)
 
 ![swagger](doc/swagger.png)
 
-<a id="cache"/>
+<a id="cache"></a>
 ### Кеширование
 
 Кеширование сделано для RestController:
@@ -483,7 +483,7 @@ $http :8780/api/group_product/
 
 ```
 
-<a id="jenkins"/>
+<a id="jenkins"></a>
 ### Сборка Jenkins
 
 Сборка происходит в Jenkins, развернутом на домашнем сервере. Pipeline для Jenkins описан в файле [./Jenkinsfile](Jenkinsfile)
@@ -492,7 +492,7 @@ $http :8780/api/group_product/
 
 > Установка и настройка домашнего Jenkins описана в [http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd](http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd)
 
-<a id="nexus"/>
+<a id="nexus"></a>
 ### Deploy to NEXUS repository
 
 Возможен с использованием Jenkins (описано выше) или ручной deploy в Nexus с личного компьютера.
@@ -518,7 +518,7 @@ $ export NEXUS_CRED_PSW=pass
 
 ![nexus](doc/nexus.png)
 
-<a id="chagpt"/>
+<a id="chagpt"></a>
 ### Использование "ChatGPT-EasyCode" в VSCode
 
 Генерация тестов
@@ -529,7 +529,7 @@ $ export NEXUS_CRED_PSW=pass
 
 МОЖЕТ-БЫТЬ эпизодически и возможно использовать.
 
-<a id="jms"/>
+<a id="jms"></a>
 ### Просмотр ресурсов с помощью Java Mission Control
 
 [Java Mission Control](https://www.oracle.com/cis/javase/jmc/)
@@ -540,7 +540,7 @@ jmc-8.3.1_linux-x64/JDK Mission Control$ jmc
 
 ![jmc](doc/jmc_monitor.png)
 
-<a id="logging"/>
+<a id="logging"></a>
 ### Логирование
 
 Настройка сделана в application.yaml:
@@ -635,7 +635,7 @@ SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 - ElasticSearch
 - Авторизация
 
-<a id="tose"/>
+<a id="tose"></a>
 ### Примечания:
 
 В программе не используются слои controller и service, т.к. проект сделан только для демонстрации Kotlin, и не планируется какая-либо бизнес-логика. Конвертация в DTO сделана в REST контроллерах.
@@ -756,7 +756,7 @@ shop_kotlin$ gradle wrapper
 
 Похоже, при расшаривании папки для Windows и работе в Windows изменился конец строки. 
 
-<a id="links"/>
+<a id="links"></a>
 ### Ссылки:
 
 [Интеграционное тестирование REST](http://v.perm.ru/main/index.php/34-behave-testirovanie)<br/>
