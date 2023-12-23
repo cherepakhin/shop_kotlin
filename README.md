@@ -1,14 +1,14 @@
 ## Простой проект на kotlin и Spring Boot
 
-###<b>Оглавление:</b><br/>
+### Оглавление:
 [Цель](#target)<br/>
 [Статический анализатор Idea Analize](#static_analize)<br/>
+[Статический анализатор SonarCube](#sonarcube)<br/>
+[Unit тестирование](#unit_test)<br/>
 
 ### Цель
 <a id="target"></a>
-<b>Цель:</b> Cоздать небольшое приложение на <b>Kotlin</b> с использованием Spring Boot.<br/>
-<b>Задание:</b>
-Магазин, торгующий компьютерами и комплектующими со следующим типом товаров:
+Cоздать небольшое приложение на <b>Kotlin</b> с использованием <b>Spring Boot</b>. Магазин, торгующий компьютерами и комплектующими со следующим типом товаров:
 <ul>
 <li>Настольные компьютеры</li>
 <li>Ноутбуки</li>
@@ -45,10 +45,12 @@
 
 Проверка кода. Вызывается из контекстного меню Analize - Inspect Code.
 
+<a id="sonarcube"></a>
 ### Статический анализатор SonarCube
 
 [https://github.com/cherepakhin/shop_kotlin/doc/use_sonarqube.md](https://github.com/cherepakhin/shop_kotlin/doc/use_sonarqube.md)
 
+<a id="unit_test"></a>
 ### Unit тестирование
 
 ````shell
