@@ -28,7 +28,7 @@
 [Логирование](#logging)<br/>
 [Spring профили](#profiles)<br/>
 
-[TODO](#td)<br/>
+[TODO](#todo)<br/>
 [Примечания](#tose)<br/>
 [Ссылки](#links)<br/>
 
@@ -616,8 +616,8 @@ $ ./gradlew bootRun --args='--spring.profiles.active=dev'
 SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 ````
 
-<a id="td"/>
-### TODO
+<a id="todd"/>
+###TODO
 
 - ~~cache on rest (сделано)~~
 - ~~RestAssured tests (сделано)~~ (https://github.com/cherepakhin/shop_kotlin_reastassured_test)
