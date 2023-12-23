@@ -4,11 +4,37 @@
 [Цель](#target)<br/>
 [Статический анализатор Idea Analize](#static_analize)<br/>
 [Статический анализатор SonarCube](#sonarcube)<br/>
+
 [Unit тестирование](#unit_test)<br/>
 [Интеграционное тестирование](#integration_test)<br/>
+[Покрытие тестами](#coverage_test)<br/>
+[Тестовый запуск](#run)<br/>
+[Создание запускаемого файла и его запуск](#create_runable)<br/>
+[Примеры тестов httpie](#httpie)<br/>
+[Integration tests](#integration_test2)<br/>
+[DataJpa tests](#datajpatest_test)<br/>
+[RestAssured tests](#restassured)<br/>
 
-### Цель
+[Docker](#docker)<br/>
+[Spring Actuator](#spring_actuator)<br/>
+[Prometheus](#prometheus)<br/>
+[Grafana](#grafana)<br/>
+[Swagger](#swagger)<br/>
+[Кеширование](#cache)<br/>
+[Сборка Jenkins](#jenkins)<br/>
+[Nexus](#nexus)<br/>
+[Использование "ChatGPT-EasyCode" в VSCode](#chatgpt)<br/>
+[Просмотр ресурсов с помощью Java Mission Control](#jmc)<br/>
+[Логирование](#logging)<br/>
+[Spring профили](#profiles)<br/>
+
+[TODO](#todo)<br/>
+[Примечания](#tose)<br/>
+[Ссылки](#links)<br/>
+
 <a id="target"></a>
+### Цель
+
 Cоздать небольшое приложение на <b>Kotlin</b> с использованием <b>Spring Boot</b>. Магазин, торгующий компьютерами и комплектующими со следующим типом товаров:
 <ul>
 <li>Настольные компьютеры</li>
@@ -125,7 +151,7 @@ ProductServiceIntegrationTest > checkSortByName_ByDslFilterByName() PASSED
 
 с events("standardOut", "started", "passed", "skipped", "failed") логируется вывод в консоль.
 
-
+<a id="coverage_test"></a>
 ### Покрытие тестами
 
 Использован [jacoco](https://www.eclemma.org/jacoco/). Отчет формируется при прогоне тестов
@@ -146,6 +172,7 @@ ProductServiceIntegrationTest > checkSortByName_ByDslFilterByName() PASSED
 
 <span style="background-color: red">Красным</span> или <span style="background-color:yellow">желтым</span> выделены непротестированные участки кода, зеленым <span style="background-color:green">протестировано</span>.
 
+<a id="run"></a>
 ### Тестовый запуск
 
 запуск:
@@ -154,6 +181,7 @@ ProductServiceIntegrationTest > checkSortByName_ByDslFilterByName() PASSED
 ./gradlew bootRun
 ````
 
+<a id="create_runable"></a>
 ### Создание запускаемого файла и его запуск
 
 Создание:
@@ -178,6 +206,7 @@ cd shop_kotlin/build/libs
 shop_kotlin/build/libs$ java -jar shop_kotlin-0.1.20.jar
 ````
 
+<a id="httpie"></a>
 ### Примеры тестов [httpie](https://httpie.io/)
 
 Echo запрос для простой проверки работоспособности:
@@ -220,14 +249,17 @@ POST запрос на изменение Product:
 http POST :8780/api/product/ < ./src/test/json_test/product.json
 ````
 
+<a id="integration_test2"></a>
 ### Integration tests
 
 Два варианта тестирование - c Spring @DataJpaTest и через RestAssured (это bdd тестирование). Совершенно разные тесты, для совершенно разных целей. DataJpaTest на уровне БД, RestAssured - сквозное тестирование от rest до БД. Проект для с RestAssured тестами: [https://github.com/cherepakhin/shop_kotlin_reastassured_test](https://github.com/cherepakhin/shop_kotlin_reastassured_test) 
 
+<a id="datajpatest_test"></a>
 #### DataJpaTest
 
 Тестируется работа с базой данных с использованием [@DataJpaTest](https://www.baeldung.com/kotlin/spring-boot-testing#1-test-repository-using-datajpatest). Находятся в пакете [ru.perm.v.shopkotlin.datajpatest](src/test/kotlin/ru/perm/v/shopkotlin/datajpatest).
 
+<a id="restassured"></a>
 #### RestAssured
 Для этих тестов сделан отдельный проект [https://github.com/cherepakhin/shop_kotlin_reastassured_test](https://github.com/cherepakhin/shop_kotlin_reastassured_test) 
 
@@ -236,6 +268,7 @@ http POST :8780/api/product/ < ./src/test/json_test/product.json
 ![result_bdd_test](doc/result_bdd_test.png)
 
 
+<a id="docker"></a>
 ### Docker
 
 [Dockerfile](Dockerfile)
@@ -318,12 +351,14 @@ aaa
 ````
 (Swagger: http://127.0.0.1:8780/api/swagger-ui/)
 
+<a id="spring_actuator"></a>
 ### Spring Actuator
 
 Spring Actuator предназначен для получения информации о работающем приложении - статус приложения (жив/нет),  использовании памяти, cpu и т.п.. Поключен по адресу [http://127.0.0.1:8788/api/actuator](http://127.0.0.1:8788/api/actuator)
 
 ![actuator](doc/actuator.png)
 
+<a id="prometheus"></a>
 ### Prometheus
 
 На моем сервере запущен Prometheus. Пример секции для опроса приложения в файле [prometheus.yml](https://github.com/cherepakhin/shop_kotlin/prometheus.yml). Для просмотра получаемых prometheus-ом метрик можно выполнить:
@@ -394,6 +429,7 @@ ts=2023-09-11T13:13:17.850Z caller=main.go:1009 level=info msg="Server is ready 
 ts=2023-09-11T13:13:17.850Z caller=manager.go:1009 level=info component="rule manager" msg="Starting rule manager..."
 ````
 
+<a id="grafana"></a>
 ### Grafana
 На домашнем сервере развернута Grafana:
 
@@ -415,12 +451,14 @@ vasi@v$ sudo service grafana-server stop
 
 user(pass): admin/admin
 
+<a id="swagger"/>
 ### Swagger
 
 Адрес [http://127.0.0.1:8780/api/swagger-ui/](http://127.0.0.1:8780/api/swagger-ui/)
 
 ![swagger](doc/swagger.png)
 
+<a id="cache"/>
 ### Кеширование
 
 Кеширование сделано для RestController:
@@ -445,6 +483,7 @@ $http :8780/api/group_product/
 
 ```
 
+<a id="jenkins"/>
 ### Сборка Jenkins
 
 Сборка происходит в Jenkins, развернутом на домашнем сервере. Pipeline для Jenkins описан в файле [./Jenkinsfile](Jenkinsfile)
@@ -453,6 +492,7 @@ $http :8780/api/group_product/
 
 > Установка и настройка домашнего Jenkins описана в [http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd](http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd)
 
+<a id="nexus"/>
 ### Deploy to NEXUS repository
 
 Возможен с использованием Jenkins (описано выше) или ручной deploy в Nexus с личного компьютера.
@@ -478,7 +518,7 @@ $ export NEXUS_CRED_PSW=pass
 
 ![nexus](doc/nexus.png)
 
-
+<a id="chagpt"/>
 ### Использование "ChatGPT-EasyCode" в VSCode
 
 Генерация тестов
@@ -489,6 +529,7 @@ $ export NEXUS_CRED_PSW=pass
 
 МОЖЕТ-БЫТЬ эпизодически и возможно использовать.
 
+<a id="jms"/>
 ### Просмотр ресурсов с помощью Java Mission Control
 
 [Java Mission Control](https://www.oracle.com/cis/javase/jmc/)
@@ -499,6 +540,7 @@ jmc-8.3.1_linux-x64/JDK Mission Control$ jmc
 
 ![jmc](doc/jmc_monitor.png)
 
+<a id="logging"/>
 ### Логирование
 
 Настройка сделана в application.yaml:
@@ -511,6 +553,7 @@ logging:
     path: log/
 ````
 
+<a id="profiles"/>
 ### Profiles
 
 Описание profiles в application.yaml [https://habr.com/ru/companies/otus/articles/576910/](https://habr.com/ru/companies/otus/articles/576910/)
@@ -573,6 +616,7 @@ $ ./gradlew bootRun --args='--spring.profiles.active=dev'
 SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 ````
 
+<a id="todo"/>
 ### TODO
 
 - ~~cache on rest (сделано)~~
@@ -591,6 +635,7 @@ SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 - ElasticSearch
 - Авторизация
 
+<a id="tose"/>
 **Примечания:**
 
 В программе не используются слои controller и service, т.к. проект сделан только для демонстрации Kotlin, и не планируется какая-либо бизнес-логика. Конвертация в DTO сделана в REST контроллерах.
@@ -711,6 +756,7 @@ shop_kotlin$ gradle wrapper
 
 Похоже, при расшаривании папки для Windows и работе в Windows изменился конец строки. 
 
+<a id="links"/>
 ### Ссылки:
 
 [Интеграционное тестирование REST](http://v.perm.ru/main/index.php/34-behave-testirovanie)<br/>
