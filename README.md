@@ -702,7 +702,11 @@ shop_kotlin$ gradle wrapper
 ### Ссылки:
 
 [Интеграционное тестирование REST](http://v.perm.ru/main/index.php/34-behave-testirovanie)
+
 [Настройка и использование Prometheus, Grafana](http://v.perm.ru/main/index.php/64-nastrojka-i-ispolzovanie-prometheus-grafana)
+
 [Шпаргалка по Docker](http://v.perm.ru/main/index.php/homepage/56-shpargalka-po-docker)
+
 [Set java version](http://v.perm.ru/main/index.php/homepage/60-set-java-version)
+
 [Установка и настройка домашнего Jenkins](http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd)
