@@ -2,6 +2,7 @@
 
 ### Оглавление:
 [Цель](#target)<br/>
+
 [Статический анализатор Idea Analize](#static_analize)<br/>
 [Статический анализатор SonarCube](#sonarcube)<br/>
 
