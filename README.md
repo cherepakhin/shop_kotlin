@@ -546,7 +546,7 @@ logging:
     path: log/
 ````
 
-<a id="profiles"/>
+<a id="profiles"></a>
 ### Profiles
 
 Описание profiles в application.yaml [https://habr.com/ru/companies/otus/articles/576910/](https://habr.com/ru/companies/otus/articles/576910/)
