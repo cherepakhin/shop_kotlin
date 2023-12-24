@@ -17,11 +17,12 @@
 [DataJpa tests](#datajpatest_test)<br/>
 [RestAssured tests](#restassured)<br/>
 
-[Docker](#docker)<br/>
 [Spring Actuator](#spring_actuator)<br/>
+[Swagger](#swagger)<br/>
+
+[Docker](#docker)<br/>
 [Prometheus](#prometheus)<br/>
 [Grafana](#grafana)<br/>
-[Swagger](#swagger)<br/>
 [Кеширование](#cache)<br/>
 [Сборка Jenkins](#jenkins)<br/>
 
