@@ -213,10 +213,10 @@ shop_kotlin/build/libs$ java -jar shop_kotlin-0.1.20.jar
 <a id="httpie"></a>
 ### Примеры тестов [httpie](https://httpie.io/)
 
-Echo запрос для простой проверки работоспособности:
+Echo запрос для простой проверки работоспособности (:8980/shop_kotlin/ базовый путь проекта):
 
 ````shell
-http :8780/api/echo/aaa
+http :8980/shop_kotlin/api/echo/aaa
 
 HTTP/1.1 200 
 Connection: keep-alive
@@ -231,7 +231,7 @@ aaa
 Поиск по имени Product:
 
 ````shell
-http :8780/api/group_product/find?name='Comp'
+http :8980/shop_kotlin/api/group_product/find?name='Comp'
 
 [
     {
@@ -250,7 +250,7 @@ http :8780/api/group_product/find?name='Comp'
 POST запрос на изменение Product:
 
 ````shell
-http POST :8780/api/product/ < ./src/test/json_test/product.json
+http POST :8980/shop_kotlin/api/product/ < ./src/test/json_test/product.json
 ````
 
 <a id="integration_test2"></a>
@@ -284,11 +284,11 @@ http POST :8780/api/product/ < ./src/test/json_test/product.json
 $./docker_build.sh
 
 # run app
-$ docker run -p 8080:8780 shop_kotlin/app
+$ docker run -p 8080:8980 shop_kotlin/app
 
 $ docker ps
 CONTAINER ID   IMAGE             COMMAND                CREATED          STATUS          PORTS                    NAMES
-c70ef82f3a54   shop_kotlin/app   "java -jar /app.jar"   43 seconds ago   Up 42 seconds   0.0.0.0:8080->8780/tcp   inspiring_germain
+c70ef82f3a54   shop_kotlin/app   "java -jar /app.jar"   43 seconds ago   Up 42 seconds   0.0.0.0:8080->8980/tcp   inspiring_germain
 
 # simple test
 $ http :8080/api/group_product/find?name='Comp'
@@ -323,22 +323,22 @@ Successfully built image 'docker.io/library/shop_kotlin:0.1.18'
 Запуск docker image:
 
 ````shell
-$ docker run -p 8780:8780 -p 8788:8788  docker.io/library/shop_kotlin:0.1.18
+$ docker run -p 8980:8980 -p 8988:8988  docker.io/library/shop_kotlin:0.1.18
 
 ````
-(8780 - основной порт, 8788 - spring actuator)
+(8980 - основной порт, 8988 - spring actuator)
 
 ````shell
 $ docker container ls
 CONTAINER ID   IMAGE                COMMAND              CREATED          STATUS          PORTS                    NAMES
-6544af7b0adb   shop_kotlin:0.1.18   "/cnb/process/web"   12 seconds ago   Up 11 seconds   0.0.0.0:8780->8780/tcp   brave_sutherland
+6544af7b0adb   shop_kotlin:0.1.18   "/cnb/process/web"   12 seconds ago   Up 11 seconds   0.0.0.0:8980->8980/tcp   brave_sutherland
 
 ````
 
 Проверка:
 
 ````shell
-$ http http://127.0.0.1:8780/api/echo/aaa
+$ http http://127.0.0.1:8980/shop_kotlin/api/echo/aaa
 
 HTTP/1.1 200 
 Connection: keep-alive
@@ -353,7 +353,13 @@ Vary: Access-Control-Request-Headers
 aaa
 
 ````
-(Swagger: http://127.0.0.1:8780/api/swagger-ui/)
+
+<a id="swagger"></a>
+### Swagger
+
+Swagger доступен по адресу [http://127.0.0.1:8980/shop_kotlin/api/swagger-ui/](http://127.0.0.1:8980/shop_kotlin/api/swagger-ui/) 
+
+![swagger](doc/swagger.png)
 
 <a id="spring_actuator"></a>
 ### Spring Actuator
