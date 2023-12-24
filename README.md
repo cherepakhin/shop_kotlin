@@ -211,7 +211,7 @@ shop_kotlin/build/libs$ java -jar shop_kotlin-0.1.20.jar
 ````
 
 <a id="httpie"></a>
-### Примеры тестов [httpie](https://httpie.io/)
+### Примеры тестов [httpie](https://httpie.io/){target="_blank"}
 
 Echo запрос для простой проверки работоспособности:
 
