@@ -13,7 +13,7 @@
 [Интеграционное тестирование в проекте](#integration_test)<br/>
 
 [Примеры тестов httpie](#httpie)<br/>
-[Integration tests](#integration_test2)<br/>
+[Интеграционное тестирование2](#integration_test2)<br/>
 [DataJpa tests](#datajpatest_test)<br/>
 [RestAssured tests](#restassured)<br/>
 
