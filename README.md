@@ -768,4 +768,4 @@ shop_kotlin$ gradle wrapper
 [Настройка и использование Prometheus, Grafana](http://v.perm.ru/main/index.php/64-nastrojka-i-ispolzovanie-prometheus-grafana)<br/>
 [Шпаргалка по Docker](http://v.perm.ru/main/index.php/homepage/56-shpargalka-po-docker)<br/>
 [Set java version](http://v.perm.ru/main/index.php/homepage/60-set-java-version)<br/>
-[Установка и настройка домашнего Jenkins](http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd)<br/>
+[Установка и настройка домашнего Nexus/Jenkins](http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd)<br/>
