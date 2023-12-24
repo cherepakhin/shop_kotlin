@@ -24,11 +24,13 @@
 [Swagger](#swagger)<br/>
 [Кеширование](#cache)<br/>
 [Сборка Jenkins](#jenkins)<br/>
+
 [Nexus](#nexus)<br/>
-[Использование "ChatGPT-EasyCode" в VSCode](#chatgpt)<br/>
 [Просмотр ресурсов с помощью Java Mission Control](#jmc)<br/>
 [Логирование](#logging)<br/>
 [Spring профили](#profiles)<br/>
+
+[Использование "ChatGPT-EasyCode" в VSCode](#chatgpt)<br/>
 
 [TODO](#todo)<br/>
 [Примечания](#tose)<br/>
@@ -520,17 +522,6 @@ $ export NEXUS_CRED_PSW=pass
 
 ![nexus](doc/nexus.png)
 
-<a id="chagpt"></a>
-### Использование "ChatGPT-EasyCode" в VSCode
-
-Генерация тестов
-![Сгенерировать тесты ChatGPT-EasyCode](doc/chatgpt_easycode/run_write_test_easycode.png)
-
-Рефакторинг
-![Рефакторинг ChatGPT-EasyCode](doc/chatgpt_easycode/run_refactor_easycode.png)
-
-МОЖЕТ-БЫТЬ эпизодически и возможно использовать.
-
 <a id="jms"></a>
 ### Просмотр ресурсов с помощью Java Mission Control
 
@@ -617,6 +608,18 @@ $ ./gradlew bootRun --args='--spring.profiles.active=dev'
 ````shell
 SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 ````
+
+<a id="chagpt"></a>
+### Использование "ChatGPT-EasyCode" в VSCode
+
+Генерация тестов
+![Сгенерировать тесты ChatGPT-EasyCode](doc/chatgpt_easycode/run_write_test_easycode.png)
+
+Рефакторинг
+![Рефакторинг ChatGPT-EasyCode](doc/chatgpt_easycode/run_refactor_easycode.png)
+
+МОЖЕТ-БЫТЬ эпизодически и возможно использовать.
+
 
 <a id="todo"></a>
 ### TODO
