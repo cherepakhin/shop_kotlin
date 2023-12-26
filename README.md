@@ -768,6 +768,17 @@ shop_kotlin$ gradle wrapper
 
 Похоже, при расшаривании папки для Windows и работе в Windows изменился символ конца строки. 
 
+- Смена версии gradlew: в ./gragle/wrapper/gradle-wrapper.properties
+
+````
+distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.1-bin.zip
+````
+Тесты проходят (из idea и из shell):
+
+````
+./gradlew test
+````
+
 <a id="links"></a>
 ### Ссылки:
 
