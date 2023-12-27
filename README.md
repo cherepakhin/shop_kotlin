@@ -11,6 +11,7 @@
 [Тестовый запуск](#run)<br/>
 [Создание запускаемого файла и его запуск](#create_runable)<br/>
 [Интеграционное тестирование в проекте](#integration_test)<br/>
+[Нагрузочное тестирование](https://github.com/cherepakhin/shop_kotlin_yandex_tank_test)<br/>
 
 [Примеры тестов httpie](#httpie)<br/>
 [Интеграционное тестирование2](#integration_test2)<br/>
