@@ -23,7 +23,8 @@ import kotlin.test.assertContentEquals
 // This way, the tests will run against our PostgreSQL Database."
 // BUT, my database is H2, therefore
 //      @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-// BUT, my database is "in memory database!". Therefore, next string is commented
+
+// My database is "in memory database!". Therefore, next string is commented
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class GroupProductServiceIntegrationTest {
     @Autowired
