@@ -10,11 +10,11 @@
 [Покрытие тестами](#coverage_test)<br/>
 [Тестовый запуск](#run)<br/>
 [Создание запускаемого файла и его запуск](#create_runable)<br/>
-[Интеграционное тестирование в проекте](#integration_test)<br/>
+[Проведение интеграционного тестирования](#integration_test)<br/>
+[Интеграционное тестирование RestAssured](#integration_test_rest_assured)<br/>
 [Нагрузочное тестирование](https://github.com/cherepakhin/shop_kotlin_yandex_tank_test)<br/>
 
 [Примеры тестов httpie](#httpie)<br/>
-[Интеграционное тестирование2](#integration_test2)<br/>
 [DataJpa tests](#datajpatest_test)<br/>
 [RestAssured tests](#restassured)<br/>
 
@@ -255,10 +255,9 @@ POST запрос на изменение Product:
 http POST :8980/shop_kotlin/api/product/ < ./src/test/json_test/product.json
 ````
 
-<a id="integration_test2"></a>
-### Integration tests
-
-Два варианта тестирование - c Spring @DataJpaTest и через RestAssured (это bdd тестирование). Совершенно разные тесты, для совершенно разных целей. DataJpaTest на уровне БД, RestAssured - сквозное тестирование от rest до БД. Проект для с RestAssured тестами: [https://github.com/cherepakhin/shop_kotlin_reastassured_test](https://github.com/cherepakhin/shop_kotlin_reastassured_test) 
+<a id="integration_test_rest_assured"></a>
+### Интеграционное тестирование(RestAssured)
+Два варианта тестирование - c Spring @DataJpaTest и через RestAssured (это bdd тестирование). Совершенно разные тесты, для совершенно разных целей. DataJpaTest на уровне БД, RestAssured - сквозное тестирование от rest до БД. Проект для с RestAssured тестами: [https://github.com/cherepakhin/shop_kotlin_reastassured_test](https://github.com/cherepakhin/shop_kotlin_reastassured_test)
 
 <a id="datajpatest_test"></a>
 #### DataJpaTest
