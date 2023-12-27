@@ -9,7 +9,9 @@
 [Unit тестирование](#unit_test)<br/>
 [Покрытие тестами](#coverage_test)<br/>
 [Тестовый запуск](#run)<br/>
+
 [Создание запускаемого файла и его запуск](#create_runable)<br/>
+
 [Проведение интеграционного тестирования](#integration_test)<br/>
 [Интеграционное тестирование RestAssured](#integration_test_rest_assured)<br/>
 [Нагрузочное тестирование](https://github.com/cherepakhin/shop_kotlin_yandex_tank_test)<br/>
