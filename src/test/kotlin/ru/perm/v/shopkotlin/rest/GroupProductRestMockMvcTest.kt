@@ -147,6 +147,6 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
         val ERROR_MESSAGE = "Request processing failed; nested exception is java.lang.Exception: Group product not found with id=100"
         assertEquals(ERROR_MESSAGE, excpt.message)
         // Another way verify
-        assertTrue(excpt.message?.equals(ERROR_MESSAGE) ?: false)
+        assertTrue(excpt.message.equals(ERROR_MESSAGE) ?: false)
     }
 }
