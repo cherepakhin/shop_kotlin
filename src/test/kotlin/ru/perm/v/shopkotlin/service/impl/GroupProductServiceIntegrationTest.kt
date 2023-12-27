@@ -21,7 +21,8 @@ import kotlin.test.assertContentEquals
 // "Normally, Spring Boot will start an IN-MEMORY(!!!) database for @DataJpaTest-Tests.
 // We use AutoConfigureTestDatabase to explicitly deactivate this default behavior.
 // This way, the tests will run against our PostgreSQL Database."
-// BUT, my database is H2, therefore @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+// BUT, my database is H2, therefore
+//      @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 // BUT, my database is "in memory database!". Therefore, next string is commented
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class GroupProductServiceIntegrationTest {
@@ -44,7 +45,10 @@ class GroupProductServiceIntegrationTest {
         assertEquals(1, groups.get(0).n)
     }
 
-    // not work in jenkins. error: file:///home/vasi/.jenkins/workspace/shop_kotlin_pipe/src/test/kotlin/ru/perm/v/shopkotlin/service/impl/GroupProductServiceTestIntegration.kt:58:48 Unresolved reference. None of the following candidates is applicable because of receiver type mismatch:
+// not work in jenkins. error:
+//      file:///home/vasi/.jenkins/workspace/shop_kotlin_pipe/src/test/
+//          kotlin/ru/perm/v/shopkotlin/service/impl/GroupProductServiceTestIntegration.kt
+//              :58:48 Unresolved reference. None of the following candidates is applicable because of receiver type mismatch:
 //    public inline fun <T> Enumeration<TypeVariable(T)>.toList(): List<TypeVariable(T)> defined in kotlin.collections
 //    public fun <T> Array<out TypeVariable(T)>.toList(): List<TypeVariable(T)> defined in kotlin.collections
 //    public fun BooleanArray.toList(): List<Boolean> defined in kotlin.collections
