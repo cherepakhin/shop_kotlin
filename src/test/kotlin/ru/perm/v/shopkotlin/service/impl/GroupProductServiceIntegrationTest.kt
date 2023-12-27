@@ -36,7 +36,7 @@ class GroupProductServiceIntegrationTest {
     @Test
     fun demoQueryDslCheckSize() {
         val groupProductService = GroupProductServiceImpl(groupProductRepository, productService)
-        assertEquals(7, groupProductService.repository.findAllByOrderByNAsc().size)
+        assertEquals(8, groupProductService.repository.findAllByOrderByNAsc().size)
     }
 
     @Test
@@ -69,7 +69,7 @@ class GroupProductServiceIntegrationTest {
         }
 //        val ids:List<Long> = groups.stream().map { it.n }.toList()
 
-        assertContentEquals(listOf(1L, 2L, 3L, 4L, 5L, 6L, 7L), ids)
+        assertContentEquals(listOf(1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L), ids)
     }
 
     @Test
@@ -162,12 +162,22 @@ class GroupProductServiceIntegrationTest {
         val subGroupIds = groupProductService.getSubGroups(GROUP_ID).map { it.n }
 
         assertTrue(subGroupIds.isNotEmpty())
-        assertEquals(4, subGroupIds.size)
+        assertEquals(5, subGroupIds.size)
 
         // в kotlin можно так сравнивать списки
-        assertEquals(listOf(2L, 5L, 6L, 7L), subGroupIds.toList())
-        assertEquals(listOf(2L, 5L, 6L, 7L).toSet(), subGroupIds.toSet())
-        // и даже так
-        assertTrue(listOf(2L, 5L, 6L, 7L) == subGroupIds)
+        assertEquals(listOf(2L, 5L, 6L, 7L, 8L), subGroupIds.toList())
+        assertEquals(listOf(2L, 5L, 6L, 7L, 8L).toSet(), subGroupIds.toSet())
+        // и даже так, через '='
+        assertTrue(listOf(2L, 5L, 6L, 7L, 8L) == subGroupIds)
+    }
+
+    @Test
+    fun getSubGroupsForEMPTY_GROUP() {
+        val GROUP_ID = 8L // 8L - ID EMPTY GROUP
+        val groupProductService = GroupProductServiceImpl(groupProductRepository, productService)
+
+        val subGroupIds = groupProductService.getSubGroups(GROUP_ID).map { it.n }
+
+        assertTrue(subGroupIds.isEmpty())
     }
 }
