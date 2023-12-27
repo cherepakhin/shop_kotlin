@@ -11,6 +11,7 @@ insert into group_product(n, name, parent_n, have_childs) values (5, 'Monitors',
 insert into group_product(n, name, parent_n, have_childs) values (6, 'Hard drives', 1, false);
 
 insert into group_product(n, name, parent_n, have_childs) values (7, 'FOR TEST DELETE', 1, false);
+insert into group_product(n, name, parent_n, have_childs) values (8, 'UNKNOWN PRODUCTS', 1, false);
 
 insert into product(n, name, group_product_n) values (32, 'Desktop2', 3);
 insert into product(n, name, group_product_n) values (33, 'Desktop3', 3);

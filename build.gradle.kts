@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "ru.perm.v"
 // change to publishing on change version
-version = "0.23.1225"
+version = "0.23.1227"
 description = "shop kotlin description"
 
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -99,7 +99,7 @@ dependencies {
     implementation("io.micrometer:micrometer-registry-prometheus")
 
 // external dependency from private repository
-    implementation("ru.perm.v:shop_kotlin_extdto:0.0.2")
+    implementation("ru.perm.v:shop_kotlin_extdto:0.0.3")
 //    implementation("ru.perm.v:shop_kotlin_extdto:0.0.2.jar") // jar! ???
 //    implementation("ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
 
