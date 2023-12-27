@@ -26,8 +26,8 @@
 [Grafana](#grafana)<br/>
 [Кеширование](#cache)<br/>
 [Сборка Jenkins](#jenkins)<br/>
-
 [Nexus](#nexus)<br/>
+
 [Просмотр ресурсов с помощью Java Mission Control](#jmc)<br/>
 [Логирование](#logging)<br/>
 [Spring профили](#profiles)<br/>
