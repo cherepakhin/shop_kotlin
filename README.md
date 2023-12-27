@@ -503,6 +503,12 @@ $http :8780/api/group_product/
 
 > Установка и настройка домашнего Jenkins описана в [http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd](http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd)
 
+В проекте используется внешняя зависимость из домашнего NEXUS репозитория:
+
+````shell
+implementation("ru.perm.v:shop_kotlin_extdto:0.0.3")
+````
+
 <a id="nexus"></a>
 ### Deploy to NEXUS repository
 
