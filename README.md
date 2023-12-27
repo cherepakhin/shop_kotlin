@@ -12,8 +12,7 @@
 
 [Создание запускаемого файла и его запуск](#create_runable)<br/>
 
-[Проведение интеграционного тестирования](#integration_test)<br/>
-[Интеграционное тестирование RestAssured](#integration_test_rest_assured)<br/>
+[Интеграционное тестирование](#integration_test)<br/>
 [Нагрузочное тестирование](https://github.com/cherepakhin/shop_kotlin_yandex_tank_test)<br/>
 
 [Примеры тестов httpie](#httpie)<br/>
