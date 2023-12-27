@@ -12,7 +12,7 @@
 
 [Создание запускаемого файла и его запуск](#create_runable)<br/>
 
-[Интеграционное тестирование](#integration_test)<br/>
+[Интеграционное тестирование](#integration_test_local)<br/>
 [Примеры тестов httpie](#httpie)<br/>
 [DataJpa tests](#datajpatest_test)<br/>
 [RestAssured tests](#restassured)<br/>
@@ -100,7 +100,7 @@ Cоздать небольшое приложение на <b>Kotlin</b> с ис
 ./gradlew test --tests '*MockMvcTest'
 ````
 
-<a id="integration_test"></a>
+<a id="integration_test_local"></a>
 ### Интеграционное тестирование в проекте
 
 Вообще, интеграционные тесты должны быть в отдельном проекте [Интеграционное тестирование](https://github.com/cherepakhin/shop_kotlin_restassured_test). Оставил в основном проекте только с целью тестирования работы с базой данных. Имена интеграционных тестов должны заканчиваться ..TestIntegration. Прогнать все, кроме интеграционных (включены только *Test, исключены *TestIntegration):
@@ -255,8 +255,8 @@ POST запрос на изменение Product:
 http POST :8980/shop_kotlin/api/product/ < ./src/test/json_test/product.json
 ````
 
-<a id="integration_test_rest_assured"></a>
-### Интеграционное тестирование(RestAssured)
+<a id="integration_test"></a>
+### Интеграционное тестирование
 Два варианта тестирование - c Spring @DataJpaTest и через RestAssured (это bdd тестирование). Совершенно разные тесты, для совершенно разных целей. DataJpaTest на уровне БД, RestAssured - сквозное тестирование от rest до БД.
 
 <a id="datajpatest_test"></a>
