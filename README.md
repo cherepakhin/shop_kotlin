@@ -644,8 +644,8 @@ SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 - ~~Swagger (сделано)~~
 - ~~Actuator (сделано)~~
 - ~~flyway (использована БД в памяти url: jdbc:h2:mem:easybotdb). Миграции не требуются.~~
-- webmvc тесты
-- ~~тесты service слоя с СУБД (@DataJpaTest)~~
+- webmvc тесты (ProductRestMockMvcTest)
+- ~~тесты service слоя с СУБД @DataJpaTest (сделано)~~
 - вертикальные БД (?)
 - ~~Различные SQL запросы через native Sql и Spring JPA(order by, group by) (сделано)~~
 - Pagination

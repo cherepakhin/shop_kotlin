@@ -102,6 +102,24 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
         )
     }
 
+// OK
+//        mockMvc.get("/group_product/1") {
+//            contentType = MediaType.APPLICATION_JSON
+//            accept = MediaType.APPLICATION_JSON
+//        }.andExpect {
+//            status { MockMvcResultMatchers.status().isOk }
+////            content { contentType(MediaType.APPLICATION_JSON) }
+////            content { json("{}") }
+//        }
+
+    //        mockMvc.get("/group_product/100") {
+//            contentType = MediaType.APPLICATION_JSON
+//            accept = MediaType.APPLICATION_JSON
+//        }.andExpect {
+//            status { MockMvcResultMatchers.status().is5xxServerError }
+////            content { contentType(MediaType.APPLICATION_JSON) }
+////            content { json("{}") }
+//        }
     @Test
     fun getByNotExistId_OtherVariant() {
         `when`(mockedGroupProductService.getByN(100L)).thenThrow(Exception("NOT FOUND"))
@@ -115,25 +133,6 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
         } catch (excp: Exception) {
             assertEquals("Request processing failed; nested exception is java.lang.Exception: NOT FOUND", excp.message)
         }
-
-// OK
-//        mockMvc.get("/group_product/1") {
-//            contentType = MediaType.APPLICATION_JSON
-//            accept = MediaType.APPLICATION_JSON
-//        }.andExpect {
-//            status { MockMvcResultMatchers.status().isOk }
-////            content { contentType(MediaType.APPLICATION_JSON) }
-////            content { json("{}") }
-//        }
-
-//        mockMvc.get("/group_product/100") {
-//            contentType = MediaType.APPLICATION_JSON
-//            accept = MediaType.APPLICATION_JSON
-//        }.andExpect {
-//            status { MockMvcResultMatchers.status().is5xxServerError }
-////            content { contentType(MediaType.APPLICATION_JSON) }
-////            content { json("{}") }
-//        }
     }
 
     @Test
@@ -145,8 +144,9 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
                 MockMvcRequestBuilders.delete("/group_product/" + N)
             )
         }
-
-        assertEquals("Request processing failed; nested exception is java.lang.Exception: Group product not found with id=100", excpt.message)
-//        assertTrue(message?.equals("Group product not found with id=100") ?: false)
+        val ERROR_MESSAGE = "Request processing failed; nested exception is java.lang.Exception: Group product not found with id=100"
+        assertEquals(ERROR_MESSAGE, excpt.message)
+        // Another way verify
+        assertTrue(excpt.message?.equals(ERROR_MESSAGE) ?: false)
     }
 }
