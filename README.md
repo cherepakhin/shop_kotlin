@@ -13,11 +13,10 @@
 [Создание запускаемого файла и его запуск](#create_runable)<br/>
 
 [Интеграционное тестирование](#integration_test)<br/>
-[Нагрузочное тестирование](https://github.com/cherepakhin/shop_kotlin_yandex_tank_test)<br/>
-
 [Примеры тестов httpie](#httpie)<br/>
 [DataJpa tests](#datajpatest_test)<br/>
 [RestAssured tests](#restassured)<br/>
+[Нагрузочное тестирование](https://github.com/cherepakhin/shop_kotlin_yandex_tank_test)<br/>
 
 [Spring Actuator](#spring_actuator)<br/>
 [Swagger](#swagger)<br/>
@@ -104,7 +103,7 @@ Cоздать небольшое приложение на <b>Kotlin</b> с ис
 <a id="integration_test"></a>
 ### Интеграционное тестирование в проекте
 
-Вообще, интеграционные тесты должны быть в отдельном проекте [Интеграционное тестирование](#integration_test). Оставил в основном проекте только с целью тестирования работы с базой данных. Имена интеграционных тестов должны заканчиваться ..TestIntegration. Прогнать все, кроме интеграционных (включены только *Test, исключены *TestIntegration):
+Вообще, интеграционные тесты должны быть в отдельном проекте [Интеграционное тестирование](https://github.com/cherepakhin/shop_kotlin_restassured_test). Оставил в основном проекте только с целью тестирования работы с базой данных. Имена интеграционных тестов должны заканчиваться ..TestIntegration. Прогнать все, кроме интеграционных (включены только *Test, исключены *TestIntegration):
 
 ````shell
 ./gradlew clean test --tests *Test
@@ -258,7 +257,7 @@ http POST :8980/shop_kotlin/api/product/ < ./src/test/json_test/product.json
 
 <a id="integration_test_rest_assured"></a>
 ### Интеграционное тестирование(RestAssured)
-Два варианта тестирование - c Spring @DataJpaTest и через RestAssured (это bdd тестирование). Совершенно разные тесты, для совершенно разных целей. DataJpaTest на уровне БД, RestAssured - сквозное тестирование от rest до БД. Проект для с RestAssured тестами: [https://github.com/cherepakhin/shop_kotlin_reastassured_test](https://github.com/cherepakhin/shop_kotlin_reastassured_test)
+Два варианта тестирование - c Spring @DataJpaTest и через RestAssured (это bdd тестирование). Совершенно разные тесты, для совершенно разных целей. DataJpaTest на уровне БД, RestAssured - сквозное тестирование от rest до БД.
 
 <a id="datajpatest_test"></a>
 #### DataJpaTest
