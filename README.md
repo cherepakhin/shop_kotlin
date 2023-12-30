@@ -18,11 +18,13 @@
 [RestAssured tests](#restassured)<br/>
 [Нагрузочное тестирование](https://github.com/cherepakhin/shop_kotlin_yandex_tank_test)<br/>
 
-[Spring Actuator](#spring_actuator)<br/>
 [Swagger](#swagger)<br/>
+[Spring Actuator](#spring_actuator)<br/>
+
+[Запуск prometheus в docker](#prometheus_docker)<br/>
+[Prometheus](#prometheus)<br/>
 
 [Docker](#docker)<br/>
-[Prometheus](#prometheus)<br/>
 [Grafana](#grafana)<br/>
 [Кеширование](#cache)<br/>
 [Сборка Jenkins](#jenkins)<br/>
@@ -369,6 +371,36 @@ Spring Actuator предназначен для получения информ�
 
 ![actuator](doc/actuator.png)
 
+<a id="prometheus_docker"></a>
+#### Запуск prometheus в docker:
+
+```shell
+docker run -d -p 9090:9090 -v "/$(pwd)/for_prometheus/prometheus.yml":/etc/prometheus/prometheus.yml prom/prometheus
+```
+
+Просмотр состояния prometheus, запущенного в docker:
+
+Вычисление ID container
+
+````shell
+>docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS         PORTS                    NAMES
+e081bb1f500c   prom/prometheus   "/bin/prometheus --c…"   4 minutes ago   Up 4 minutes   0.0.0.0:9090->9090/tcp   reverent_newton
+````
+
+Просмотр логов контейнера prometheus (e08 id контейнера)
+
+````shell
+docker logs e08 --follow
+````
+
+Выхлоп:
+````
+...
+ts=2023-09-11T13:13:17.850Z caller=main.go:1009 level=info msg="Server is ready to receive web requests."
+ts=2023-09-11T13:13:17.850Z caller=manager.go:1009 level=info component="rule manager" msg="Starting rule manager..."
+````
+
 <a id="prometheus"></a>
 ### Prometheus
 
@@ -387,22 +419,6 @@ $ http http://127.0.0.1:8788/api/actuator/prometheus**
 jvm_threads_daemon_threads 13.0
 # HELP hikaricp_connections Total connections
 ...
-````
-
-#### Запуск prometheus в docker:
-
-```shell
-docker run -d -p 9090:9090 -v "/$(pwd)/for_prometheus/prometheus.yml":/etc/prometheus/prometheus.yml prom/prometheus
-```
-
-Просмотр состояния prometheus, запущенного в docker:
-
-Вычисление ID container
-
-````shell
->docker ps
-CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS         PORTS                    NAMES
-e081bb1f500c   prom/prometheus   "/bin/prometheus --c…"   4 minutes ago   Up 4 minutes   0.0.0.0:9090->9090/tcp   reverent_newton
 ````
 
 Подключение к Prometheus из браузера:
@@ -429,20 +445,8 @@ http://192.168.1.20:9090/targets
 
 Пример просмотра использования CPU:
 
-[https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/prometheus.md](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/prometheus.md)
+[https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/prometheus_system_cpu_usage.md](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/prometheus_system_cpu_usage.md)
 
-Просмотр логов контейнера prometheus (e08 id контейнера)
-
-````shell
-docker logs e08 --follow
-````
-
-Выхлоп:
-````
-...
-ts=2023-09-11T13:13:17.850Z caller=main.go:1009 level=info msg="Server is ready to receive web requests."
-ts=2023-09-11T13:13:17.850Z caller=manager.go:1009 level=info component="rule manager" msg="Starting rule manager..."
-````
 
 <a id="grafana"></a>
 ### Grafana

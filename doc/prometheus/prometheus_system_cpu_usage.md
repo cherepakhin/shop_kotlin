@@ -10,4 +10,4 @@ Prometheus запущен на 192.168.1.20:9090
 
 Итоговый запрос: [http://192.168.1.20:9090/graph?g0.range_input=15m&g0.expr=system_cpu_usage&g0.tab=0](http://192.168.1.20:9090/graph?g0.range_input=15m&g0.expr=system_cpu_usage&g0.tab=0)
 
-![prometheus_cpu](doc/prometheus/prometheus_system_cpu_usage.png)
+![prometheus_system_cpu_usage](doc/prometheus/prometheus_system_cpu_usage.png)
