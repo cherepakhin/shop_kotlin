@@ -427,6 +427,10 @@ http://192.168.1.20:9090/targets
 
 ![Приложение остановлено](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/shop_kotlin_up.png)
 
+Пример просмотра использования CPU:
+
+[https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/prometheus.md](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/prometheus.md)
+
 Просмотр логов контейнера prometheus (e08 id контейнера)
 
 ````shell
