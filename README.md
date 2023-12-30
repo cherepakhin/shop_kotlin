@@ -592,7 +592,7 @@ spring:
     password: <password>
 ````
 
-Запуск
+Запуск с указанием профиля:
 
 ````shell
 java -D"spring.profiles.active=dev" -jar app.jar
