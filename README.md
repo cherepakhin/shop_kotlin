@@ -23,6 +23,7 @@
 
 [Запуск prometheus в docker](#prometheus_docker)<br/>
 [Prometheus](#prometheus)<br/>
+[Пример просмотра использования CPU в Prometheus](#show_cpu_prometheus)<br/>
 
 [Docker](#docker)<br/>
 [Grafana](#grafana)<br/>
@@ -443,7 +444,8 @@ http://192.168.1.20:9090/targets
 
 ![Приложение остановлено](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/prometheus/shop_kotlin_up.png)
 
-Пример просмотра использования CPU в Prometheus:
+<a id="show_cpu_prometheus"></a>
+### Пример просмотра использования CPU в Prometheus:
 
 Prometheus запущен на 192.168.1.20:9090
 
