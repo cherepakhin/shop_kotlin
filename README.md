@@ -21,9 +21,9 @@
 [Swagger](#swagger)<br/>
 [Spring Actuator](#spring_actuator)<br/>
 
-[Запуск prometheus в docker](#prometheus_docker)<br/>
 [Prometheus](#prometheus)<br/>
 [Пример просмотра использования CPU в Prometheus](#show_cpu_prometheus)<br/>
+[Запуск prometheus в docker](#prometheus_docker)<br/>
 
 [Docker](#docker)<br/>
 [Grafana](#grafana)<br/>
@@ -372,36 +372,6 @@ Spring Actuator предназначен для получения информ�
 
 ![actuator](doc/actuator.png)
 
-<a id="prometheus_docker"></a>
-#### Запуск prometheus в docker:
-
-```shell
-docker run -d -p 9090:9090 -v "/$(pwd)/for_prometheus/prometheus.yml":/etc/prometheus/prometheus.yml prom/prometheus
-```
-
-Просмотр состояния prometheus, запущенного в docker:
-
-Вычисление ID container
-
-````shell
->docker ps
-CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS         PORTS                    NAMES
-e081bb1f500c   prom/prometheus   "/bin/prometheus --c…"   4 minutes ago   Up 4 minutes   0.0.0.0:9090->9090/tcp   reverent_newton
-````
-
-Просмотр логов контейнера prometheus (e08 id контейнера)
-
-````shell
-docker logs e08 --follow
-````
-
-Выхлоп:
-````
-...
-ts=2023-09-11T13:13:17.850Z caller=main.go:1009 level=info msg="Server is ready to receive web requests."
-ts=2023-09-11T13:13:17.850Z caller=manager.go:1009 level=info component="rule manager" msg="Starting rule manager..."
-````
-
 <a id="prometheus"></a>
 ### Prometheus
 
@@ -458,6 +428,36 @@ Prometheus запущен на 192.168.1.20:9090
 Итоговый запрос: [http://192.168.1.20:9090/graph?g0.range_input=15m&g0.expr=system_cpu_usage&g0.tab=0](http://192.168.1.20:9090/graph?g0.range_input=15m&g0.expr=system_cpu_usage&g0.tab=0)
 
 ![prometheus_system_cpu_usage](doc/prometheus/prometheus_system_cpu_usage.png)
+
+<a id="prometheus_docker"></a>
+#### Запуск prometheus в docker:
+
+```shell
+docker run -d -p 9090:9090 -v "/$(pwd)/for_prometheus/prometheus.yml":/etc/prometheus/prometheus.yml prom/prometheus
+```
+
+Просмотр состояния prometheus, запущенного в docker:
+
+Вычисление ID container
+
+````shell
+>docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS         PORTS                    NAMES
+e081bb1f500c   prom/prometheus   "/bin/prometheus --c…"   4 minutes ago   Up 4 minutes   0.0.0.0:9090->9090/tcp   reverent_newton
+````
+
+Просмотр логов контейнера prometheus (e08 id контейнера)
+
+````shell
+docker logs e08 --follow
+````
+
+Выхлоп:
+````
+...
+ts=2023-09-11T13:13:17.850Z caller=main.go:1009 level=info msg="Server is ready to receive web requests."
+ts=2023-09-11T13:13:17.850Z caller=manager.go:1009 level=info component="rule manager" msg="Starting rule manager..."
+````
 
 
 <a id="grafana"></a>
