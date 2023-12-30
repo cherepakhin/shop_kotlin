@@ -81,7 +81,7 @@ Cоздать небольшое приложение на <b>Kotlin</b> с ис
 <a id="sonarcube"></a>
 ### Статический анализатор SonarCube
 
-[https://github.com/cherepakhin/shop_kotlin/doc/sonarqube/use_sonarqube.md](https://github.com/cherepakhin/shop_kotlin/doc/sonarqube/use_sonarqube.md)
+[https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/sonarqube/use_sonarcube.md](https://github.com/cherepakhin/shop_kotlin/blob/dev/doc/sonarqube/use_sonarcube.md)
 
 <a id="unit_test"></a>
 ### Unit тестирование
