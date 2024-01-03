@@ -375,7 +375,7 @@ Spring Actuator предназначен для получения информ�
 <a id="prometheus"></a>
 ### Prometheus
 
-На моем сервере запущен Prometheus. Пример секции для опроса приложения в файле [prometheus.yml](https://github.com/cherepakhin/shop_kotlin/prometheus.yml). Для просмотра получаемых prometheus-ом метрик можно выполнить:
+На моем сервере запущен Prometheus.  Prometheus получает задание для опроса, и собирает метрики. Пример задания для опроса в файле [doc/prometheus/prometheus.yml](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus.yml). Для просмотра получаемых prometheus-ом метрик можно выполнить:
 
 ````shell
 $ http http://127.0.0.1:8788/api/actuator/prometheus**
