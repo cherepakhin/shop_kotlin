@@ -6,12 +6,12 @@ version = "0.24.0103"
 description = "shop kotlin description"
 
 java.sourceCompatibility = JavaVersion.VERSION_11
+var querydslVersion: String? by extra; querydslVersion = "5.0.0"
 
 configurations.create("querydsl")
 
 buildscript {
     var kotlinVersion: String? by extra; kotlinVersion = "1.1.51"
-//    var querydslVersion: String? by extra; querydslVersion = "4.4.0"
 
     repositories {
         mavenCentral()
@@ -90,8 +90,8 @@ dependencies {
     implementation("org.hibernate.validator:hibernate-validator")
 
 // https://mvnrepository.com/artifact/com.querydsl/querydsl-apt
-    implementation("com.querydsl:querydsl-core:5.0.0")
-    implementation("com.querydsl:querydsl-jpa:5.0.0")
+    implementation("com.querydsl:querydsl-core:$querydslVersion")
+    implementation("com.querydsl:querydsl-jpa:$querydslVersion")
 
 // spring-boot-starter-actuator
     implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -103,7 +103,7 @@ dependencies {
 //    implementation("ru.perm.v:shop_kotlin_extdto:0.0.2.jar") // jar! ???
 //    implementation("ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
 
-    api("com.querydsl:querydsl-apt:5.0.0:jpa")
+    api("com.querydsl:querydsl-apt:$querydslVersion:jpa")
     kapt("jakarta.annotation:jakarta.annotation-api")
 
     testImplementation ("org.springframework.boot:spring-boot-starter-test") {
