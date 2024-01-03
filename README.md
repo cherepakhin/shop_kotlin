@@ -375,7 +375,21 @@ Spring Actuator предназначен для получения информ�
 <a id="prometheus"></a>
 ### Prometheus
 
-На моем сервере запущен Prometheus. В Prometheus опрашивает приложение, согласно заданию, и собирает метрики. Пример задания для опроса в файле [doc/prometheus/prometheus.yml](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus.yml). Содержимое [doc/prometheus/prometheus.yml](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus.yml) поместить в настройки prometheus. Для просмотра получаемых prometheus-ом метрик можно выполнить:
+На моем сервере запущен Prometheus. В Prometheus опрашивает приложение, согласно заданию, и собирает метрики. Пример задания для опроса в файле [doc/prometheus/prometheus.yml](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus.yml). Содержимое [doc/prometheus/prometheus.yml](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus.yml) поместить в настройки prometheus. Пример задания: 
+
+````yaml
+scrape_configs:
+- job_name: 'spring boot scrape'
+  metrics_path: '/api/actuator/prometheus'
+  scrape_interval: 5s
+  static_configs:
+    - targets: ['192.168.1.20:8988']
+
+````
+
+Опрашивать '192.168.1.20:8988/api/actuator/prometheus' каждые 5 сек.
+
+Для просмотра получаемых prometheus-ом метрик можно выполнить:
 
 ````shell
 $ http http://127.0.0.1:8788/api/actuator/prometheus**
