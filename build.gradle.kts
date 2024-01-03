@@ -187,6 +187,7 @@ publishing {
     }
 }
 
+// use ./gradlew bootRun
 springBoot {
     mainClass.set("ru.perm.v.shopkotlin.ShopKotlinApplication")
 }
