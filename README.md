@@ -476,11 +476,10 @@ ts=2023-09-11T13:13:17.850Z caller=manager.go:1009 level=info component="rule ma
 
 <a id="grafana"></a>
 ### Grafana
-На домашнем сервере развернута Grafana:
+Graphana отображает метрики, собранные Prometheus. На домашнем сервере развернута Grafana:
 
 ![grafana](doc/grafana.png)
 
-Graphana отображает метрики, собранные Prometheus.
 
 Запуск grafana:
 
