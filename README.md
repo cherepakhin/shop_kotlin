@@ -480,6 +480,8 @@ ts=2023-09-11T13:13:17.850Z caller=manager.go:1009 level=info component="rule ma
 
 ![grafana](doc/grafana.png)
 
+Graphana отображает метрики, собранные Prometheus.
+
 Запуск grafana:
 
 ````shell
