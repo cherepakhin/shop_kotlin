@@ -375,7 +375,7 @@ Spring Actuator предназначен для получения информ�
 <a id="prometheus"></a>
 ### Prometheus
 
-На моем сервере запущен Prometheus. В Prometheus __ОПРАШИВАЕТ__ приложение, согласно заданию (ниже yaml), и собирает метрики (metrics_path+targets). Пример задания для опроса в файле [doc/prometheus/prometheus.yml](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus.yml). Содержимое [doc/prometheus/prometheus.yml](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus.yml) поместить в настройки prometheus. Пример задания: 
+На моем сервере запущен Prometheus. Prometheus __ОПРАШИВАЕТ__ приложение, согласно заданию (ниже yaml), и собирает метрики (metrics_path+targets). Пример задания для опроса в файле [doc/prometheus/prometheus.yml](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus.yml). Содержимое [doc/prometheus/prometheus.yml](https://github.com/cherepakhin/shop_kotlin/doc/prometheus/prometheus.yml) поместить в настройки prometheus. Пример задания: 
 
 ````yaml
 scrape_configs:
