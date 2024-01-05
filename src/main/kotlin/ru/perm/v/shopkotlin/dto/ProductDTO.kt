@@ -5,9 +5,8 @@ import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull
 
 class ProductDTO {
-    //TODO change to UUID
     @field:NotNull
-    var n: Long = -1
+    var n: Long = -1L
 
     @field:NotEmpty(message = ErrMessages.FIELD_PRODUCT_NAME_EMPTY)
     var name: String = "-"
