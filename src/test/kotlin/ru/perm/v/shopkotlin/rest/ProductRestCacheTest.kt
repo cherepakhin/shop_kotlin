@@ -50,18 +50,18 @@ class ProductRestCacheTest(@Autowired val productRest: ProductRest) {
         productRest.deleteById(N);
     }
 
-//    @Test
-//    fun getAll() {
-//        val product1 = ProductDTO(1, "NAME_1", -1)
-//        val product2 = ProductDTO(2, "NAME_2", -1)
-//
-//        Mockito.`when`(productService.getAll()).thenReturn(listOf(product1, product2))
-//
-//        productRest.getAll()
-//        productRest.getAll()
-//        val products = productRest.getAll()
-//
-//        assertEquals(2, products.size)
-//        verify(productService, times(3)).getAll()
-//    }
+    @Test
+    fun getAll() {
+        val product1 = ProductDTO(1, "NAME_1", -1)
+        val product2 = ProductDTO(2, "NAME_2", -1)
+
+        Mockito.`when`(productService.getAll()).thenReturn(listOf(product1, product2))
+
+        productRest.getAll()
+        productRest.getAll()
+        val products = productRest.getAll()
+
+        assertEquals(2, products.size)
+        verify(productService, times(1)).getAll()
+    }
 }

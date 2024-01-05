@@ -99,12 +99,14 @@ class ProductServiceIntegrationTest {
     @Test
     fun existByN() {
         val productService = ProductServiceImpl(productRepository, groupProductService)
+
         assertTrue(productService.existByN(31L))
     }
 
     @Test
     fun notExistByN() {
         val productService = ProductServiceImpl(productRepository, groupProductService)
+
         assertFalse(productService.existByN(0L))
     }
 
