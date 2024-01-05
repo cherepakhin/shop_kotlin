@@ -7,6 +7,7 @@ class OtherTest {
     @Test
     fun joinToString_FromList() {
         val listSortBy: List<String> = listOf("name", "n")
+
         assertEquals("name,n", listSortBy.joinToString(","))
     }
 
@@ -14,6 +15,7 @@ class OtherTest {
     fun fold_FromList() {
         val listSortBy: List<String> = listOf("name", "n")
         val sort = listSortBy.fold("_") { acc, next -> "$acc,$next" }
+
         assertEquals("_,name,n", sort)
     }
 }

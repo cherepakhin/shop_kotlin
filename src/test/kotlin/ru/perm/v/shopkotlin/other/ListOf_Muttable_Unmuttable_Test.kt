@@ -8,6 +8,7 @@ internal class ListOf_Muttable_Unmuttable_Test {
     fun muttableListTest() {
         val list = mutableListOf<Int>()
         list.add(200)
+
         assertEquals(1, list.size)
         assertEquals(200, list.get(0))
     }

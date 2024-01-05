@@ -61,6 +61,7 @@ internal class ProductServiceImplMockTest {
         val excpt = assertThrows<Exception> {
             productService.create(ProductDTO(-1L, "NAME", GROUP_PRODUCT_N))
         }
+
         assertEquals("GroupProduct with n=100 not exist", excpt.message)
     }
 
@@ -173,7 +174,9 @@ internal class ProductServiceImplMockTest {
                     ProductEntity(20L, "", -1)
                 )
             )
+
         val products = productService.getByNs(nn)
+
         assertEquals(2, products.size)
         assertEquals(10, products.get(0).n)
         assertEquals(20, products.get(1).n)
@@ -184,7 +187,9 @@ internal class ProductServiceImplMockTest {
         val nn = listOf(10L, 20L)
         Mockito.`when`(productRepository.findAllById(listOf(10L, 20L)))
             .thenReturn(listOf())
+
         val products = productService.getByNs(nn)
+
         assertEquals(0, products.size)
     }
 
@@ -194,7 +199,9 @@ internal class ProductServiceImplMockTest {
         val GROUP_PRODUCT_N = 10L
         Mockito.`when`(productRepository.findById(PRODUCT_N))
             .thenReturn(Optional.of(ProductEntity(PRODUCT_N, "NAME", GROUP_PRODUCT_N)))
+
         val product = productService.getByN(PRODUCT_N)
+
         assertEquals(ProductDTO(100, "NAME", GROUP_PRODUCT_N), product)
     }
 
@@ -203,6 +210,7 @@ internal class ProductServiceImplMockTest {
         val PRODUCT_N = 100L
         Mockito.`when`(productRepository.findById(PRODUCT_N))
             .thenReturn(Optional.empty())
+
         val excpt = assertThrows<Exception> {
             productService.getByN(PRODUCT_N)
         }

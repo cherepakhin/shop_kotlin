@@ -8,12 +8,14 @@ internal class GroupProductEntityTest {
     @Test
     fun constructor() {
         val group = GroupProductEntity(0, "NAME", -1, true)
+
         assertEquals(GroupProductEntity(0, "NAME", -1, true), group)
     }
 
     @Test
     fun constructorWithDefaultIsLast() {
         val group = GroupProductEntity(0, "NAME", -1)
+
         assertEquals(GroupProductEntity(0, "NAME", -1, false), group)
     }
 
@@ -27,6 +29,7 @@ internal class GroupProductEntityTest {
     fun equals() {
         val group1 = GroupProductEntity(0, "NAME", -1)
         val group2 = GroupProductEntity(0, "NAME", -1)
+
         assertEquals(group1, group2)
     }
 
@@ -34,6 +37,7 @@ internal class GroupProductEntityTest {
     fun notEqualsName() {
         val group1 = GroupProductEntity(0, "NAME1", -1, true)
         val group2 = GroupProductEntity(0, "NAME", -1, true)
+
         assertNotEquals(group1, group2)
     }
 
@@ -41,20 +45,23 @@ internal class GroupProductEntityTest {
     fun notEqualsN() {
         val group1 = GroupProductEntity(0, "NAME", -1, false)
         val group2 = GroupProductEntity(1, "NAME", -1, false)
+
         assertNotEquals(group1, group2)
     }
 
     @Test
     fun notEqualsParentN() {
-        val group1 = GroupProductEntity(0, "NAME", -1,false)
+        val group1 = GroupProductEntity(0, "NAME", -1, false)
         val group2 = GroupProductEntity(0, "NAME", 0, false)
+
         assertNotEquals(group1, group2)
     }
 
     @Test
     fun notEqualsHaveChilds() {
-        val group1 = GroupProductEntity(0, "NAME1", -1,false)
+        val group1 = GroupProductEntity(0, "NAME1", -1, false)
         val group2 = GroupProductEntity(0, "NAME1", -1, true)
+
         assertNotEquals(group1, group2)
     }
 }

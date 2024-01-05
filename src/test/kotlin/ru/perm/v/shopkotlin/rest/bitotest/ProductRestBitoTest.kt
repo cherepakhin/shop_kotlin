@@ -37,6 +37,7 @@ class ProductRestBitoTest {
     fun countOfProductNames_PositiveCase() {
         Mockito.`when`(productService.getCountOfProductNames()).thenReturn(10L)
         val count = productRest.getCountOfProductNames()
+
         Assertions.assertEquals(10L, count)
     }
 
@@ -44,6 +45,7 @@ class ProductRestBitoTest {
     fun echoMessage_PositiveCase() {
         val message = "Hello"
         val result = productRest.echoMessage(message)
+
         Assertions.assertEquals(message, result)
     }
 

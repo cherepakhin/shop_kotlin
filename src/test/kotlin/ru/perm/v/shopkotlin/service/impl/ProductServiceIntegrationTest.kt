@@ -21,6 +21,7 @@ class ProductServiceIntegrationTest {
     @Test
     fun forDEMO() {
         val productService = ProductServiceImpl(productRepository, groupProductService)
+
         assertEquals(9, productService.productRepository.findAllByOrderByNAsc().size)
     }
 
@@ -28,7 +29,9 @@ class ProductServiceIntegrationTest {
     fun getByDslFilterByIds() {
         val productService = ProductServiceImpl(productRepository, groupProductService)
         val filter = ProductFilter(listOf(31L, 32L))
+
         val filteredProducts = productService.getByFilter(filter)
+
         assertEquals(2, filteredProducts.size)
     }
 
@@ -36,7 +39,9 @@ class ProductServiceIntegrationTest {
     fun getByDslFilterIdsAndName() {
         val productService = ProductServiceImpl(productRepository, groupProductService)
         val filter = ProductFilter(listOf(31L, 32L), "Desktop2")
+
         val filteredProducts = productService.getByFilter(filter)
+
         assertEquals(1, filteredProducts.size)
         assertEquals(ProductDTO(32, "Desktop2", 3), filteredProducts.get(0))
     }
@@ -45,7 +50,9 @@ class ProductServiceIntegrationTest {
     fun checkSortByName_ByDslFilterByName() {
         val productService = ProductServiceImpl(productRepository, groupProductService)
         val filter = ProductFilter(listOf(51), "Monitor1", listOf("name")) // for Desktop1, HDD1, Monitor1, Notebook1
+
         val filteredProducts = productService.getByFilter(filter)
+
         assertEquals(1, filteredProducts.size)
         assertEquals(51, filteredProducts.get(0).n)
         assertEquals("Monitor1", filteredProducts.get(0).name)
@@ -55,7 +62,9 @@ class ProductServiceIntegrationTest {
     fun checkSortByN_ByDslFilterByName() {
         val productService = ProductServiceImpl(productRepository, groupProductService)
         val filter = ProductFilter(listOf(), "%Monitor%", listOf("n")) // for Desktop1, HDD1, Monitor1, Notebook1
+
         val filteredProducts = productService.getByFilter(filter)
+
         assertEquals(2, filteredProducts.size)
         assertEquals(ProductDTO(51, "Monitor1", 5), filteredProducts.get(0))
         assertEquals(ProductDTO(52, "Monitor2", 5), filteredProducts.get(1))
@@ -65,7 +74,9 @@ class ProductServiceIntegrationTest {
     fun checkWithDefaultSortByDslFilterByName() {
         val productService = ProductServiceImpl(productRepository, groupProductService)
         val filter = ProductFilter(listOf(), "1") // for Desktop1, HDD1, Monitor1, Notebook1
+
         val filteredProducts = productService.getByFilter(filter)
+
         assertEquals(4, filteredProducts.size)
         assertEquals("Desktop1", filteredProducts.get(0).name)
         assertEquals("HDD1", filteredProducts.get(1).name)

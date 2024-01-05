@@ -20,6 +20,7 @@ class ProductRepositoryDataJpaTestIntegration {
     @Test
     fun getAll() {
         val products = productRepository.findAll()
+
         assertEquals(9, products.size);
     }
 

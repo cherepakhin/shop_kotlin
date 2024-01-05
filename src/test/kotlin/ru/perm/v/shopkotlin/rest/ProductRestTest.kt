@@ -26,6 +26,7 @@ internal class ProductRestTest {
     fun getCountOfProductNames() {
         val count = 5L
         Mockito.`when`(mockProductService.getCountOfProductNames()).thenReturn(count)
+
         assertEquals(5L, productRest.getCountOfProductNames())
     }
 
@@ -62,6 +63,7 @@ internal class ProductRestTest {
         } catch (excp: Exception) {
             exceptMessage = excp.message!!
         }
+
         assertEquals(
             "ProductDTO(n=-1, name='', groupDtoN=-1) has errors: Field 'name' in ProductDTO is empty\n",
             exceptMessage
@@ -111,6 +113,7 @@ internal class ProductRestTest {
     fun updateWhenValidProductDTODoesNotThrow() {
         val N = 1L
         val productDTO = ProductDTO(N, "NAME_1", 10L)
+
         assertDoesNotThrow { productRest.update(N, productDTO) }
     }
 

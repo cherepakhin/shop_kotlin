@@ -36,6 +36,7 @@ class GroupProductServiceIntegrationTest {
     @Test
     fun demoQueryDslCheckSize() {
         val groupProductService = GroupProductServiceImpl(groupProductRepository, productService)
+
         assertEquals(8, groupProductService.repository.findAllByOrderByNAsc().size)
     }
 
@@ -43,6 +44,7 @@ class GroupProductServiceIntegrationTest {
     fun demoQueryDslCheckIndex0() {
         val groupProductService = GroupProductServiceImpl(groupProductRepository, productService)
         val groups = groupProductService.repository.findAllByOrderByNAsc()
+
         assertEquals(1, groups.get(0).n)
     }
 
@@ -88,6 +90,7 @@ class GroupProductServiceIntegrationTest {
     fun getByName() {
         val groupProductService = GroupProductServiceImpl(groupProductRepository, productService)
         val groups = groupProductService.findByNameContaining("Desktop")
+
         assertEquals(1, groups.size)
         assertEquals("Desktop Computers", groups.get(0).name)
     }

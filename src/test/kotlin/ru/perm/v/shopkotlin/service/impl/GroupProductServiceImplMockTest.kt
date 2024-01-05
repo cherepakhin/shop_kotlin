@@ -133,6 +133,7 @@ internal class GroupProductServiceImplMockTest {
         val excpt = assertThrows<Exception> {
             service.deleteByN(N)
         }
+
         assertEquals("Group product not found with id=100", excpt.message)
         verify(repository, never()).deleteByN(N)
     }
@@ -174,6 +175,7 @@ internal class GroupProductServiceImplMockTest {
         val GROUP_ID = 100L
         val product1 = ProductDTO(101L, "NAME_101", GROUP_ID)
         `when`(productService.getByGroupProductN(GROUP_ID)).thenReturn(listOf(product1))
+
         assertTrue(service.existProductsInGroup(GROUP_ID))
     }
 
@@ -181,6 +183,7 @@ internal class GroupProductServiceImplMockTest {
     fun notExistProductsInGroup() {
         val PARENT_ID = 100L
         `when`(repository.findAllByParentN(PARENT_ID)).thenReturn(listOf())
+
         assertFalse(service.existProductsInGroup(PARENT_ID))
     }
 
@@ -191,6 +194,7 @@ internal class GroupProductServiceImplMockTest {
         val excpt = assertThrows<Exception> {
             service.getByN(GROUP_ID)
         }
+
         assertEquals("Group product not found with id=100", excpt.message)
     }
 }

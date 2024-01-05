@@ -6,8 +6,8 @@ import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 import org.mockito.Mockito.doNothing
+import org.mockito.Mockito.`when`
 import org.mockito.junit.jupiter.MockitoExtension
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.context.WebApplicationContext
@@ -126,6 +126,7 @@ class GroupProductRestTest {
         val validator: javax.validation.Validator = factory.validator
         val violations: MutableSet<ConstraintViolation<GroupProductDTO>> =
             validator.validate(GroupProductDTO(1, "", 0, true))
+
         assertEquals(1, violations.size)
         assertEquals("Name is empty", violations.elementAt(0).message)
     }
@@ -156,6 +157,7 @@ class GroupProductRestTest {
         val excpt = assertThrows<Exception> {
             controller.findByName(GROUP_NAME)
         }
+
         assertEquals(
             "Group product not found with name=GROUP_NAME",
             excpt.message
@@ -175,6 +177,7 @@ class GroupProductRestTest {
         val excpt = assertThrows<Exception> {
             controller.deleteByN(GROUP_N)
         }
+
         assertEquals(
             "Group product with id: 100 contains products. Remove them to other group first.",
             excpt.message
@@ -214,6 +217,7 @@ class GroupProductRestTest {
         val excpt = assertThrows<Exception> {
             controller.getSubGroups(GROUP_N)
         }
+
         assertEquals(
             "Group product not found with id: 100",
             excpt.message

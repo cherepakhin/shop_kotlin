@@ -8,6 +8,7 @@ internal class UUIDTest {
     @Test
     internal fun create() {
         val uuid = UUID.randomUUID().toString()
+
         assertFalse(uuid.isBlank())
     }
 }

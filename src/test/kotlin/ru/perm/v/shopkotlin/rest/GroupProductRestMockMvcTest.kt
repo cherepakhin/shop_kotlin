@@ -39,6 +39,7 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
         )
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andReturn()
+
         assertEquals("ECHO_MESSAGE", mes.response.contentAsString)
     }
 
@@ -53,6 +54,7 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andReturn().response.contentAsString
         val gr = ObjectMapper().readValue(jsonGroup, GroupProductDTO::class.java)
+
         assertEquals(GroupProductDTO(1L, "NAME_1"), gr)
     }
 
@@ -81,6 +83,7 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andReturn().response.contentAsString
         val receivedGroups = ObjectMapper().readValue<List<GroupProductDTO>>(jsonGroup)
+
         assertEquals(2, receivedGroups.size)
         assertEquals(gr1, receivedGroups.get(0))
         assertEquals(gr2, receivedGroups.get(1))
@@ -96,6 +99,7 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
                     .accept(MediaType.APPLICATION_JSON)
             )
         }
+
         assertEquals(
             "Request processing failed; nested exception is java.lang.Exception: NOT FOUND",
             thrown.message
@@ -144,7 +148,9 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
                 MockMvcRequestBuilders.delete("/group_product/" + N)
             )
         }
-        val ERROR_MESSAGE = "Request processing failed; nested exception is java.lang.Exception: Group product not found with id=100"
+        val ERROR_MESSAGE =
+            "Request processing failed; nested exception is java.lang.Exception: Group product not found with id=100"
+
         assertEquals(ERROR_MESSAGE, excpt.message)
         // Another way verify
         assertTrue(excpt.message.equals(ERROR_MESSAGE) ?: false)

@@ -21,6 +21,7 @@ class EchoCtrlMockMvcTest {
         val mes = mockMvc.perform(get("/echo/ECHO_MESSAGE"))
             .andExpect(status().isOk)
             .andReturn()
+
         assertEquals("ECHO_MESSAGE", mes.response.contentAsString)
     }
 }

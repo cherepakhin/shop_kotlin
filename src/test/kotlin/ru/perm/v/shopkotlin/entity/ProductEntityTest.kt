@@ -8,7 +8,9 @@ internal class ProductEntityTest {
     @Test
     fun create() {
         val GROUP_PRODUCT_N = 10L;
+
         val p = ProductEntity(100, "NAME", GROUP_PRODUCT_N)
+
         assertEquals(100, p.n)
         assertEquals("NAME", p.name)
         assertEquals(GROUP_PRODUCT_N, p.groupProductN)

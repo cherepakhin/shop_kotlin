@@ -42,6 +42,7 @@ class ProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
         )
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andReturn()
+
         assertEquals("ECHO_MESSAGE", mes.response.contentAsString)
     }
 
@@ -60,6 +61,7 @@ class ProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andReturn()
         val messageAsString = message.response.contentAsString;
+
         assertEquals("{\"n\":10,\"name\":\"NAME_10\",\"groupDtoN\":-1}", messageAsString)
 
         val receivedProductDTO = mapper.readValue<ProductDTO>(messageAsString)
