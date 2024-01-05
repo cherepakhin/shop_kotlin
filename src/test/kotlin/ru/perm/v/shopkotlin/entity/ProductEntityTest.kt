@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 internal class ProductEntityTest {
     @Test
     fun create() {
-        val GROUP_PRODUCT_N = 10L;
+        val GROUP_PRODUCT_N = 10L
 
         val p = ProductEntity(100, "NAME", GROUP_PRODUCT_N)
 
@@ -18,41 +18,43 @@ internal class ProductEntityTest {
 
     @Test
     fun equals() {
-        val product1 = ProductEntity(1L,"name", 100L)
-        val product2 = ProductEntity(1L,"name", 100L)
+        val product1 = ProductEntity(1L, "name", 100L)
+        val product2 = ProductEntity(1L, "name", 100L)
 
         assertEquals(product1, product2)
-        assert(product1.hashCode() === product2.hashCode())
+        // Равенство структур == - проверка через equals()
+        // Равенство ссылок === - две ссылки указывают на один и тот же объект
+        assert(product1.hashCode() == product2.hashCode())
     }
 
     @Test
     fun notEqualsByN() {
-        val product1 = ProductEntity(1L,"name", 100L)
-        val product2 = ProductEntity(2L,"name", 100L)
+        val product1 = ProductEntity(1L, "name", 100L)
+        val product2 = ProductEntity(2L, "name", 100L)
 
         assertNotEquals(product1, product2)
     }
 
     @Test
     fun notEqualsByName() {
-        val product1 = ProductEntity(1L,"name", 100L)
-        val product2 = ProductEntity(1L,"name1", 100L)
+        val product1 = ProductEntity(1L, "name", 100L)
+        val product2 = ProductEntity(1L, "name1", 100L)
 
         assertNotEquals(product1, product2)
     }
 
     @Test
     fun notEqualsByGroupProductN() {
-        val product1 = ProductEntity(1L,"name", 0L)
-        val product2 = ProductEntity(1L,"name", 1L)
+        val product1 = ProductEntity(1L, "name", 0L)
+        val product2 = ProductEntity(1L, "name", 1L)
 
         assertNotEquals(product1, product2)
     }
 
     @Test
     fun hashCodeTest() {
-        val product1 = ProductEntity(1L,"name", 1L)
-        val product2 = ProductEntity(1L,"name", 1L)
+        val product1 = ProductEntity(1L, "name", 1L)
+        val product2 = ProductEntity(1L, "name", 1L)
 
         assertEquals(product1.hashCode(), product2.hashCode())
         assert(product1.hashCode() == product2.hashCode())

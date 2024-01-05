@@ -7,7 +7,7 @@ internal class EchoCtrlTest {
 
     @Test
     fun echoStr() {
-        val ctrl = EchoCtrl();
+        val ctrl = EchoCtrl()
 
         assertEquals("MES", ctrl.echoStr("MES"))
     }

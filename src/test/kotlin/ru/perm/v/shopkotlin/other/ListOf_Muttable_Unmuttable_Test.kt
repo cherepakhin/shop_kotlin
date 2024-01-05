@@ -1,4 +1,4 @@
-package ru.perm.v.shopkotlin.other;
+package ru.perm.v.shopkotlin.other
 
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
