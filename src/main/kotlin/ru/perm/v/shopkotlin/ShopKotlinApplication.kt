@@ -5,7 +5,6 @@ import org.springframework.boot.runApplication
 import org.springframework.cache.annotation.EnableCaching
 
 @SpringBootApplication
-//    (exclude = arrayOf(org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration::class))
 @EnableCaching
 class ShopKotlinApplication {
     companion object {
