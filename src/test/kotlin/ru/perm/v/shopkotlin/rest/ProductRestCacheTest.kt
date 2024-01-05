@@ -18,7 +18,7 @@ class ProductRestCacheTest(@Autowired val productRest: ProductRest) {
 
     @Test
     fun getByN() {
-        val N = 1L;
+        val N = 1L
         val product1 = ProductDTO(N, "NAME_1", -1)
 
         Mockito.`when`(productService.getByN(N)).thenReturn(product1)
@@ -34,7 +34,7 @@ class ProductRestCacheTest(@Autowired val productRest: ProductRest) {
 
     @Test
     fun getByN_WithDelete() {
-        val N = 1L;
+        val N = 1L
         val product1 = ProductDTO(N, "NAME_1", -1)
 
         Mockito.`when`(productService.getByN(N)).thenReturn(product1)
@@ -47,7 +47,8 @@ class ProductRestCacheTest(@Autowired val productRest: ProductRest) {
         // but productService.getByN(N) was called only 1 time
         verify(productService, times(1)).getByN(N)
 
-        productRest.deleteById(N);
+        productRest.deleteById(N)
+
     }
 
     @Test
