@@ -297,10 +297,23 @@ c70ef82f3a54   shop_kotlin/app   "java -jar /app.jar"   43 seconds ago   Up 42 s
 # simple test
 $ http :8080/api/group_product/find?name='Comp'
 
-# stop docker app
-$docker stop c70
+$ docker ps -a
+# 2d1325e1222a   shop_kotlin:0.24.0105    "/cnb/process/web" ...
 
-# clear images
+# stop docker app
+$docker stop 2d1
+
+# rm container shop_kotlin 2d1325e1222a (id from docker ps -a)
+$docker container rm 2d1
+
+# rm image
+$docker image ls
+shop_kotlin 0.24.0105   94560d28efb3   ...
+
+$ docker image rm 945
+Untagged: shop_kotlin:0.24.0105
+
+# clear ALL images
 $docker image prune -a
 
 # clear all
@@ -322,6 +335,12 @@ $docker system prune -af
 Successfully built image 'docker.io/library/shop_kotlin:0.1.18'
 ...
 
+````
+
+В файле META-INF/MANIFEST.MF указать Main-Class
+
+````text
+Main-Class: ru.perm.v.shopkotlin.ShopKotlinApplication
 ````
 
 Запуск docker image:
