@@ -192,6 +192,7 @@ springBoot {
     mainClass.set("ru.perm.v.shopkotlin.ShopKotlinApplication")
 }
 
+// demo gardle task
 tasks.register("myTask1") {
     println("echo from myTask1. For run use: ./gradlew myTask1")
 }
