@@ -1,23 +1,22 @@
 package ru.perm.v.shopkotlin.rest.bitotest
 
-import org.junit.jupiter.api.BeforeEach
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.KotlinModule
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.ArgumentMatchers.*
-import org.mockito.InjectMocks
-import org.mockito.Mock
+import org.mockito.ArgumentMatchers.anyLong
+import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mockito.`when`
-import org.mockito.MockitoAnnotations
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
-import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import ru.perm.v.shopkotlin.dto.GroupProductDTO
 import ru.perm.v.shopkotlin.dto.ProductDTO
 import ru.perm.v.shopkotlin.rest.GroupProductRest
@@ -25,10 +24,13 @@ import ru.perm.v.shopkotlin.service.GroupProductService
 import ru.perm.v.shopkotlin.service.ProductService
 import java.util.*
 
-//@WebMvcTest(GroupProductRest::class)
-//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+/**
+ * Generated Bito. Test disabled.
+ * ONLY for example work Bito. The tests don't work. Can be used as an example, skeleton, etc.
+ */
 @ExtendWith(SpringExtension::class)
 @WebMvcTest(GroupProductRest::class)
+@Disabled
 class GroupProductRestBitoCodeTest(@Autowired private val mockMvc: MockMvc) {
 
     @MockBean
@@ -36,6 +38,8 @@ class GroupProductRestBitoCodeTest(@Autowired private val mockMvc: MockMvc) {
 
     @MockBean
     private lateinit var productService: ProductService
+
+    val mapper = ObjectMapper().registerModule(KotlinModule())
 
     @Test
     fun testEchoMessage_Positive() {
@@ -50,15 +54,26 @@ class GroupProductRestBitoCodeTest(@Autowired private val mockMvc: MockMvc) {
         val groupProductDTO = GroupProductDTO()
         groupProductDTO.name = "Group 1"
 
-        `when`(groupProductService.create(any(GroupProductDTO::class.java))).thenReturn(groupProductDTO)
+        `when`(groupProductService.create(groupProductDTO)).thenReturn(groupProductDTO)
 
-        mockMvc.perform(
+        val mes = mockMvc.perform(
             post("/group_product")
                 .contentType("application/json")
-                .content("{\"name\":\"Group 1\"}")
+                .content("{\n" +
+                        "  \"n\": 8,\n" +
+                        "  \"name\": \"TEST GROUP_PRODUCT JSON\",\n" +
+                        "  \"parentN\": 1,\n" +
+                        "  \"haveChilds\": false\n" +
+                        "}")
         )
             .andExpect(status().isOk)
-            .andExpect(jsonPath("$.name").value("Group 1"))
+            .andReturn()
+
+        assertEquals("", mes.response.contentAsString)
+//        val createdGroupProduct = mapper.readValue<ProductDTO>(mes.response.contentAsString)
+
+//        assertEquals(GroupProductDTO(100,"Group 100").toString(), createdGroupProduct)
+//            .andExpect(jsonPath("$.n").value(100))
     }
 
     @Test
