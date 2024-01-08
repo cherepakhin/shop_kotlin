@@ -48,6 +48,7 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
 
     @PostMapping
     @ApiOperation("Create GroupProduct from DTO")
+    @CacheEvict(value = ["group_products", "allGroupProductDTO"], allEntries = true)
     fun create(
         @Parameter(
             description = "DTO of GroupProduct."
@@ -118,7 +119,7 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
     }
 
     @GetMapping("/clear_cache")
-    @CacheEvict("group_products", allEntries = true)
+    @CacheEvict(value = ["group_products", "allGroupProductDTO"], allEntries = true)
     @ApiOperation("Clear cache application")
     fun clearCache(): String {
         return "cleared"
@@ -164,7 +165,7 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
 
     @DeleteMapping("/{n}")
     @ApiOperation("Delete GroupProduct by ID")
-    @CacheEvict("allGroupProductDTO", key = "#n")
+    @CacheEvict(value = ["group_products", "allGroupProductDTO"], allEntries = true)
     fun deleteByN(
         @Parameter(
             description = "ID of GroupProduct."
