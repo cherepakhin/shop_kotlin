@@ -847,3 +847,8 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.1-bin.zip
 [Шпаргалка по Docker](http://v.perm.ru/main/index.php/homepage/56-shpargalka-po-docker)<br/>
 [Set java version](http://v.perm.ru/main/index.php/homepage/60-set-java-version)<br/>
 [Установка и настройка домашнего Nexus/Jenkins](http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd)<br/>
+
+#### TODO
+
+- Data class. [https://kotlinlang.ru/docs/reference/data-classes.html](https://kotlinlang.ru/docs/reference/data-classes.html).  
+Классы данных не могут быть абстрактными, open, sealed или inner;
