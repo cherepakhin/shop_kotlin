@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "ru.perm.v"
-// change to publishing on change version
+// change version on publishing
 version = "0.24.0105"
 description = "shop kotlin description"
 
