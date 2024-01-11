@@ -29,7 +29,6 @@ import javax.validation.Validation
  * (уход от lazy проблем, независимость от способа получения самих DTO и т.п.).
  */
 
-//TODO: check work cache
 class GroupProductRest(val groupProductService: GroupProductService, val productService: ProductService) {
 
     private val logger = LoggerFactory.getLogger(this.javaClass.name)
@@ -127,7 +126,6 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
 
     @GetMapping("/find")
     @ApiOperation("Find groups by name")
-    //TODO add Cache
     fun findByName(
         @Parameter(
             description = "Name of GroupProduct."

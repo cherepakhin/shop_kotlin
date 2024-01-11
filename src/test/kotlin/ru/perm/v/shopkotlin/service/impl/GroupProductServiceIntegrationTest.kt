@@ -15,7 +15,6 @@ import ru.perm.v.shopkotlin.repository.GroupProductRepository
 import ru.perm.v.shopkotlin.service.ProductService
 import kotlin.test.assertContentEquals
 
-//TODO: create import.sql for test
 @ExtendWith(SpringExtension::class)
 @DataJpaTest
 // "Normally, Spring Boot will start an IN-MEMORY(!!!) database for @DataJpaTest-Tests.

@@ -14,7 +14,6 @@ import javax.validation.Validation
 
 @RestController
 @RequestMapping("/product")
-//TODO: check work cache
 class ProductRest(val productService: ProductService) {
     private val logger = LoggerFactory.getLogger(this.javaClass.name)
 
@@ -73,6 +72,7 @@ class ProductRest(val productService: ProductService) {
 
     @PostMapping(path = ["/{n}"], consumes = ["application/json"], produces = ["application/json"])
 //    @CacheEvict("products")
+    @CacheEvict(value = ["products", "allGroupProductDTO"], allEntries = true)
 //    @CacheEvict(value = ["product"], key = "#product.n")
     @ApiOperation("Update Product")
     fun update(
