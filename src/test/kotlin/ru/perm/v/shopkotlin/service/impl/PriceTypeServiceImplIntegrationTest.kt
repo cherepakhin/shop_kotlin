@@ -16,7 +16,7 @@ class PriceTypeServiceImplIntegrationTest {
 
 
     @Test
-    internal fun create() {
+    fun create() {
         val priceTypeService = PriceTypeServiceImpl(priceTypeRepository)
         assertEquals(PriceTypeDTO(1, "test"), priceTypeService.create(PriceTypeDTO(1, "test")))
     }
@@ -26,4 +26,11 @@ class PriceTypeServiceImplIntegrationTest {
         val priceTypeService = PriceTypeServiceImpl(priceTypeRepository)
         assertEquals(2, priceTypeService.findAllByOrderByNAsc().size)
     }
+
+    @Test
+    fun getByN() {
+        val priceTypeService = PriceTypeServiceImpl(priceTypeRepository)
+        assertEquals(PriceTypeDTO(1L, "Normal price"), priceTypeService.getByN(1L))
+    }
+
 }

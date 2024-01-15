@@ -19,4 +19,8 @@ class PriceTypeServiceImpl(val priceTypeRepository: PriceTypeRepository) : Price
             .map { e -> PriceTypeDTO(e.n, e.name) }
     }
 
+    override fun getByN(n: Long): PriceTypeDTO {
+        val priceTypeEntity = priceTypeRepository.findById(n).orElseThrow { Exception(String.format("PriceType with n=%s not exist", n)) }
+        return PriceTypeDTO(priceTypeEntity.n, priceTypeEntity.name)
+    }
 }
