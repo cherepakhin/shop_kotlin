@@ -24,7 +24,8 @@ insert into product(n, name, group_product_n) values (52, 'Monitor2', 5);
 insert into product(n, name, group_product_n) values (61, 'HDD1', 6);
 insert into product(n, name, group_product_n) values (62, 'HDD2', 6);
 
-insert into product(n, name, group_product_n) values (62, 'HDD2', 6);
+insert into pricetype(n, name) values (1, 'Normal price');
+insert into pricetype(n, name) values (2, 'Discount price');
 
 COMMIT;
 
