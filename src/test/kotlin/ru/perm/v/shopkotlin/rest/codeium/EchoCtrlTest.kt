@@ -22,6 +22,8 @@ class EchoCtrlTest {
         val mes = mockMvc.perform(get("/echo/ECHO_MESSAGE")).andReturn().response.contentAsString
 
         assertEquals("ECHO_MESSAGE", mes)
+        // generated codeuim?
+        assertEquals("ECHO_MESSAGE", mockMvc.perform(get("/echo/ECHO_MESSAGE")).andReturn().response.contentAsString)
     }
 
 }
