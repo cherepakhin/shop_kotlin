@@ -16,8 +16,8 @@ class ProductRestTest {
 
     @Test
     fun getByN() {
-        val
-                N = 100L
+        val N = 100L
+
         val mockProductService = mock<ProductService>()
 
         Mockito.`when`(mockProductService.getByN(N))
