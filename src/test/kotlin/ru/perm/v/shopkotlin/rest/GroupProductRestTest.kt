@@ -28,9 +28,6 @@ class GroupProductRestTest {
     @Mock
     private lateinit var mockProductService: ProductService
 
-    @Autowired
-    private lateinit var webApplicationContext: WebApplicationContext
-
     @Test
     fun `test all method when groups found`() {
         val controller = GroupProductRest(mockGroupProductService, mockProductService)

@@ -31,6 +31,7 @@ class PriceTypeServiceImplIntegrationTest {
     fun getByN() {
         val priceTypeService = PriceTypeServiceImpl(priceTypeRepository)
         assertEquals(PriceTypeDTO(1L, "Normal price"), priceTypeService.getByN(1L))
+        asser
     }
 
 }
