@@ -40,4 +40,11 @@ class EchoCtrlEasyCodeTest(@Autowired private val mockMvc: MockMvc) {
         val actualResponse = result.response.contentAsString
         assertEquals(expectedResponse, actualResponse)
     }
+
+    @Test
+    fun test_from_inline() {
+        val message = "MESSAGE"
+        val result = mockMvc.perform(get("/echo/$message")).andExpect(status().isOk())
+        assertEquals(message, result.andReturn().response.contentAsString)
+    }
 }

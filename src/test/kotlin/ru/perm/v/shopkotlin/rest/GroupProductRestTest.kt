@@ -224,4 +224,39 @@ class GroupProductRestTest {
         )
         Mockito.verify(mockGroupProductService, Mockito.times(0)).getSubGroups(GROUP_N)
     }
+
+    @Test
+    fun getSubGroupsForMainGroupWithoutSubGroups() {
+        val controller = GroupProductRest(mockGroupProductService, mockProductService)
+        val GROUP_N = 100L
+        val subGroupReps: List<GroupProductDTO> = emptyList()
+
+        `when`(mockGroupProductService.existsByN(GROUP_N))
+           .thenReturn(true)
+        `when`(mockGroupProductService.getSubGroups(GROUP_N))
+           .thenReturn(subGroupReps)
+
+        val subGroups = controller.getSubGroups(GROUP_N)
+
+        assertEquals(0, subGroups.size)
+    }
+
+    @Test
+    fun getForMainGroupWithFourSubGroups() {
+        // with autocomplete code from EasyCOde
+        val controller = GroupProductRest(mockGroupProductService, mockProductService)
+        val GROUP_N = 100L
+        val subGroups = listOf(
+            GroupProductDTO(100L),
+            GroupProductDTO(200L),
+            GroupProductDTO(300L),
+            GroupProductDTO(400L)
+            )
+        `when`(mockGroupProductService.existsByN(GROUP_N)).thenReturn(true)
+        `when`(mockGroupProductService.getSubGroups(GROUP_N)).thenReturn(subGroups)
+
+        val receivedSubGroup = controller.getSubGroups(GROUP_N)
+
+        assertEquals(subGroups, receivedSubGroup)
+    }
 }

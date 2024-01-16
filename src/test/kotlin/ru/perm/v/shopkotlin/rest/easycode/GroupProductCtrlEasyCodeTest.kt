@@ -72,6 +72,9 @@ class GroupProductCtrlEasyCodeTest {
             "GroupProductDTO(n=1, name=, parentN=0, haveChilds=false) has errors: Name is empty\n",
             exception.message
         )
+
+        val groupProductDTO1 = GroupProductDTO(1L,"",0L,false)
+        assertEquals(GroupProductDTO(1L,"",0L,false), groupProductDTO1)
     }
 
     @Test
