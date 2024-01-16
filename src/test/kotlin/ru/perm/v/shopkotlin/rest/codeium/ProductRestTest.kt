@@ -1,11 +1,10 @@
 package ru.perm.v.shopkotlin.rest.codeium
 
-import junit.framework.TestCase.assertEquals
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
-import org.mockito.kotlin.doNothing
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.times
 import ru.perm.v.shopkotlin.dto.ProductDTO
@@ -17,7 +16,8 @@ class ProductRestTest {
 
     @Test
     fun getByN() {
-        val N = 100L
+        val
+                N = 100L
         val mockProductService = mock<ProductService>()
 
         Mockito.`when`(mockProductService.getByN(N))
@@ -25,7 +25,7 @@ class ProductRestTest {
 
         val productRest = ProductRest(mockProductService)
 
-        assertEquals(ProductDTO(100L, "NAME", 10L), productRest.getByN(N))
+        Assertions.assertEquals(ProductDTO(100L, "NAME", 10L), productRest.getByN(N))
     }
 
     @Test
@@ -40,7 +40,7 @@ class ProductRestTest {
 
         val productRest = ProductRest(mockProductService)
 
-        assertEquals(2, productRest.getAll().size)
+        Assertions.assertEquals(2, productRest.getAll().size)
     }
 
     @Test
