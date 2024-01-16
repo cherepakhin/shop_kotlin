@@ -9,8 +9,6 @@ import org.mockito.Mockito
 import org.mockito.Mockito.doNothing
 import org.mockito.Mockito.`when`
 import org.mockito.junit.jupiter.MockitoExtension
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.context.WebApplicationContext
 import ru.perm.v.shopkotlin.consts.ErrMessages
 import ru.perm.v.shopkotlin.dto.GroupProductDTO
 import ru.perm.v.shopkotlin.dto.ProductDTO
@@ -229,9 +227,9 @@ class GroupProductRestTest {
         val subGroupReps: List<GroupProductDTO> = emptyList()
 
         `when`(mockGroupProductService.existsByN(GROUP_N))
-           .thenReturn(true)
+            .thenReturn(true)
         `when`(mockGroupProductService.getSubGroups(GROUP_N))
-           .thenReturn(subGroupReps)
+            .thenReturn(subGroupReps)
 
         val subGroups = controller.getSubGroups(GROUP_N)
 
@@ -248,7 +246,7 @@ class GroupProductRestTest {
             GroupProductDTO(200L),
             GroupProductDTO(300L),
             GroupProductDTO(400L)
-            )
+        )
         `when`(mockGroupProductService.existsByN(GROUP_N)).thenReturn(true)
         `when`(mockGroupProductService.getSubGroups(GROUP_N)).thenReturn(subGroups)
 
