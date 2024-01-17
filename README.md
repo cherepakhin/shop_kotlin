@@ -516,6 +516,8 @@ vasi@v$ sudo service grafana-server stop
 
 user(pass): admin/admin
 
+Подробнее о нагрузочном тестировании и метриках в этом проекте [https://github.com/cherepakhin/shop_kotlin_yandex_tank_test](https://github.com/cherepakhin/shop_kotlin_yandex_tank_test)
+
 <a id="swagger"></a>
 ### Swagger
 
