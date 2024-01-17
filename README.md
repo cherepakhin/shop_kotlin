@@ -698,6 +698,8 @@ SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 
 __Вещь!__
 
+А отечественный GigaCode, в течении нескольких недель, отвечает унылым ![](doc/gigacode.png) 
+
 <a id="todo"></a>
 ### TODO
 
