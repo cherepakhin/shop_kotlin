@@ -681,16 +681,17 @@ SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 <a id="easycode"></a>
 ### Использование "ChatGPT-EasyCode" в VSCode
 
+Пример работы плагина [Idea EasyCode](https://plugins.jetbrains.com/plugin/20603-chatgpt--easycode) для автодополнения кода :
+![demo ChatGPT-EasyCode](doc/chatgpt_easycode/easycode_demo_worked.png)
+
+
 Генерация тестов
 ![Сгенерировать тесты ChatGPT-EasyCode](doc/chatgpt_easycode/run_write_test_easycode.png)
 
 Рефакторинг
 ![Рефакторинг ChatGPT-EasyCode](doc/chatgpt_easycode/run_refactor_easycode.png)
 
-Пример работы автодополнения плагина для [Idea EasyCode](https://plugins.jetbrains.com/plugin/20603-chatgpt--easycode):
-![demo ChatGPT-EasyCode](doc/chatgpt_easycode/easycode_demo_worked.png)
-
-Вещь!
+__Вещь!__
 
 <a id="todo"></a>
 ### TODO
