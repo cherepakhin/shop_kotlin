@@ -35,7 +35,8 @@
 [Логирование](#logging)<br/>
 [Spring профили](#profiles)<br/>
 
-[Использование "ChatGPT-EasyCode" в VSCode](#easycode)<br/>
+[Использование "ChatGPT-EasyCode" в Idea](#easycode_idea)<br/>
+[Использование "ChatGPT-EasyCode" в VSCode](#easycode_vscode)<br/>
 
 [TODO](#todo)<br/>
 [Примечания](#tose)<br/>
@@ -678,13 +679,16 @@ $ ./gradlew bootRun --args='--spring.profiles.active=dev'
 SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 ````
 
-<a id="easycode"></a>
-### Использование "ChatGPT-EasyCode" в VSCode
+<a id="easycode_idea"></a>
+### Использование "ChatGPT-EasyCode" в Idea
 
 Пример работы плагина [Idea EasyCode](https://plugins.jetbrains.com/plugin/20603-chatgpt--easycode) для автодополнения кода :
 ![demo ChatGPT-EasyCode](doc/chatgpt_easycode/easycode_demo_worked.png)
 
 Серым выделена подсказка EasyCode.
+
+<a id="easycode_vscode"></a>
+### Использование "ChatGPT-EasyCode" в VSCode
 
 Генерация тестов
 ![Сгенерировать тесты ChatGPT-EasyCode](doc/chatgpt_easycode/run_write_test_easycode.png)
