@@ -685,7 +685,7 @@ SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 Пример работы плагина [Idea EasyCode](https://plugins.jetbrains.com/plugin/20603-chatgpt--easycode) для автодополнения кода :
 ![demo ChatGPT-EasyCode](doc/chatgpt_easycode/easycode_demo_worked.png)
 
-Серым выделена подсказка EasyCode.
+Серым выделена подсказка EasyCode. "TAB" - принять предложение.
 
 <a id="easycode_vscode"></a>
 ### Использование "ChatGPT-EasyCode" в VSCode
