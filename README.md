@@ -687,8 +687,10 @@ SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 Рефакторинг
 ![Рефакторинг ChatGPT-EasyCode](doc/chatgpt_easycode/run_refactor_easycode.png)
 
-МОЖЕТ-БЫТЬ эпизодически и возможно использовать.
+Пример работы автодополнения плагина для [Idea EasyCode](https://plugins.jetbrains.com/plugin/20603-chatgpt--easycode):
+![demo ChatGPT-EasyCode](doc/chatgpt_easycode/easycode_demo_worked.png)
 
+Вещь!
 
 <a id="todo"></a>
 ### TODO
