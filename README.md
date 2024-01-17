@@ -522,7 +522,7 @@ user(pass): admin/admin
 <a id="swagger"></a>
 ### Swagger
 
-Адрес [http://127.0.0.1:8780/api/swagger-ui/](http://127.0.0.1:8780/api/swagger-ui/)
+Адрес [http://127.0.0.1:8980/shop_kotlin/api/swagger-ui/](http://127.0.0.1:8980/shop_kotlin/api/swagger-ui/)
 
 ![swagger](doc/swagger.png)
 
