@@ -35,7 +35,7 @@
 [Логирование](#logging)<br/>
 [Spring профили](#profiles)<br/>
 
-[Использование "ChatGPT-EasyCode" в VSCode](#chatgpt)<br/>
+[Использование "ChatGPT-EasyCode" в VSCode](#easycode)<br/>
 
 [TODO](#todo)<br/>
 [Примечания](#tose)<br/>
@@ -678,7 +678,7 @@ $ ./gradlew bootRun --args='--spring.profiles.active=dev'
 SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 ````
 
-<a id="chagpt"></a>
+<a id="easycode"></a>
 ### Использование "ChatGPT-EasyCode" в VSCode
 
 Генерация тестов
