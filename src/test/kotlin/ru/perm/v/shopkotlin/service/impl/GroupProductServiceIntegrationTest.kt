@@ -76,7 +76,7 @@ class GroupProductServiceIntegrationTest {
     @Test
     fun getByDslFilter() {
         val groupProductService = GroupProductServiceImpl(groupProductRepository, productService)
-        val filter = GroupProductFilter(listOf(1L, 2L))
+        val filter = GroupProductFilter(listOf(1L, 2L), "", listOf("n"))
 
         val filteredGroups = groupProductService.getByFilter(filter)
 

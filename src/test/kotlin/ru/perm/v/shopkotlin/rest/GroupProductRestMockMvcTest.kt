@@ -153,6 +153,6 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
 
         assertEquals(ERROR_MESSAGE, excpt.message)
         // Another way verify
-        assertTrue(excpt.message.equals(ERROR_MESSAGE) ?: false)
+        assertTrue(excpt.message.equals(ERROR_MESSAGE))
     }
 }

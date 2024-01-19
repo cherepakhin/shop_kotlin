@@ -7,7 +7,6 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
-import org.mockito.kotlin.doNothing
 import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 import ru.perm.v.shopkotlin.dto.ProductDTO
@@ -16,6 +15,7 @@ import ru.perm.v.shopkotlin.service.ProductService
 
 
 class ProductRestEasyCodeTest {
+
     @Mock
     private lateinit var productService: ProductService
 
@@ -24,7 +24,7 @@ class ProductRestEasyCodeTest {
 
     @BeforeEach
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
         productRest = ProductRest(productService)
     }
 
