@@ -433,14 +433,14 @@ $ http http://127.0.0.1:8988/shop_kotlin/api/actuator
 ````yaml
 scrape_configs:
 - job_name: 'spring boot scrape'
-  metrics_path: '/api/actuator/prometheus'
+  metrics_path: '/shop_kotlin/api/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
     - targets: ['192.168.1.20:8988']
 
 ````
 
-Опрашивать '192.168.1.20:8988/api/actuator/prometheus' каждые 5 сек.
+Опрашивать '192.168.1.20:8988/shop_kotlin/api/actuator/prometheus' каждые 5 сек.
 
 Для просмотра получаемых prometheus-ом метрик можно выполнить:
 
