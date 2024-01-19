@@ -2,6 +2,9 @@ package ru.perm.v.shopkotlin.filter
 
 /**
  * Filter for GroupProduct with listN, name and listSortBy
+ * @param listN - list of GroupProduct N
+ * @param name - name of GroupProduct
+ * @param listSortBy - list of sort fields, default is "name"
  */
 data class GroupProductFilter(
     val listN: List<Long>, // list of GroupProduct N

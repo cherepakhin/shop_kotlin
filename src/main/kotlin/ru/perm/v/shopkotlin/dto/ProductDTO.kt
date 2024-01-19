@@ -4,6 +4,13 @@ import ru.perm.v.shopkotlin.consts.ErrMessages
 import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull
 
+/**
+ * DTO for Product
+ *
+ * @param n - N of Product
+ * @param name - name of Product
+ * @param groupDtoN - N of Group
+ */
 class ProductDTO {
     @field:NotNull
     var n: Long = -1L

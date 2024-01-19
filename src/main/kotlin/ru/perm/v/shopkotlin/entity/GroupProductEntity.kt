@@ -2,6 +2,14 @@ package ru.perm.v.shopkotlin.entity
 
 import javax.persistence.*
 
+/**
+ * Entity for GroupProduct
+ *
+ * n - N of GroupProduct
+ * name - name of GroupProduct
+ * parentN - parent GroupProduct N
+ * haveChilds - have childs of GroupProduct
+ */
 @Entity
 @Table(name = "group_product")
 class GroupProductEntity(
