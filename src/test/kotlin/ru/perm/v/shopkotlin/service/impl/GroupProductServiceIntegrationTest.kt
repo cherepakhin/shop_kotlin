@@ -182,4 +182,24 @@ class GroupProductServiceIntegrationTest {
 
         assertTrue(subGroupIds.isEmpty())
     }
+
+    @Test
+    fun getSubGroupsForNOT_EMPTY_GROUP() {
+        val GROUP_ID = 1L
+        val groupProductService = GroupProductServiceImpl(groupProductRepository, productService)
+
+        val subGroupIds = groupProductService.getSubGroups(GROUP_ID).map { it.n }
+
+        assertTrue(subGroupIds.isNotEmpty())
+        assertEquals(4, subGroupIds.size)
+
+        // в kotlin можно так сравнивать списки
+        assertEquals(listOf(2L, 5L, 6L, 7L), subGroupIds.toList())
+        assertEquals(listOf(2L, 5L, 6L, 7L).toSet(), subGroupIds.toSet())
+        // и даже так, через '='
+        // сравниваем списки через '=='
+        assertTrue(listOf(2L, 5L, 6L, 7L) == subGroupIds)
+    }
+
+
 }
