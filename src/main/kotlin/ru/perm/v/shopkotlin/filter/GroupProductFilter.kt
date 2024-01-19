@@ -1,7 +1,7 @@
 package ru.perm.v.shopkotlin.filter
 
 /**
- * Фильтр для групп с указанием сортировки выборки
+ * Filter for GroupProduct with listN, name and listSortBy
  */
 data class GroupProductFilter(
     val listN: List<Long>,
