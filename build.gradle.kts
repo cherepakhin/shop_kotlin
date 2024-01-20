@@ -2,11 +2,17 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "ru.perm.v"
 // change version on publishing
-version = "0.24.0119"
+version = "0.24.0120"
 description = "shop kotlin description"
 
 java.sourceCompatibility = JavaVersion.VERSION_11
-var querydslVersion: String? by extra; querydslVersion = "5.0.0"
+var querydslVersion = "5.0.0"
+var springFoxVersion = "3.0.0"
+var springBootVersion = "2.5.6"
+var springDependencyManagement = "1.0.3.RELEASE"
+var mockitoKotlinVersion = "4.0.0"
+
+var shopKotlinExtDtoVersion = "0.0.3"
 
 configurations.create("querydsl")
 
@@ -85,7 +91,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-cache")
 // https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
-    implementation("io.springfox:springfox-boot-starter:3.0.0")
+    implementation("io.springfox:springfox-boot-starter:$springFoxVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.h2database:h2")
@@ -102,7 +108,7 @@ dependencies {
     implementation("io.micrometer:micrometer-registry-prometheus")
 
 // external dependency from PRIVATE(!!!) repository
-    implementation("ru.perm.v:shop_kotlin_extdto:0.0.3")
+    implementation("ru.perm.v:shop_kotlin_extdto:$shopKotlinExtDtoVersion")
 //    implementation("ru.perm.v:shop_kotlin_extdto:0.0.2.jar") // jar! ???
 //    implementation("ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
 
@@ -114,7 +120,7 @@ dependencies {
     }
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion")
     compileOnly("org.springframework.boot:spring-boot-starter-actuator")
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
@@ -195,17 +201,21 @@ springBoot {
     mainClass.set("ru.perm.v.shopkotlin.ShopKotlinApplication")
 }
 
+// DEMO TASKS
+// use ./gradlew myTask1
 tasks.register("myTask1") {
     println("echo from myTask1. For run use: ./gradlew myTask1")
 }
 
+// use ./gradlew myTask2
 tasks.register("myTask2") {
     println("echo from myTask2. For run use: ./gradlew myTask2")
 }
 
+// use ./gradlew helloUserCmd
 tasks.register("helloUserCmd") {
     val user: String? = System.getenv("USER")
     project.exec {
-        commandLine("echo", "Hello,", "$user!") // ./gradlew helloUserCmd -> run shell command
+        commandLine("echo", "Hello,", "$user!")
     }
 }
