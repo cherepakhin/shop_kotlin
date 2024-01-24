@@ -884,6 +884,8 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.1-bin.zip
 ./gradlew test
 ````
 
+- Data class __not recommended for JPA Entity__ . Warning in Idea.<br/>
+
 <a id="links"></a>
 ### Ссылки:
 
