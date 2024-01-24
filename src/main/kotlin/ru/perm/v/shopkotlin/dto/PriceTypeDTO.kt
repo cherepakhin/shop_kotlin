@@ -7,6 +7,6 @@ package ru.perm.v.shopkotlin.dto
  * @param name - name of PriceType
  */
 data class PriceTypeDTO(
-    val n:Long = -1,
-    val name:String = "-"
+    val n: Long = -1,
+    val name: String = "-"
 )

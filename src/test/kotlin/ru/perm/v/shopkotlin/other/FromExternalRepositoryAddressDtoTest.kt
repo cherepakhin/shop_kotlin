@@ -1,7 +1,7 @@
 package ru.perm.v.shopkotlin.other
 
 import org.junit.jupiter.api.Test
-import ru.perm.v.shopkotlin.extdto.AddressDto
+import ru.perm.v.shopkotlin.extdto.AddressExtDTO
 import kotlin.test.assertEquals
 
 /**
@@ -12,11 +12,11 @@ import kotlin.test.assertEquals
 class FromExternalRepositoryAddressDtoTest {
     @Test
     internal fun isAccessToExternalDto() {
-        val addr1 = AddressDto(1L, "TOWN_1");
+        val addr1 = AddressExtDTO(1L, "TOWN_1", "STREET_1", "HOUSE_1")
 
         assertEquals(1L, addr1.n)
         assertEquals("TOWN_1", addr1.town)
-        assertEquals("", addr1.street)
-        assertEquals("", addr1.house)
+        assertEquals("STREET_1", addr1.street)
+        assertEquals("HOUSE_1", addr1.house)
     }
 }

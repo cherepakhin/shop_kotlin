@@ -35,7 +35,8 @@ import ru.perm.v.shopkotlin.service.ProductService
 //) :ProductService {
 // That's why I do it this way:
 @Service
-class ProductServiceImpl(var productRepository: ProductRepository, var groupService: GroupProductService) : ProductService {
+class ProductServiceImpl(var productRepository: ProductRepository, var groupService: GroupProductService) :
+    ProductService {
 
     /**
      * ID in input dto will be ignored. ID will calculate

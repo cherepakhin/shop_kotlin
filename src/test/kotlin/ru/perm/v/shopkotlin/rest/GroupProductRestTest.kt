@@ -249,6 +249,7 @@ class GroupProductRestTest {
         )
         `when`(mockGroupProductService.existsByN(GROUP_N)).thenReturn(true)
         `when`(mockGroupProductService.getSubGroups(GROUP_N)).thenReturn(subGroups)
+        `when`(mockGroupProductService.getSubGroups(subGroups[0].n)).thenReturn(subGroups)
 
         val receivedSubGroup = controller.getSubGroups(GROUP_N)
 

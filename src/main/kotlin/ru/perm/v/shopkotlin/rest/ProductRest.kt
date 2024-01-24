@@ -34,7 +34,7 @@ class ProductRest(val productService: ProductService) {
         )
         @PathVariable mes: String
     ): String {
-        logger.info(format("echo %s",mes))
+        logger.info(format("echo %s", mes))
         return mes
     }
 
@@ -106,7 +106,7 @@ class ProductRest(val productService: ProductService) {
         val violations: MutableSet<ConstraintViolation<ProductDTO>> =
             validator.validate(productDTO)
 
-        if (violations.size > 0) {
+        if (violations.isNotEmpty()) {
             var messageError = ""
 // OLD STYLE
 //            for(violation in violations) {

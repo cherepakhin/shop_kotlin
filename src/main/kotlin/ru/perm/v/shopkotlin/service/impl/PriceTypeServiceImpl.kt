@@ -10,7 +10,7 @@ import ru.perm.v.shopkotlin.service.PriceTypeService
 class PriceTypeServiceImpl(val priceTypeRepository: PriceTypeRepository) : PriceTypeService {
 
     override fun create(dto: PriceTypeDTO): PriceTypeDTO {
-        val created=priceTypeRepository.save(PriceTypeEntity(dto.n, dto.name))
+        val created = priceTypeRepository.save(PriceTypeEntity(dto.n, dto.name))
         return PriceTypeDTO(created.n, created.name)
     }
 
@@ -20,7 +20,8 @@ class PriceTypeServiceImpl(val priceTypeRepository: PriceTypeRepository) : Price
     }
 
     override fun getByN(n: Long): PriceTypeDTO {
-        val priceTypeEntity = priceTypeRepository.findById(n).orElseThrow { Exception(String.format("PriceType with n=%s not exist", n)) }
+        val priceTypeEntity =
+            priceTypeRepository.findById(n).orElseThrow { Exception(String.format("PriceType with n=%s not exist", n)) }
         return PriceTypeDTO(priceTypeEntity.n, priceTypeEntity.name)
     }
 }

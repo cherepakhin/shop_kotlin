@@ -9,10 +9,38 @@ import javax.persistence.Table
  * n - N of PriceType
  * name - name of PriceType
  */
+
+// NOT DATA CLASS!
+// data class PriceTypeEntity(var n: Long = -1, var name: String = "-")
+// Warning:(14, 12) The data class implementations of equals(), hashCode() and toString()
+// are not recommended !!!ONLY FOR JPA ENTITIES!!!. They can cause severe performance and memory consumption issues.
 @Entity
 @Table(name = "pricetype")
-data class PriceTypeEntity(
+open class PriceTypeEntity {
     @Id
-    val n:Long = -1,
-    val name:String = "-"
-)
+    var n: Long = -1
+    var name: String = "-"
+
+    constructor()
+
+    constructor(n: Long, name: String) {
+        this.n = n
+        this.name = name
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is PriceTypeEntity) return false
+
+        if (n != other.n) return false
+        if (name != other.name) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = n.hashCode()
+        result = 31 * result + name.hashCode()
+        return result
+    }
+}
