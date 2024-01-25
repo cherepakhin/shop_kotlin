@@ -12,7 +12,7 @@ var springBootVersion = "2.5.6"
 var springDependencyManagement = "1.0.3.RELEASE"
 var mockitoKotlinVersion = "4.0.0"
 
-var shopKotlinExtDtoVersion = "0.0.4"
+var shopKotlinExtDtoVersion = "0.0.5"
 
 configurations.create("querydsl")
 
