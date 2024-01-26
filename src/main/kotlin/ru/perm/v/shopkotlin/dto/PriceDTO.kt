@@ -10,6 +10,7 @@ import java.math.BigDecimal
  * @param price - price of Product
  */
 data class PriceDTO(
+    val n: Long = -1,
     var productDTO: ProductDTO = ProductDTO(),
     var priceTypeDTO: PriceTypeDTO = PriceTypeDTO(),
     var price: BigDecimal = BigDecimal.ZERO
