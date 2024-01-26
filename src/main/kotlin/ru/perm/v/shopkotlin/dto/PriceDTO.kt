@@ -6,9 +6,11 @@ import java.math.BigDecimal
  * DTO for Price
  *
  * @param productDTO - ProductDTO
+ * @param priceTypeDTO - PriceTypeDTO
  * @param price - price of Product
  */
 data class PriceDTO(
     var productDTO: ProductDTO = ProductDTO(),
+    var priceTypeDTO: PriceTypeDTO = PriceTypeDTO(),
     var price: BigDecimal = BigDecimal.ZERO
 )
