@@ -2,6 +2,7 @@ package ru.perm.v.shopkotlin.mapper
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+
 import ru.perm.v.shopkotlin.dto.GroupProductDTO
 import ru.perm.v.shopkotlin.entity.GroupProductEntity
 
