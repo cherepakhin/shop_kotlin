@@ -1,5 +1,6 @@
 package ru.perm.v.shopkotlin.entity
 
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.Table
@@ -16,10 +17,12 @@ import javax.persistence.Table
 // are not recommended !!!ONLY FOR JPA ENTITIES!!!. They can cause severe performance and memory consumption issues.
 @Entity
 @Table(name = "pricetype")
-open class PriceTypeEntity {
+open class PriceTypeEntity { // open - can be inherited
     @Id
-    open var n: Long = -1
-    open var name: String = "-"
+    @Column(name = "n", nullable = false)
+    var n: Long = -1
+    @Column(name = "name", nullable = false)
+    var name: String = ""
 
     // Empty constructor needed for Hibernate
     constructor()
@@ -44,4 +47,10 @@ open class PriceTypeEntity {
         result = 31 * result + name.hashCode()
         return result
     }
+
+    override fun toString(): String {
+        return "PriceTypeEntity(n=$n, name='$name')"
+    }
+
+
 }

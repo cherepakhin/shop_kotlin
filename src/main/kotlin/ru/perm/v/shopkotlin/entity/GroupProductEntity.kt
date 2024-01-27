@@ -12,19 +12,36 @@ import javax.persistence.*
  */
 @Entity
 @Table(name = "group_product")
-class GroupProductEntity(
+open class GroupProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "n")
     // COLUMN NAME MUST IS NOT "ID", "ID" IS KEY WORD IN h2database
-    val n: Long = -1,
+    var n: Long = -1
     @Column(name = "name", nullable = false)
-    val name: String = "",
+    var name: String = ""
     @Column(name = "parent_n", nullable = false)
-    val parentN: Long = -1,
+    var parentN: Long = -1
     @Column(name = "have_childs", nullable = false)
-    val haveChilds: Boolean = false
-) {
+    var haveChilds: Boolean = false
+
+    // Empty constructor needed for Hibernate
+    constructor() {
+
+    }
+
+    constructor(n: Long, name: String) {
+        this.n = n
+        this.name = name
+    }
+
+    constructor(n: Long, name: String, parentN: Long, haveChilds: Boolean) {
+        this.n = n
+        this.name = name
+        this.parentN = parentN
+        this.haveChilds = haveChilds
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is GroupProductEntity) return false
@@ -44,4 +61,10 @@ class GroupProductEntity(
         result = 31 * result + haveChilds.hashCode()
         return result
     }
+
+    override fun toString(): String {
+        return "GroupProductEntity(n=$n, name='$name', parentN=$parentN, haveChilds=$haveChilds)"
+    }
+
+
 }

@@ -14,21 +14,21 @@ internal class GroupProductEntityTest {
 
     @Test
     fun constructorWithDefaultIsLast() {
-        val group = GroupProductEntity(0, "NAME", -1)
+        val group = GroupProductEntity(0, "NAME", -1, false)
 
         assertEquals(GroupProductEntity(0, "NAME", -1, false), group)
     }
 
     @Test
     fun checkEqualHash() {
-        val group1 = GroupProductEntity(0, "NAME", -1)
+        val group1 = GroupProductEntity(0, "NAME", -1, false)
         assertEquals(GroupProductEntity(0, "NAME", -1, false).hashCode(), group1.hashCode())
     }
 
     @Test
     fun equals() {
-        val group1 = GroupProductEntity(0, "NAME", -1)
-        val group2 = GroupProductEntity(0, "NAME", -1)
+        val group1 = GroupProductEntity(0, "NAME", -1, false)
+        val group2 = GroupProductEntity(0, "NAME", -1, false)
 
         assertEquals(group1, group2)
     }

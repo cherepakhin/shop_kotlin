@@ -48,4 +48,7 @@ class ProductEntity(
         return result
     }
 
+    override fun toString(): String {
+        return "ProductEntity(n=$n, name='$name', groupProductN=$groupProductN)"
+    }
 }
