@@ -11,8 +11,8 @@ internal class PriceDTOTest {
         val idProduct100 = 100L
         val priceTypeDTO = PriceTypeDTO(1L, "PRICE_1")
 
-        val priceDTO1 = PriceDTO(1L, idProduct100, priceTypeDTO, BigDecimal.valueOf(10.00))
-        val priceDTO2 = PriceDTO(1L, idProduct100, priceTypeDTO, BigDecimal.valueOf(10.00))
+        val priceDTO1 = PriceDTO(1L, idProduct100, priceTypeDTO.n, BigDecimal.valueOf(10.00))
+        val priceDTO2 = PriceDTO(1L, idProduct100, priceTypeDTO.n, BigDecimal.valueOf(10.00))
 
         assertEquals(priceDTO1, priceDTO2)
         assertEquals(priceDTO2, priceDTO1)
