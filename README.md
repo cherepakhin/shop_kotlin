@@ -884,7 +884,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.1-bin.zip
 ./gradlew test
 ````
 
-- Data class __not recommended for JPA Entity__ . Warning in Idea.<br/>
+- Data class __not recommended for JPA Entity__ . Warning in Idea. Почему не использовать Data-классы? Потому что они финальны сами по себе, имеют по всем полям определенные equals, hashCode и toString. А это недопустимо в связке с Hibernate.<br/>
 
 <a id="links"></a>
 ### Ссылки:
