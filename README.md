@@ -884,7 +884,21 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.1-bin.zip
 ./gradlew test
 ````
 
-- Data class __not recommended for JPA Entity__ . Warning in Idea. Почему не использовать Data-классы? Потому что они финальны сами по себе, имеют по всем полям определенные equals, hashCode и toString. А это недопустимо в связке с Hibernate.<br/>
+### JPA Entity классы с Kotlin
+
+Источник: [https://habr.com/ru/companies/haulmont/articles/572574/](https://habr.com/ru/companies/haulmont/articles/572574/)
+Примеры изи источника [https://github.com/Klimenkoob/spring-kotlin-hibernate](https://github.com/Klimenkoob/spring-kotlin-hibernate)
+
+1. Data class __not recommended for JPA Entity__ . Warning in Idea. Почему не использовать Data-классы? Потому что они финальны сами по себе, имеют по всем полям определенные equals, hashCode и toString. А это недопустимо в связке с Hibernate.
+2. Явно помечать ключевым словом __open__ все Entity. Согласно спецификации JPA, все классы и свойства, связанные с JPA, не должны быть __final__. В отличие от Java, в Kotlin классы, свойства и методы по умолчанию final. Поэтому их нужно явно помечать ключевым словом __open__.
+3. Явно определять __hashCode()__, __equals()__, __toString()__. При определении внимание на __lazy__ поля (как и в Java).
+4. Добавить __nullable = false__ 
+
+````kotlin
+   @ManyToOne(fetch = FetchType.LAZY, optional = false)
+   @JoinColumn(name = "client_id", nullable = false)
+   lateinit var client: Client
+````
 
 <a id="links"></a>
 ### Ссылки:
