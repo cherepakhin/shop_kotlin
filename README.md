@@ -236,7 +236,7 @@ $ ./gradlew bootRun --args='--spring.profiles.active=dev'
 или
 
 ````shell
-SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
+SPRING_PROFILES_ACTIVE=dev ./gradlew clean bootRun
 ````
 
 <a id="run"></a>
