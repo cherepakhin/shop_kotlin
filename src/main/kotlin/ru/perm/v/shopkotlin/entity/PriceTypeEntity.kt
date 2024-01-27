@@ -18,9 +18,10 @@ import javax.persistence.Table
 @Table(name = "pricetype")
 open class PriceTypeEntity {
     @Id
-    var n: Long = -1
-    var name: String = "-"
+    open var n: Long = -1
+    open var name: String = "-"
 
+    // Empty constructor needed for Hibernate
     constructor()
 
     constructor(n: Long, name: String) {

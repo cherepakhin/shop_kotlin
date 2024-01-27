@@ -24,8 +24,11 @@ open class PriceEntity {
 
     @Column(name = "price_type_n", nullable = false)
     var priceTypeN: Long = -1
+
+    @Column(name = "price", nullable = false, precision = 10, scale = 2)
     var price: BigDecimal = BigDecimal.ZERO
 
+    // Empty constructor needed for Hibernate
     constructor() {
 
     }
