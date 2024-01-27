@@ -12,7 +12,7 @@ import javax.persistence.*
  */
 @Entity
 @Table(name = "group_product")
-open class GroupProductEntity {
+open class GroupProductEntity { // open needed for Hibernate
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "n")

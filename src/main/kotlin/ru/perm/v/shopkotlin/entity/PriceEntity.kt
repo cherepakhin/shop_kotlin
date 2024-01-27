@@ -13,7 +13,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "price")
-open class PriceEntity { // open - can be inherited
+open class PriceEntity { // open - can be inherited and needed for Hibernate
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "n")

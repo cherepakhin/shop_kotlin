@@ -4,7 +4,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "product")
-open class ProductEntity {
+open class ProductEntity { // open - can be inherited and needed for Hibernate
 //    for use identificator n as LONG:
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // hibernate sequence by next max

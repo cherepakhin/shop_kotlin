@@ -17,7 +17,7 @@ import javax.persistence.Table
 // are not recommended !!!ONLY FOR JPA ENTITIES!!!. They can cause severe performance and memory consumption issues.
 @Entity
 @Table(name = "pricetype")
-open class PriceTypeEntity { // open - can be inherited
+open class PriceTypeEntity { // open - can be inherited and needed for Hibernate
     @Id
     @Column(name = "n", nullable = false)
     var n: Long = -1
