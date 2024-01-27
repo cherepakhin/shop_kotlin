@@ -91,11 +91,10 @@ Cоздать небольшое приложение на <b>Kotlin</b> с ис
 <a id="jpa_kotlin"></a>
 ### JPA Entity классы с Kotlin
 
-Источник: [https://habr.com/ru/companies/haulmont/articles/572574/](https://habr.com/ru/companies/haulmont/articles/572574/).<br/>
-Примеры из источника: [https://github.com/Klimenkoob/spring-kotlin-hibernate](https://github.com/Klimenkoob/spring-kotlin-hibernate).<br/>
+Источник: [https://habr.com/ru/companies/haulmont/articles/572574/](https://habr.com/ru/companies/haulmont/articles/572574/)<br/>
+Примеры из источника: [https://github.com/Klimenkoob/spring-kotlin-hibernate](https://github.com/Klimenkoob/spring-kotlin-hibernate)<br/>
 
 Рекомендации:
-
 1. __Data class not recommended for JPA Entity__ . Warning in Idea. Почему не использовать Data-классы? Потому что они финальны сами по себе, имеют по всем полям определенные equals, hashCode и toString. А это недопустимо в связке с Hibernate.
 2. Явно помечать ключевым словом __open__ все Entity. Согласно спецификации JPA, все классы и свойства, связанные с JPA, не должны быть __final__. В отличие от Java, в Kotlin классы, свойства и методы по умолчанию final. Поэтому их нужно явно помечать ключевым словом __open__.
 3. __Явно определять__ hashCode(), equals(), toString(). При определении внимание на __lazy__ поля (как и в Java).
