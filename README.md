@@ -91,8 +91,8 @@ Cоздать небольшое приложение на <b>Kotlin</b> с ис
 <a id="jpa_kotlin"></a>
 ### JPA Entity классы с Kotlin
 
-Источник: [https://habr.com/ru/companies/haulmont/articles/572574/](https://habr.com/ru/companies/haulmont/articles/572574/)
-Примеры из источника: [https://github.com/Klimenkoob/spring-kotlin-hibernate](https://github.com/Klimenkoob/spring-kotlin-hibernate)
+Источник: [https://habr.com/ru/companies/haulmont/articles/572574/](https://habr.com/ru/companies/haulmont/articles/572574/).<br/>
+Примеры из источника: [https://github.com/Klimenkoob/spring-kotlin-hibernate](https://github.com/Klimenkoob/spring-kotlin-hibernate).<br/>
 
 Рекомендации:
 
