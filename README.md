@@ -5,7 +5,7 @@
 
 [Статический анализатор Idea Analize](#static_analize)<br/>
 [Статический анализатор SonarCube](#sonarcube)<br/>
-[JPA Entity классы с Kotlin](#jpa_kotlin)
+[JPA Entity классы с Kotlin](#jpa_kotlin)<br/>
 
 [Unit тестирование](#unit_test)<br/>
 [Покрытие тестами](#coverage_test)<br/>
