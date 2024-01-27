@@ -61,7 +61,8 @@ open class PriceEntity { // open - can be inherited and needed for Hibernate
         return result
     }
 
-    fun toDTO() {
-        TODO("Not yet implemented")
+    override fun toString(): String {
+        return "PriceEntity(n=$n, productN=$productN, priceTypeN=$priceTypeN, price=$price)"
     }
+
 }
