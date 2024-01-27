@@ -9,6 +9,7 @@
 
 [Unit тестирование](#unit_test)<br/>
 [Покрытие тестами](#coverage_test)<br/>
+[Spring profiles](#spring_profiles)
 [Тестовый запуск](#run)<br/>
 
 [Создание запускаемого файла и его запуск](#create_runable)<br/>
@@ -34,7 +35,6 @@
 
 [Просмотр ресурсов с помощью Java Mission Control](#jmc)<br/>
 [Логирование](#logging)<br/>
-[Spring профили](#profiles)<br/>
 
 [Использование "ChatGPT-EasyCode" в Idea](#easycode_idea)<br/>
 [Использование "ChatGPT-EasyCode" в VSCode](#easycode_vscode)<br/>
@@ -200,6 +200,44 @@ ProductServiceIntegrationTest > checkSortByName_ByDslFilterByName() PASSED
 ![jacoco_class](doc/jacoco_class.png)
 
 <span style="background-color: red">Красным</span> или <span style="background-color:yellow">желтым</span> выделены непротестированные участки кода, зеленым <span style="background-color:green">протестировано</span>.
+
+
+<a id="spring_profiles"></a>
+### Spring profiles
+
+Настроены два Spring профиля: ![prod](src/main/resources/application-prod.yml) и ![dev](src/main/resources/application-dev.yml). Общие параметры для обоих профилей в ![application.yml](src/main/resources/application.yml). В этом же файле указан профиль по умолчанию:
+
+````yaml
+spring:
+  profiles:
+    active: dev
+  application:
+    name: shop_kotlin
+````
+
+Запуск с указанием профиля:
+
+````shell
+java -D"spring.profiles.active=dev" -jar app.jar
+````
+
+или установить env переменную:
+
+```shell
+SPRING_PROFILES_ACTIVE = dev
+```
+
+Запуск с gradle:
+
+````shell
+$ ./gradlew bootRun --args='--spring.profiles.active=dev'
+````
+
+или
+
+````shell
+SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
+````
 
 <a id="run"></a>
 ### Тестовый запуск
@@ -666,69 +704,6 @@ logging:
     root: info
   file:
     path: log/
-````
-
-<a id="profiles"></a>
-### Profiles
-
-Описание profiles в application.yaml [https://habr.com/ru/companies/otus/articles/576910/](https://habr.com/ru/companies/otus/articles/576910/)
-
-````yaml
-spring:
-  profiles:
-    active:
-      - local
----
-# profile specific properties
-
-spring:
-  profiles: local
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/
-    username: root
-    password: root
-
----
-# profile specific properties
-
-spring:
-  profiles: dev
-
-  datasource:
-    url: jdbc:mysql://<dev db url>
-    username: <username>
-    password: <password>
-````
-
-Запуск с указанием профиля:
-
-````shell
-java -D"spring.profiles.active=dev" -jar app.jar
-````
-
-или установить env переменную:
-
-```shell
-SPRING_PROFILES_ACTIVE = dev
-```
-
-Запуск с maven:
-
-```shell
-./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
-```
-
-Запуск с gradle:
-
-````shell
-$ ./gradlew bootRun --args='--spring.profiles.active=dev'
-````
-
-или
-
-````shell
-SPRING_PROFILES_ACTIVE=test ./gradlew clean bootRun
 ````
 
 <a id="easycode_idea"></a>

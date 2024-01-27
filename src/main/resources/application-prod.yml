@@ -7,8 +7,6 @@ server:
     include-message: always
 
 spring:
-  application:
-    name: shop_kotlin
   h2:
     console:
       enabled: true
