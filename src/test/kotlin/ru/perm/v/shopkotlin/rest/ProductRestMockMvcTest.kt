@@ -19,6 +19,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import ru.perm.v.shopkotlin.dto.ProductDTO
 import ru.perm.v.shopkotlin.service.ProductService
 
@@ -173,4 +174,18 @@ class ProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
         }
     }
 
+    @Test
+    fun getByExistId_generatedIdeaGPT() {
+        val N = 10L
+        `when`(mockProductService.getByN(N)).thenReturn(ProductDTO(N, "NAME_10", -1L))
+
+        val message = mockMvc.perform(
+            MockMvcRequestBuilders.get("/product/" + N)
+        )
+            .andExpect(status().isOk)
+            .andReturn()
+            .response.contentAsString
+
+        assertEquals("{\"n\":10,\"name\":\"NAME_10\",\"groupDtoN\":-1}", message)
+    }
 }
