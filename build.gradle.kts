@@ -66,6 +66,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
     kotlin("kapt") version "1.7.0"
     idea
+    application
 //    kotlin("plugin.allopen")
 //    kotlin("plugin.noarg")
 //	id 'io.qameta.allure' version '2.11.2' // version 2.10.0 WORK! NO WARNINGS for generate allure report
@@ -218,4 +219,8 @@ tasks.register("helloUserCmd") {
     project.exec {
         commandLine("echo", "Hello,", "$user!")
     }
+}
+
+tasks.withType<JavaExec> {
+    jvmArgs = listOf("-Xmx64m")
 }
