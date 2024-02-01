@@ -482,6 +482,25 @@ $ http http://127.0.0.1:8988/shop_kotlin/api/actuator
 
 ![actuator](doc/actuator.png)
 
+Пример "Сколько памяти используется?":
+
+````shell
+$ http http://127.0.0.1:8988/shop_kotlin/api/actuator/metrics/jvm.memory.used
+....
+"baseUnit": "bytes",
+    "description": "The amount of used memory",
+    "measurements": [
+        {
+            "statistic": "VALUE",
+            "value": 252553992.0
+        }
+    ],
+    "name": "jvm.memory.used"
+....
+````
+
+~253 МБ
+
 <a id="prometheus"></a>
 ### Prometheus
 
