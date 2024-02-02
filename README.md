@@ -669,6 +669,12 @@ $http :8780/api/group_product/
 
 > Установка и настройка домашнего Jenkins описана в [http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd](http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd)
 
+Для ограничения памяти при сборке  добавлен параметр в gradle.properties:
+
+````shell
+org.gradle.jvmargs=-Xmx512M
+````
+
 В проекте используется внешняя зависимость из домашнего NEXUS репозитория [https://github.com/cherepakhin/shop_kotlin_extdto](https://github.com/cherepakhin/shop_kotlin_extdto):
 
 ````shell
