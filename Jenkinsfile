@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                sh 'git clone '
+                sh 'git clone https://github.com/cherepakhin/shop_kotlin'
             }
         }
 
