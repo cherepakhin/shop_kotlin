@@ -903,7 +903,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.1-bin.zip
 org.gradle.jvmargs=-Xmx512M
 ````
 
-- Jetty рекомендуют, как более оптимизированный контейнер. Замена Tomcat на  jetty сделана так:
+- Jetty рекомендуют, как более оптимизированный контейнер. Л сделана так:
 
 ````yaml
 dependencies {
