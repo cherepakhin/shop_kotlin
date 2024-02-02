@@ -225,7 +225,3 @@ tasks.register("helloUserCmd") {
         commandLine("echo", "Hello,", "$user!")
     }
 }
-
-tasks.withType<JavaExec> {
-    jvmArgs = listOf("-Xmx64m")
-}

@@ -492,14 +492,16 @@ $ http http://127.0.0.1:8988/shop_kotlin/api/actuator/metrics/jvm.memory.used
     "measurements": [
         {
             "statistic": "VALUE",
-            "value": 252553992.0
+            "value": 147665416.0
         }
     ],
     "name": "jvm.memory.used"
 ....
 ````
 
-~253 МБ
+Нагрузочные тесты показали следующие результаты:
+64M - приложение выпадает с OutOfMemory
+128M - тесты проходят
 
 <a id="prometheus"></a>
 ### Prometheus
@@ -669,7 +671,7 @@ $http :8780/api/group_product/
 
 > Установка и настройка домашнего Jenkins описана в [http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd](http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd)
 
-Для ограничения памяти при сборке  добавлен параметр в gradle.properties:
+Для ограничения памяти при сборке Gradle, добавлен параметр в gradle.properties:
 
 ````shell
 org.gradle.jvmargs=-Xmx512M
@@ -901,12 +903,6 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.1-bin.zip
 
 ````
 ./gradlew test
-````
-
-- Ограничение памяти для работы gradle в gradle.properties :
-
-````yaml
-org.gradle.jvmargs=-Xmx512M
 ````
 
 - Jetty рекомендуют, как более оптимизированный контейнер. Л сделана так:
