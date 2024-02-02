@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "ru.perm.v"
 // change version on publishing
-version = "0.24.0202.1"
+version = "0.24.0202.2"
 description = "shop kotlin description"
 
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -72,6 +72,8 @@ plugins {
 //	id 'io.qameta.allure' version '2.11.2' // version 2.10.0 WORK! NO WARNINGS for generate allure report
 }
 
+//Note that this is a BootJar plugin used in org.springframework.boot
+apply(plugin = "org.springframework.boot")
 apply(plugin = "io.spring.dependency-management")
 apply(plugin = "kotlin-kapt")
 
