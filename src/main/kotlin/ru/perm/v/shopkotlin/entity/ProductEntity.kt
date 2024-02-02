@@ -10,13 +10,13 @@ open class ProductEntity { // open - can be inherited and needed for Hibernate
     @GeneratedValue(strategy = GenerationType.IDENTITY) // hibernate sequence by next max
     @Column(name = "n", nullable = false)
     // column name must is not "id", "id" is key word
-    var n: Long = -1
+    open var n: Long = -1
 
     @Column(name = "name", nullable = false)
-    var name: String = ""
+    open var name: String = ""
 
     @Column(name = "group_product_n", nullable = false)
-    var groupProductN: Long = -1
+    open var groupProductN: Long = -1
 
     // Empty constructor needed for Hibernate
     constructor() {

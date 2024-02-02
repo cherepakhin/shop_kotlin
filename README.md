@@ -260,7 +260,7 @@ SPRING_PROFILES_ACTIVE=dev ./gradlew clean bootRun
 
 Собранный файл будет в папке **./build/libs/**
 
-запуск:
+запуск с RAM 256Мб:
 
 ````shell
 shop_kotlin/$ java -Xmx256M -jar build/libs/shop_kotlin-0.1.20.jar
