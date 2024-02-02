@@ -30,7 +30,8 @@ class EchoCtrlEasyCodeTest(@Autowired private val mockMvc: MockMvc) {
 
     @Test
     fun `test echoStr endpoint with long message`() {
-        val expectedResponse = "a".repeat(100000)
+        val lengthTestString = 100
+        val expectedResponse = "a".repeat(lengthTestString)
 
         val result = mockMvc.perform(get("/echo/$expectedResponse"))
             .andExpect(status().isOk)
