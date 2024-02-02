@@ -14,19 +14,19 @@ pipeline {
 
         stage('Unit tests') {
             steps {
-                sh './gradlew clean test --tests *Test'
+                sh 'pwd;./gradlew clean test --tests *Test'
             }
         }
 
         stage('Integration tests') {
             steps {
-                sh './gradlew clean test --tests *TestIntegration'
+                sh 'pwd;./gradlew clean test --tests *TestIntegration'
             }
         }
 
         stage('Build bootJar') {
             steps {
-                sh './gradlew bootJar'
+                sh 'pwd;./gradlew bootJar'
             }
         }
 
@@ -35,7 +35,7 @@ pipeline {
                 NEXUS_CRED = credentials('nexus_admin')
             }
             steps {
-                sh './gradlew publish'
+                sh 'pwd;./gradlew publish'
             }
         }
     }

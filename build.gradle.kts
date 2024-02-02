@@ -65,6 +65,7 @@ plugins {
     id("jacoco")
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
     kotlin("kapt") version "1.7.0"
+    java
     idea
     application
 //    kotlin("plugin.allopen")
