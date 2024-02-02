@@ -26,7 +26,7 @@ pipeline {
 
         stage('Build bootJar') {
             steps {
-                sh 'pwd;./gradlew bootJar'
+                sh 'pwd;./gradlew -version;./gradlew bootJar'
             }
         }
 
