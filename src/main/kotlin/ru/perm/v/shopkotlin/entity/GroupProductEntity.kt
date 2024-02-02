@@ -17,13 +17,13 @@ open class GroupProductEntity { // open needed for Hibernate
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "n")
     // COLUMN NAME MUST IS NOT "ID", "ID" IS KEY WORD IN h2database
-    var n: Long = -1
+    open var n: Long = -1
     @Column(name = "name", nullable = false)
-    var name: String = ""
+    open var name: String = ""
     @Column(name = "parent_n", nullable = false)
-    var parentN: Long = -1
+    open var parentN: Long = -1
     @Column(name = "have_childs", nullable = false)
-    var haveChilds: Boolean = false
+    open var haveChilds: Boolean = false
 
     // Empty constructor needed for Hibernate
     constructor() {

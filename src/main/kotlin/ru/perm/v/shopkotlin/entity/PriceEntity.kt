@@ -17,16 +17,16 @@ open class PriceEntity { // open - can be inherited and needed for Hibernate
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "n")
-    var n: Long = -1
+    open var n: Long = -1
 
     @Column(name = "product_n", nullable = false)
-    var productN: Long = -1
+    open var productN: Long = -1
 
     @Column(name = "price_type_n", nullable = false)
-    var priceTypeN: Long = -1
+    open var priceTypeN: Long = -1
 
     @Column(name = "price", nullable = false, precision = 10, scale = 2)
-    var price: BigDecimal = BigDecimal.ZERO
+    open var price: BigDecimal = BigDecimal.ZERO
 
     // Empty constructor needed for Hibernate
     constructor() {

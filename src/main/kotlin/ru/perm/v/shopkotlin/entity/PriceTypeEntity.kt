@@ -20,9 +20,9 @@ import javax.persistence.Table
 open class PriceTypeEntity { // open - can be inherited and needed for Hibernate
     @Id
     @Column(name = "n", nullable = false)
-    var n: Long = -1
+    open var n: Long = -1
     @Column(name = "name", nullable = false)
-    var name: String = ""
+    open var name: String = ""
 
     // Empty constructor needed for Hibernate
     constructor()
