@@ -35,7 +35,7 @@ pipeline {
                 NEXUS_CRED = credentials('nexus_admin')
             }
             steps {
-                sh './gradlew bootJar publish'
+                sh './gradlew publish'
             }
         }
     }
