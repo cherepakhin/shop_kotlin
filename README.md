@@ -897,6 +897,23 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.1-bin.zip
 ./gradlew test
 ````
 
+- Ограничение памяти для работы gradle в gradle.properties :
+
+````yaml
+org.gradle.jvmargs=-Xmx512M
+````
+
+- Jetty рекомендуют, как более оптимизированный контейнер. Замена Tomcat на  jetty сделана так:
+
+````yaml
+dependencies {
+  implementation("org.springframework.boot:spring-boot-starter-web") {
+    exclude("org.springframework.boot:spring-boot-starter-tomcat")
+  }
+  implementation("org.springframework.boot:spring-boot-starter-jetty") // jetty uses less memory
+}
+````
+ 
 <a id="links"></a>
 ### Ссылки:
 
