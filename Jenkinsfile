@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-        stage('Build botJar') {
+        stage('Build bootJar') {
             steps {
                 sh './gradlew bootJar'
             }
