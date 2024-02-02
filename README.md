@@ -263,14 +263,14 @@ SPRING_PROFILES_ACTIVE=dev ./gradlew clean bootRun
 запуск:
 
 ````shell
-shop_kotlin/$ java -jar build/libs/shop_kotlin-0.1.20.jar
+shop_kotlin/$ java -Xmx256M -jar build/libs/shop_kotlin-0.1.20.jar
 ````
 
 или так:
 
 ````shell
 cd shop_kotlin/build/libs 
-shop_kotlin/build/libs$ java -jar shop_kotlin-0.1.20.jar
+shop_kotlin/build/libs$ java -Xmx256M -jar shop_kotlin-0.1.20.jar
 ````
 
 <a id="httpie"></a>
