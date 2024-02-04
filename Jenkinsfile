@@ -8,25 +8,25 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                sh 'git clone https://github.com/cherepakhin/shop_kotlin'
+                sh 'rm -rf shop_kotlin; git clone https://github.com/cherepakhin/shop_kotlin'
             }
         }
 
         stage('Unit tests') {
             steps {
-                sh 'pwd;./gradlew clean test --tests *Test'
+                sh 'pwd;cd shop_kotlin;./gradlew clean test --tests *Test'
             }
         }
 
         stage('Integration tests') {
             steps {
-                sh 'pwd;./gradlew clean test --tests *TestIntegration'
+                sh 'pwd;cd shop_kotlin;./gradlew clean test --tests *TestIntegration'
             }
         }
 
         stage('Build bootJar') {
             steps {
-                sh 'pwd;./gradlew -version;./gradlew bootJar'
+                sh 'pwd;cd shop_kotlin;./gradlew bootJar'
             }
         }
 
@@ -35,7 +35,7 @@ pipeline {
                 NEXUS_CRED = credentials('nexus_admin')
             }
             steps {
-                sh './gradlew publish'
+                sh 'cd shop_kotlin;./gradlew publish'
             }
         }
     }
