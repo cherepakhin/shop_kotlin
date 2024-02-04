@@ -14,10 +14,11 @@ import javax.persistence.*
 @Table(name = "group_product")
 open class GroupProductEntity { // open needed for Hibernate
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+// @GeneratedValue(strategy = GenerationType.IDENTITY)
+// id have semantic. for example: id=51 is subgroup of group with id=5
     @Column(name = "n")
     // COLUMN NAME MUST IS NOT "ID", "ID" IS KEY WORD IN h2database
-    open var n: Long = -1
+    open var n: Long  = -1
     @Column(name = "name", nullable = false)
     open var name: String = ""
     @Column(name = "parent_n", nullable = false)

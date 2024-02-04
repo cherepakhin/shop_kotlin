@@ -11,9 +11,9 @@ import javax.validation.constraints.NotBlank
  * @param haveChilds - have childs
  */
 data class GroupProductDTO(
-    val n: Long = -1,
+    var n: Long = -1,
     @field:NotBlank(message = "Name is empty")
     var name: String = "",
-    val parentN: Long = -1,
-    val haveChilds: Boolean = false
+    var parentN: Long = -1,
+    var haveChilds: Boolean = false
 )

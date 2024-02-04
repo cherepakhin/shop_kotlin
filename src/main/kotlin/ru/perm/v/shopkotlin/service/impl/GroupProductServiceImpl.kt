@@ -1,6 +1,7 @@
 package ru.perm.v.shopkotlin.service.impl
 
 import com.querydsl.core.BooleanBuilder
+import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Lazy
 import org.springframework.data.querydsl.QSort
 import org.springframework.stereotype.Service
@@ -12,6 +13,7 @@ import ru.perm.v.shopkotlin.filter.GroupProductFilter
 import ru.perm.v.shopkotlin.repository.GroupProductRepository
 import ru.perm.v.shopkotlin.service.GroupProductService
 import ru.perm.v.shopkotlin.service.ProductService
+import java.lang.String.format
 
 /**
  * The Service will return the DTO. To get away from lazy.
@@ -21,21 +23,26 @@ class GroupProductServiceImpl(
     @Lazy val repository: GroupProductRepository,
     @Lazy val productService: ProductService
 ) : GroupProductService {
+    private val logger = LoggerFactory.getLogger(this.javaClass.name)
     // @Lazy PROPER INITIALIZATION. NEED FOR SPRING.
     // Error: The dependencies of some of the beans in the application context form a cycle:
     // ProductService depends on GroupProductService AND GroupProductService depends on ProductService
     // see: https://www.baeldung.com/circular-dependencies-in-spring
     override fun create(groupProductDTO: GroupProductDTO): GroupProductDTO {
-        val n = repository.getNextN()
-        val groupProductEntity = GroupProductEntity(
-            n, groupProductDTO.name, groupProductDTO.parentN, groupProductDTO.haveChilds
-        )
-        val newGroup = repository.save(groupProductEntity)
+        logger.info(format("===================================create %s", groupProductDTO))
+        logger.info(format(">>>>before count=%s",repository.count()));
+        val groupForSave = GroupProductEntity(
+            groupProductDTO.n,
+            groupProductDTO.name,
+            groupProductDTO.parentN,
+            groupProductDTO.haveChilds)
+        val savedGroup = repository.saveAndFlush(groupForSave)
+        logger.info(format(">>>>after count=%s",repository.count()));
         return GroupProductDTO(
-            newGroup.n,
-            newGroup.name,
-            newGroup.parentN,
-            newGroup.haveChilds
+            savedGroup.n,
+            savedGroup.name,
+            savedGroup.parentN,
+            savedGroup.haveChilds
         )
     }
 

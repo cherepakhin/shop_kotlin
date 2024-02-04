@@ -17,7 +17,7 @@ interface GroupProductRepository : JpaRepository<GroupProductEntity, Long>,
     fun findAllByParentN(n: Long): List<GroupProductEntity>
 
     @Query(value = "SELECT max(n) + 1 FROM group_product ", nativeQuery = true)
-    fun getNextN(): Long
+    fun getNextN(): Long?
     fun getByN(n: Long): GroupProductEntity
     fun deleteByN(n: Long)
     fun existsByN(n: Long): Boolean

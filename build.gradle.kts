@@ -78,6 +78,7 @@ apply(plugin = "org.springframework.boot")
 apply(plugin = "io.spring.dependency-management")
 apply(plugin = "kotlin-kapt")
 
+
 repositories {
     mavenCentral()
     maven {
@@ -199,9 +200,35 @@ publishing {
         }
     }
     publications {
-        register("mavenJava", MavenPublication::class) {
-            from(components["java"])
-        }
+
+//            artifact bootJar {
+//                artifactId = "${project.name}_starter"
+//            }
+//        register("mavenJava", MavenPublication::class) {
+//            groupId
+//            artifactId
+//            version
+//            from(components["java"])
+//        }
+//        register("bootJar") {
+//            version
+//            from(components["java"])
+//        }
+//        register("sourceJar") {
+//            from(components["sources"])
+//        }
+//        register("plainJar", MavenPublication::class) {
+//            artifact(jar())
+//        }
+//        register("starterJar", MavenPublication::class) {
+//            artifact(springBoot(artifactId="${project.name}_starter"))
+//        }
+//
+//        starterJar(MavenPublication) {
+//            artifact bootJar {
+//                artifactId = "${project.name}_starter"
+//            }
+//        }
     }
 }
 
@@ -213,18 +240,32 @@ springBoot {
 // DEMO TASKS
 // use ./gradlew myTask1
 tasks.register("myTask1") {
-    println("echo from myTask1. For run use: ./gradlew myTask1")
+    println("echo from myTask1.\nFor run use: ./gradlew myTask1")
 }
 
 // use ./gradlew myTask2
 tasks.register("myTask2") {
-    println("echo from myTask2. For run use: ./gradlew myTask2")
+    println("echo from myTask2.\nFor run use: ./gradlew myTask2")
 }
 
 // use ./gradlew helloUserCmd
 tasks.register("helloUserCmd") {
+    println("echo from helloUserCmd.\nFor run use: ./gradlew helloUserCmd")
     val user: String? = System.getenv("USER")
     project.exec {
         commandLine("echo", "Hello,", "$user!")
     }
 }
+
+tasks.register("exampleTask") {
+    println("exampleTask")
+    enabled = false
+}
+//tasks.named<BootJar>("bootJar") {
+//    archiveClassifier.set("")
+//}
+
+//tasks.named<Jar>("jar") {
+//    archiveClassifier.set("")
+//}
+

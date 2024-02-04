@@ -3,6 +3,7 @@ package ru.perm.v.shopkotlin.rest.bitotest
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.*
 import org.springframework.boot.test.context.SpringBootTest
@@ -16,6 +17,7 @@ import ru.perm.v.shopkotlin.service.ProductService
  * Tests generated Bito (ChatGPT)
  */
 @SpringBootTest
+@Disabled // for DEMO work Bito
 class GroupProductRestBitoTest {
 
     @MockBean

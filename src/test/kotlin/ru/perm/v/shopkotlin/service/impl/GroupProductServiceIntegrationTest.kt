@@ -1,6 +1,7 @@
 package ru.perm.v.shopkotlin.service.impl
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
@@ -96,10 +97,11 @@ class GroupProductServiceIntegrationTest {
 
     @Test
     fun create() {
-        val N = -1L
-        val NAME = "NAME"
-        val PARENT_N = 100L
+        val N = 510L
+        val NAME = "MONITOR_1"
+        val PARENT_N = 5L // N from "Monitors" from /resources/import.sql
         val groupProductDTO = GroupProductDTO(N, NAME, PARENT_N, false)
+
         val groupProductService = GroupProductServiceImpl(groupProductRepository, productService)
 
         val createdDTO = groupProductService.create(groupProductDTO)
