@@ -709,6 +709,32 @@ $ export NEXUS_CRED_PSW=pass
 
 ![nexus](doc/nexus.png)
 
+Секция publishing в build.gradle.kts:
+
+````shell
+publishing {
+    repositories {
+        maven {
+            url = uri("http://v.perm.ru:8082/repository/ru.perm.v/")
+            isAllowInsecureProtocol = true
+            //  publish в nexus "./gradlew publish" из ноута и Jenkins проходит
+            // export NEXUS_CRED_USR=admin
+            // echo $NEXUS_CRED_USR
+            credentials {
+                username = System.getenv("NEXUS_CRED_USR")
+                password = System.getenv("NEXUS_CRED_PSW")
+            }
+        }
+    }
+    publications {
+        register("mavenJava", MavenPublication::class) {
+            groupId
+            artifactId
+            version
+            from(components["java"])
+        }
+````
+
 <a id="jms"></a>
 ### Просмотр ресурсов с помощью Java Mission Control
 

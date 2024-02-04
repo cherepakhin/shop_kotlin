@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "ru.perm.v"
 // change version on publishing
-version = "0.24.0204.1"
+version = "0.24.0204.3"
 description = "shop kotlin description"
 
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -204,12 +204,12 @@ publishing {
 //            artifact bootJar {
 //                artifactId = "${project.name}_starter"
 //            }
-//        register("mavenJava", MavenPublication::class) {
-//            groupId
-//            artifactId
-//            version
-//            from(components["java"])
-//        }
+        register("mavenJava", MavenPublication::class) {
+            groupId
+            artifactId
+            version
+            from(components["java"])
+        }
 //        register("bootJar") {
 //            version
 //            from(components["java"])
