@@ -65,18 +65,17 @@ internal class GroupProductServiceImplMockTest {
     @Test
     fun create() {
         val PARENT_N = 100L
-        val groupDtoForSave = GroupProductDTO(-1L, "NAME", PARENT_N, true)
+        val N = 1L
+        val groupDtoForSave = GroupProductDTO(N, "NAME", PARENT_N, true)
 
-        val NEXT_N = 1L
-        val groupProductEntityCreated = GroupProductEntity(NEXT_N, "NAME", PARENT_N, true)
+        val groupProductEntityCreated =
+            GroupProductEntity(N, "NAME", PARENT_N, true)
 
-        `when`(repository.save(groupProductEntityCreated)).thenReturn(groupProductEntityCreated)
+        `when`(repository.saveAndFlush(groupProductEntityCreated)).thenReturn(groupProductEntityCreated)
 
-        `when`(repository.getNextN()).thenReturn(NEXT_N)
+        val savedGroupDTO = service.create(groupDtoForSave)
 
-        val savedGroup = service.create(groupDtoForSave)
-
-        assertEquals(GroupProductDTO(1L, "NAME", PARENT_N, true), savedGroup)
+        assertEquals(GroupProductDTO(1L, "NAME", PARENT_N, true), savedGroupDTO)
     }
 
     @Test
