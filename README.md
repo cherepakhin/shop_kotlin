@@ -296,7 +296,7 @@ publishing {
   }
   publications {
     create<MavenPublication>("maven"){
-      artifact(tasks["bootJar"]) // build bootJar
+      artifact(tasks["bootJar"]) // build and publish bootJar
     }
 }
 ````
