@@ -13,7 +13,8 @@
 [Тестовый запуск](#run)<br/>
 
 [Создание запускаемого файла и его запуск](#create_runable)<br/>
-
+[Publishing SpringBoot "FAT" jar](#publishing-springboot-fat-jar)<br/>
+ 
 [Интеграционное тестирование](#integration_test_local)<br/>
 [Примеры тестов httpie](#httpie)<br/>
 [DataJpa tests](#datajpatest_test)<br/>
@@ -272,6 +273,34 @@ shop_kotlin/$ java -Xmx256M -jar build/libs/shop_kotlin-0.1.20.jar
 cd shop_kotlin/build/libs 
 shop_kotlin/build/libs$ java -Xmx256M -jar shop_kotlin-0.1.20.jar
 ````
+
+<a id="publishing-springboot-fat-jar"></a>
+### Publishing SpringBoot "FAT" jar
+
+Настройка:
+
+````yaml
+publishing {
+  repositories {
+      maven {
+          url = uri("http://v.perm.ru:8082/repository/ru.perm.v/")
+          isAllowInsecureProtocol = true
+          //  for publish to nexus "./gradlew publish"
+          // export NEXUS_CRED_USR=admin
+          // echo $NEXUS_CRED_USR
+          credentials {
+              username = System.getenv("NEXUS_CRED_USR")
+              password = System.getenv("NEXUS_CRED_PSW")
+          }
+      }
+  }
+  publications {
+    create<MavenPublication>("maven"){
+      artifact(tasks["bootJar"]) // build bootJar
+    }
+}
+````
+[https://stackoverflow.com/questions/64062905/unable-to-publish-jar-to-gitlab-package-registry-with-gradle](https://stackoverflow.com/questions/64062905/unable-to-publish-jar-to-gitlab-package-registry-with-gradle)
 
 <a id="httpie"></a>
 ### Примеры тестов [httpie](https://httpie.io/)

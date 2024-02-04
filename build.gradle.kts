@@ -1,9 +1,10 @@
+import org.jetbrains.kotlin.com.intellij.openapi.vfs.StandardFileSystems.jar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 group = "ru.perm.v"
 // change version on publishing
-version = "0.24.0204.3"
+version = "0.24.0204.4"
 description = "shop kotlin description"
 
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -206,19 +207,23 @@ publishing {
         }
     }
     publications {
-
-//            artifact bootJar {
-//                artifactId = "${project.name}_starter"
-//            }
-        register("mavenJava", MavenPublication::class) {
-            groupId
-            artifactId
-            version
-            from(components["java"])
+        create<MavenPublication>("maven"){
+            artifact(tasks["bootJar"])
         }
-//        register("bootJar") {
+//        register("mavenJava", MavenPublication::class) {
+//            from(components["java"])
+//        }
+//          artifact bootJar {
+//             artifactId = "${project.name}_starter"
+//          }
+//        register("mavenJava", MavenPublication::class) {
+//            groupId
+//            artifactId
 //            version
 //            from(components["java"])
+//        }
+//        register("bootJar", MavenPublication::class) {
+//            artifact(jar())
 //        }
 //        register("sourceJar") {
 //            from(components["sources"])
@@ -268,9 +273,9 @@ tasks.register("exampleTask") {
     enabled = false
 }
 
-tasks.named<BootJar>("bootJar") {
-    archiveClassifier.set("")
-}
+//tasks.named<BootJar>("bootJar") {
+//    archiveClassifier.set("")
+//}
 
 //tasks.named<Jar>("jar") {
 //    archiveClassifier.set("")
