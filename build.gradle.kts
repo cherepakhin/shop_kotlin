@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 group = "ru.perm.v"
 // change version on publishing
@@ -185,6 +186,11 @@ tasks.jar {
     archiveClassifier.set("")
 }
 
+// Configure Spring Boot plugin task for running the application.
+val bootJar by tasks.getting(BootJar::class) {
+    enabled = true
+}
+
 publishing {
     repositories {
         maven {
@@ -261,11 +267,11 @@ tasks.register("exampleTask") {
     println("exampleTask")
     enabled = false
 }
-//tasks.named<BootJar>("bootJar") {
-//    archiveClassifier.set("")
-//}
+
+tasks.named<BootJar>("bootJar") {
+    archiveClassifier.set("")
+}
 
 //tasks.named<Jar>("jar") {
 //    archiveClassifier.set("")
 //}
-
