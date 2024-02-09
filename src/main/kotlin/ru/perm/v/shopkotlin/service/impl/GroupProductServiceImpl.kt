@@ -30,14 +30,14 @@ class GroupProductServiceImpl(
     // see: https://www.baeldung.com/circular-dependencies-in-spring
     override fun create(groupProductDTO: GroupProductDTO): GroupProductDTO {
         logger.info(format("===================================create %s", groupProductDTO))
-        logger.info(format(">>>>before count=%s",repository.count()));
+        logger.info(format(">>>>before count=%s",repository.count()))
         val groupForSave = GroupProductEntity(
             groupProductDTO.n,
             groupProductDTO.name,
             groupProductDTO.parentN,
             groupProductDTO.haveChilds)
         val savedGroup = repository.saveAndFlush(groupForSave)
-        logger.info(format(">>>>after count=%s",repository.count()));
+        logger.info(format(">>>>after count=%s",repository.count()))
         return GroupProductDTO(
             savedGroup.n,
             savedGroup.name,
@@ -75,10 +75,10 @@ class GroupProductServiceImpl(
     override fun getByFilter(filter: GroupProductFilter): List<GroupProductDTO> {
         var booleanBuilder = BooleanBuilder()
 
-        if (!filter.listN.isEmpty()) {
+        if (filter.listN.isNotEmpty()) {
             booleanBuilder = booleanBuilder.and(QGroupProductEntity.groupProductEntity.n.`in`(filter.listN))
         }
-        if (!filter.name.isEmpty()) {
+        if (filter.listN.isNotEmpty()) {
             booleanBuilder =
                 booleanBuilder.and(QGroupProductEntity.groupProductEntity.name.like("%" + filter.name + "%"))
         }
