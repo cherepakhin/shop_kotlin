@@ -107,6 +107,20 @@ Cоздать небольшое приложение на <b>Kotlin</b> с ис
    lateinit var client: Client
 ````
 
+5. Kotlin классы по умолчанию __final__. Для Entity это проблема. Можно применить plugin "allopen":
+
+````kotlin
+plugins {
+  kotlin("plugin.allopen")
+}
+...
+
+allopen {
+  annotation("javax.persistence.Entity")
+}
+
+````
+
 <a id="unit_test"></a>
 ### Unit тестирование
 
