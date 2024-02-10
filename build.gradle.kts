@@ -70,7 +70,7 @@ plugins {
     java
     idea
     application
-    kotlin("plugin.allopen")
+//    kotlin("plugin.allopen")
 //    kotlin("plugin.noarg")
 //	id 'io.qameta.allure' version '2.11.2' // version 2.10.0 WORK! NO WARNINGS for generate allure report
 }
@@ -147,9 +147,9 @@ kapt {
     }
 }
 
-allopen {
-    annotation("javax.persistense.Entity")
-}
+//allopen {
+//    annotation("javax.persistense.Entity")
+//}
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
