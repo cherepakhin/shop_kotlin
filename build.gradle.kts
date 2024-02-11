@@ -4,7 +4,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 group = "ru.perm.v"
 // change version on publishing
-version = "0.24.0204.4"
+version = "0.24.0211.1"
 description = "shop kotlin description"
 
 java.sourceCompatibility = JavaVersion.VERSION_11
