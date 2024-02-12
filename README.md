@@ -910,7 +910,7 @@ class Someclass {
 val someClass = SomeClass.AsStaticObject.create()
 ````
 
-- Companion Object (вложенный объект. Метод create() принадлежит родительскому классу):
+- Companion Object (вложенный объект. Метод create() __ПРИНАДЛЕЖИТ__ родительскому классу):
 
 ````kotlin
 class SomeClass {
