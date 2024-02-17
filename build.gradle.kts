@@ -98,7 +98,6 @@ dependencies {
         exclude("org.springframework.boot:spring-boot-starter-tomcat")
     }
     implementation("org.springframework.boot:spring-boot-starter-jetty") // jetty uses less memory
-//    implementation("org.springframework.boot:spring-boot-starter-web")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-cache")
