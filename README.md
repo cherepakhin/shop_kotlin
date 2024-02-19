@@ -138,6 +138,12 @@ allopen {
 ./gradlew test --tests '*MockMvcTest'
 ````
 
+Для вывод подробного отчета о выполнении тестов добавить флаг "--info":
+
+````shell
+./gradlew test --tests --info
+````
+
 <a id="integration_test_local"></a>
 ### Интеграционное тестирование в проекте
 
