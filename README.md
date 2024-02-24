@@ -559,7 +559,7 @@ $ http http://127.0.0.1:8988/shop_kotlin/api/actuator/metrics/jvm.memory.used
 
 ````yaml
 scrape_configs:
-- job_name: 'spring boot scrape'
+- job_name: 'shop_kotlin'
   metrics_path: '/shop_kotlin/api/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
@@ -994,6 +994,8 @@ dependencies {
 <a id="links"></a>
 ### Ссылки:
 
+[
+Spring Boot, Hibernate и Kotlin для новичков шаг за шагом](https://habr.com/ru/companies/domclick/articles/505860/)
 [Интеграционное тестирование REST](http://v.perm.ru/main/index.php/34-behave-testirovanie)<br/>
 [Настройка и использование Prometheus, Grafana](http://v.perm.ru/main/index.php/64-nastrojka-i-ispolzovanie-prometheus-grafana)<br/>
 [Шпаргалка по Docker](http://v.perm.ru/main/index.php/homepage/56-shpargalka-po-docker)<br/>

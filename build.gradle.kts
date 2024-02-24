@@ -99,7 +99,11 @@ dependencies {
     }
     implementation("org.springframework.boot:spring-boot-starter-jetty") // jetty uses less memory
 
+// recomendation from https://habr.com/ru/companies/domclick/articles/505860/
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
     implementation("org.springframework.boot:spring-boot-starter-cache")
 // https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
     implementation("io.springfox:springfox-boot-starter:$springFoxVersion")
