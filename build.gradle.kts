@@ -150,9 +150,11 @@ kapt {
     }
 }
 
-//allopen {
-//    annotation("javax.persistense.Entity")
-//}
+allOpen {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
+}
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"

@@ -994,8 +994,7 @@ dependencies {
 <a id="links"></a>
 ### Ссылки:
 
-[
-Spring Boot, Hibernate и Kotlin для новичков шаг за шагом](https://habr.com/ru/companies/domclick/articles/505860/)
+[Spring Boot, Hibernate и Kotlin для новичков шаг за шагом](https://habr.com/ru/companies/domclick/articles/505860/)
 [Интеграционное тестирование REST](http://v.perm.ru/main/index.php/34-behave-testirovanie)<br/>
 [Настройка и использование Prometheus, Grafana](http://v.perm.ru/main/index.php/64-nastrojka-i-ispolzovanie-prometheus-grafana)<br/>
 [Шпаргалка по Docker](http://v.perm.ru/main/index.php/homepage/56-shpargalka-po-docker)<br/>
