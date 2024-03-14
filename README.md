@@ -548,6 +548,32 @@ $ http http://127.0.0.1:8988/shop_kotlin/api/actuator/metrics/jvm.memory.used
 ....
 ````
 
+Пример "Загрузка процессора?":
+
+````shell
+$ http http://127.0.0.1:8988/shop_kotlin/api/actuator/metrics/system.cpu.usage
+
+{
+    "availableTags": [
+        {
+            "tag": "application",
+            "values": [
+                "shop_kotlin"
+            ]
+        }
+    ],
+    "baseUnit": null,
+    "description": "The \"recent cpu usage\" for the whole system",
+    "measurements": [
+        {
+            "statistic": "VALUE",
+            "value": 0.23764093668690373
+        }
+    ],
+    "name": "system.cpu.usage"
+}
+````
+
 Нагрузочные тесты показали следующие результаты:
 64M - приложение выпадает с OutOfMemory
 128M - тесты проходят
@@ -572,7 +598,7 @@ scrape_configs:
 Для просмотра получаемых prometheus-ом метрик можно выполнить:
 
 ````shell
-$ http http://127.0.0.1:8788/api/actuator/prometheus**
+$ http http://127.0.0.1:8988/shop_kotlin/api/actuator/prometheus/
 ````
 (Использован [httpie](https://httpie.io/))
 
