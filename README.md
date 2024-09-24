@@ -1059,10 +1059,10 @@ dependencies {
 
 [Spring Boot, Hibernate и Kotlin для новичков шаг за шагом](https://habr.com/ru/companies/domclick/articles/505860/)
 [Интеграционное тестирование REST](http://v.perm.ru/main/index.php/34-behave-testirovanie)<br/>
-[Настройка и использование Prometheus, Grafana](http://v.perm.ru/main/index.php/64-nastrojka-i-ispolzovanie-prometheus-grafana)<br/>
+[Настройка и использование Prometheus, Grafana](https://v.perm.ru/index.php/instrumenty-devops/setup-prometheus-grafana)<br/>
 [Шпаргалка по Docker](http://v.perm.ru/main/index.php/homepage/56-shpargalka-po-docker)<br/>
 [Set java version](http://v.perm.ru/main/index.php/homepage/60-set-java-version)<br/>
-[Установка и настройка домашнего Nexus/Jenkins](http://v.perm.ru/main/index.php/50-organizatsiya-sobstvennogo-ci-cd)<br/>
+[Настройка deploy в Nexus из Jenkins](https://v.perm.ru/index.php/instrumenty-devops/nastrojka-deploy-v-nexus-s-pomosu-jenkins)<br/>
 
 #### TODO
 
