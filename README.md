@@ -277,6 +277,9 @@ SPRING_PROFILES_ACTIVE=dev ./gradlew clean bootRun
 
 Ошибка: "Access to XMLHttpRequest at 'http://localhost:8080/api/hello' from origin 'http://localhost:4200' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource." Настраивается в ru.perm.v.shopkotlin.config.CorsFilter.
 
+Суть в двух словах: CORS не нужно отключать, а наборот включить и настроить. Другими словами, нужно настроить разрешения в приложении откуда разрешать запросы. Примеры заголовков: Access-Control-Allow-Origin: *, Access-Control-Allow-Origin: http://localhost:9999.
+Необходимые настройки сделаны в [https://github.com/cherepakhin/shop_kotlin/blob/dev/src/main/kotlin/ru/perm/v/shopkotlin/config/CorsFilter.kt](https://github.com/cherepakhin/shop_kotlin/blob/dev/src/main/kotlin/ru/perm/v/shopkotlin/config/CorsFilter.kt)
+
 <a id="create_runable"></a>
 ### Создание запускаемого файла и его запуск
 
