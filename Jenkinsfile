@@ -35,7 +35,8 @@ pipeline {
                 NEXUS_CRED = credentials('nexus_admin')
             }
             steps {
-                sh 'cd shop_kotlin;./gradlew publish'
+                git url: 'https://github.com/cherepakhin/shop_kotlin.git', branch: 'dev'
+                sh './gradlew publish'
             }
         }
     }
