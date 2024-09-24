@@ -785,6 +785,16 @@ org.gradle.jvmargs=-Xmx512M
 implementation("ru.perm.v:shop_kotlin_extdto:0.0.3")
 ````
 
+В build.gradle.kts указан приватный maven репозитории для поиска этой зависимости: 
+
+````shell
+maven {
+  ....
+  url = uri("http://v.perm.ru:8081/repository/ru.perm.v")
+  ....
+}
+````
+
 <a id="nexus"></a>
 ### Deploy to NEXUS repository
 
