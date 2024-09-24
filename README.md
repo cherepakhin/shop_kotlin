@@ -496,15 +496,34 @@ Swagger доступен по адресу [http://127.0.0.1:8980/shop_kotlin/ap
 
 Spring Actuator предназначен для получения информации о работающем приложении - статус приложения (жив/нет),  использовании памяти, cpu и т.п.. Поключен по адресу [http://127.0.0.1:8988/shop_kotlin/api/actuator](http://127.0.0.1:8988/shop_kotlin/api/actuator)
 
-порт указан в application.yaml:
+Подключение библиотек сервисов мониторинга делается в build.gradle.kts с помощью 
+
+````yaml
+dependencies {
+  ....
+  // spring-boot-starter-actuator
+  implementation("org.springframework.boot:spring-boot-starter-actuator")
+  // prometheus - metrics
+  implementation("io.micrometer:micrometer-registry-prometheus")
+  ....  
+}
+````
+порт и url указан в application.yaml:
 
 ````yaml
 management:
-  ...
+  ....
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: "/shop_kotlin/api/actuator"
+  ....
   server:
     port: 8988
-
+  ....
 ````
+
 Использование из командной строки:
 
 ````shell
