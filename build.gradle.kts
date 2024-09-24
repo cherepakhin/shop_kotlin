@@ -209,9 +209,12 @@ publishing {
             //  publish в nexus "./gradlew publish" из ноута и Jenkins проходит
             // export NEXUS_CRED_USR=admin
             // echo $NEXUS_CRED_USR
+//TODO: import external shell env not work!
+//            username = System.getenv("NEXUS_CRED_USR")
+//            password = System.getenv("NEXUS_CRED_PSW")
             credentials {
-                username = System.getenv("NEXUS_CRED_USR")
-                password = System.getenv("NEXUS_CRED_PSW")
+                username = "admin"
+                password = "pass"
             }
         }
     }
