@@ -11,6 +11,7 @@
 [Покрытие тестами](#coverage_test)<br/>
 [Spring profiles](#spring_profiles)
 [Тестовый запуск](#run)<br/>
+[CORS filter](#cors)<br/>
 
 [Создание запускаемого файла и его запуск](#create_runable)<br/>
 [Publishing SpringBoot "FAT" jar](#publishing-springboot-fat-jar)<br/>
@@ -268,6 +269,12 @@ SPRING_PROFILES_ACTIVE=dev ./gradlew clean bootRun
 ````shell
 ./gradlew bootRun
 ````
+
+<a id="cors"></a>
+### CORS filter
+
+Доходчиво описано в [https://sysout.ru/nastrojka-cors-v-spring-security/](https://sysout.ru/nastrojka-cors-v-spring-security/)
+Ошибка: "Access to XMLHttpRequest at 'http://localhost:8080/api/hello' from origin 'http://localhost:4200' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource." Настраивается в ru.perm.v.shopkotlin.config.CorsFilter.
 
 <a id="create_runable"></a>
 ### Создание запускаемого файла и его запуск
