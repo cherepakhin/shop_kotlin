@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11
+FROM openjdk:11
 VOLUME /tmp
 ARG JAR_FILE
 COPY ${JAR_FILE} app.jar
