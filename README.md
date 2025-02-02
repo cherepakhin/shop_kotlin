@@ -413,7 +413,7 @@ CONTAINER ID   IMAGE             COMMAND                CREATED          STATUS 
 c70ef82f3a54   shop_kotlin/app   "java -jar /app.jar"   43 seconds ago   Up 42 seconds   0.0.0.0:8080->8980/tcp   inspiring_germain
 
 # simple test
-$ http :8080/api/group_product/find?name='Comp'
+$ http http://172.17.0.3:8980/shop_kotlin/api/echo/aaaa
 
 $ docker ps -a
 # 2d1325e1222a   shop_kotlin:0.24.0105    "/cnb/process/web" ...
