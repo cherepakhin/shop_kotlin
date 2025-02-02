@@ -6,7 +6,7 @@ import kotlin.test.assertTrue
 internal class LogCtrlTest {
 
     @Test
-    fun echoStr() {
+    fun getLog() {
         val ctrl = LogCtrl()
 
         assertTrue { ctrl.getLog().length > 0 }
