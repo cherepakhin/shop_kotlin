@@ -1,6 +1,7 @@
 package ru.perm.v.shopkotlin.rest.codeium;
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -12,6 +13,8 @@ import ru.perm.v.shopkotlin.rest.EchoCtrl
 
 @ExtendWith(SpringExtension::class)
 @WebMvcTest(EchoCtrl::class)
+// тесты отключены. Были рабочими. Перешел на GigaCode.
+@Disabled
 class EchoCtrlTest {
 
     @Autowired
