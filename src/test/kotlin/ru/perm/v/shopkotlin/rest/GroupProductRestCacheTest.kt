@@ -37,6 +37,7 @@ class GroupProductRestCacheTest(@Autowired val groupProductRest: GroupProductRes
     fun checkWorkCacheOnGetById() {
         val ID = 1L
         val gr1 = GroupProductDTO(ID, "NAME_1")
+        Mockito.`when`(groupProductService.existsByN(ID)).thenReturn(true)
         Mockito.`when`(groupProductService.getByN(ID)).thenReturn(gr1)
 
         // do 3 times GET to REST for check work cache
