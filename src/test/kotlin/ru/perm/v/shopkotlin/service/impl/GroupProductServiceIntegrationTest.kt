@@ -108,7 +108,7 @@ class GroupProductServiceIntegrationTest {
 
         assertEquals(NAME, createdDTO.name)
         assertEquals(PARENT_N, createdDTO.parentN)
-        assertFalse(createdDTO.haveChilds)
+        assertFalse(createdDTO.haveSubGroups)
     }
 
     @Test

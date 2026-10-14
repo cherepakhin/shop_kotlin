@@ -16,6 +16,6 @@ internal class GroupProductDTOTest {
 
         assertEquals(N, group.n)
         assertEquals(NAME, group.name)
-        assertTrue(group.haveChilds)
+        assertTrue(group.haveSubGroups)
     }
 }

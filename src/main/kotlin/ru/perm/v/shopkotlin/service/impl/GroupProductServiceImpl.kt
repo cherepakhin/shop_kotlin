@@ -35,14 +35,14 @@ class GroupProductServiceImpl(
             groupProductDTO.n,
             groupProductDTO.name,
             groupProductDTO.parentN,
-            groupProductDTO.haveChilds)
+            groupProductDTO.haveSubGroups)
         val savedGroup = repository.saveAndFlush(groupForSave)
         logger.info(format(">>>>after count=%s",repository.count()))
         return GroupProductDTO(
             savedGroup.n,
             savedGroup.name,
             savedGroup.parentN,
-            savedGroup.haveChilds
+            savedGroup.haveSubGroups
         )
     }
 
@@ -55,7 +55,7 @@ class GroupProductServiceImpl(
                 groupProductEntity.n,
                 groupProductEntity.name,
                 groupProductEntity.parentN,
-                groupProductEntity.haveChilds
+                groupProductEntity.haveSubGroups
             )
         } else {
             throw Exception(String.format(ErrMessages.NOT_FOUND_GROUP_BY_ID, n))
@@ -87,7 +87,7 @@ class GroupProductServiceImpl(
         // val entities = repository.findAll(booleanBuilder, QSort.by("name", "n"))
         val entities = repository.findAll(booleanBuilder, QSort.by(filter.listSortBy.joinToString(",")))
 
-        val dtos = entities.map { GroupProductDTO(it.n, it.name, it.parentN, it.haveChilds) }
+        val dtos = entities.map { GroupProductDTO(it.n, it.name, it.parentN, it.haveSubGroups) }
         return dtos
     }
 
@@ -99,19 +99,19 @@ class GroupProductServiceImpl(
         val subGroups = repository.findAllByParentN(n)
         val ret = ArrayList<GroupProductDTO>()
         for (subGroup in subGroups) {
-            ret.add(GroupProductDTO(subGroup.n, subGroup.name, subGroup.parentN, subGroup.haveChilds))
+            ret.add(GroupProductDTO(subGroup.n, subGroup.name, subGroup.parentN, subGroup.haveSubGroups))
         }
         return ret
     }
 
     override fun findAllByOrderByNAsc(): List<GroupProductDTO> {
         return repository.findAllByOrderByNAsc()
-            .map { g -> GroupProductDTO(g.n, g.name, g.parentN, g.haveChilds) }//.toList()
+            .map { g -> GroupProductDTO(g.n, g.name, g.parentN, g.haveSubGroups) }//.toList()
     }
 
     override fun findByNameContaining(name: String): List<GroupProductDTO> {
         return repository.findByNameContaining(name)
-            .map { g -> GroupProductDTO(g.n, g.name, g.parentN, g.haveChilds) }//.toList()
+            .map { g -> GroupProductDTO(g.n, g.name, g.parentN, g.haveSubGroups) }//.toList()
     }
 
     // Можно совместить с create() или даже сделать один save(). Но сделал именно так.
@@ -121,14 +121,14 @@ class GroupProductServiceImpl(
             throw Exception(String.format(ErrMessages.NOT_FOUND_GROUP_BY_ID, groupProductDTO.n))
         }
         val groupProductEntity = GroupProductEntity(
-            groupProductDTO.n, groupProductDTO.name, groupProductDTO.parentN, groupProductDTO.haveChilds
+            groupProductDTO.n, groupProductDTO.name, groupProductDTO.parentN, groupProductDTO.haveSubGroups
         )
         val newGroup = repository.save(groupProductEntity)
         return GroupProductDTO(
             newGroup.n,
             newGroup.name,
             newGroup.parentN,
-            newGroup.haveChilds
+            newGroup.haveSubGroups
         )
     }
 

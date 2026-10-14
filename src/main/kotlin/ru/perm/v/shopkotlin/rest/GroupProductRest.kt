@@ -105,7 +105,7 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
             throw Exception(ErrMessages.NOT_FOUND_ANY_GROUP)
         }
         return groups.map { entity ->
-            GroupProductDTO(entity.n, entity.name, entity.parentN, entity.haveChilds)
+            GroupProductDTO(entity.n, entity.name, entity.parentN, entity.haveSubGroups)
         }
 //        Error: .toList() лишний. Уже в list после map. Похоже особенности kotlin.
 //        Нужно groups заколлектить в List и уже после как обычно маппить
@@ -139,7 +139,7 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
             throw Exception(format(ErrMessages.NOT_FOUND_GROUP_BY_NAME, name))
         }
         return groups.map { entity ->
-            GroupProductDTO(entity.n, entity.name, entity.parentN, entity.haveChilds)
+            GroupProductDTO(entity.n, entity.name, entity.parentN, entity.haveSubGroups)
         }
     }
 
@@ -157,7 +157,7 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
         }
         val subGroups = groupProductService.getSubGroups(n)
         return subGroups.map { entity ->
-            GroupProductDTO(entity.n, entity.name, entity.parentN, entity.haveChilds)
+            GroupProductDTO(entity.n, entity.name, entity.parentN, entity.haveSubGroups)
         }
     }
 

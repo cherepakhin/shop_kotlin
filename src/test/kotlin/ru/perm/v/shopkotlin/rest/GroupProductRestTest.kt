@@ -137,7 +137,7 @@ class GroupProductRestTest {
         }
 
         assertEquals(
-            "GroupProductDTO(n=1, name=, parentN=-100, haveChilds=true) has errors: Name is empty\n",
+            "GroupProductDTO(n=1, name=, parentN=-100, haveSubGroups=true) has errors: Name is empty\n",
             excpt.message
         )
         Mockito.verify(mockGroupProductService, Mockito.times(0)).create(groupDTO)

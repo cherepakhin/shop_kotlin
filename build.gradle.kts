@@ -8,7 +8,7 @@ version = "0.24.0924.1"
 description = "shop kotlin description"
 
 java.sourceCompatibility = JavaVersion.VERSION_11
-var querydslVersion = "5.0.0"
+var querydslVersion = "5.1.0"
 var springFoxVersion = "3.0.0"
 var springBootVersion = "2.5.6"
 var springDependencyManagement = "1.0.3.RELEASE"
@@ -23,6 +23,7 @@ buildscript {
 
     repositories {
         mavenCentral()
+        gradlePluginPortal()
     }
 
     dependencies {
@@ -40,7 +41,8 @@ repositories {
 //      ERR  url = uri("http://192.168.1.20:8082/ru.perm.v/ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
 //      ERR  url = uri("http://192.168.1.20:8082/ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
 
-        url = uri("http://v.perm.ru:8081/repository/ru.perm.v") //OK
+//        url = uri("http://v.perm.ru:8081/repository/ru.perm.v") //OK
+        url = uri("http://v:8081/repository/ru.perm.v") //OK
         isAllowInsecureProtocol = true
         credentials {
             username = "admin"

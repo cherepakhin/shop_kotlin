@@ -23,8 +23,8 @@ open class GroupProductEntity { // open needed for Hibernate
     open var name: String = ""
     @Column(name = "parent_n", nullable = false)
     open var parentN: Long = -1
-    @Column(name = "have_childs", nullable = false)
-    open var haveChilds: Boolean = false
+    @Column(name = "have_sub_groups", nullable = false)
+    open var haveSubGroups: Boolean = false
 
     // Empty constructor needed for Hibernate
     constructor() {
@@ -36,11 +36,11 @@ open class GroupProductEntity { // open needed for Hibernate
         this.name = name
     }
 
-    constructor(n: Long, name: String, parentN: Long, haveChilds: Boolean) {
+    constructor(n: Long, name: String, parentN: Long, haveSubGroups: Boolean) {
         this.n = n
         this.name = name
         this.parentN = parentN
-        this.haveChilds = haveChilds
+        this.haveSubGroups = haveSubGroups
     }
 
     override fun equals(other: Any?): Boolean {
@@ -50,7 +50,7 @@ open class GroupProductEntity { // open needed for Hibernate
         if (n != other.n) return false
         if (name != other.name) return false
         if (parentN != other.parentN) return false
-        if (haveChilds != other.haveChilds) return false
+        if (haveSubGroups != other.haveSubGroups) return false
 
         return true
     }
@@ -59,12 +59,12 @@ open class GroupProductEntity { // open needed for Hibernate
         var result = n.hashCode()
         result = 31 * result + name.hashCode()
         result = 31 * result + parentN.hashCode()
-        result = 31 * result + haveChilds.hashCode()
+        result = 31 * result + haveSubGroups.hashCode()
         return result
     }
 
     override fun toString(): String {
-        return "GroupProductEntity(n=$n, name='$name', parentN=$parentN, haveChilds=$haveChilds)"
+        return "GroupProductEntity(n=$n, name='$name', parentN=$parentN, haveChilds=$haveSubGroups)"
     }
 
 

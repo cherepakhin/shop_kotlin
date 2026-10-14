@@ -19,7 +19,7 @@ class GroupProductDTOEasyCodeTest {
         assertEquals(-1, groupProductDTO.n)
         assertEquals("", groupProductDTO.name)
         assertEquals(-1, groupProductDTO.parentN)
-        assertEquals(false, groupProductDTO.haveChilds)
+        assertEquals(false, groupProductDTO.haveSubGroups)
     }
 
     @Test
@@ -35,7 +35,7 @@ class GroupProductDTOEasyCodeTest {
         assertEquals(n, groupProductDTO.n)
         assertEquals(name, groupProductDTO.name)
         assertEquals(parentN, groupProductDTO.parentN)
-        assertEquals(haveChilds, groupProductDTO.haveChilds)
+        assertEquals(haveChilds, groupProductDTO.haveSubGroups)
     }
 
     @Test

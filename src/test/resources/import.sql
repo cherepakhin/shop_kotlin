@@ -3,16 +3,16 @@ delete from group_product;
 delete from price;
 delete from pricetype;
 
-insert into group_product(n, name, parent_n, have_childs) values (1, 'IT products', -1, true);
+insert into group_product(n, name, parent_n, have_sub_groups) values (1, 'IT products', -1, true);
 
-insert into group_product(n, name, parent_n, have_childs) values (2, 'Computers', 1, true);
-insert into group_product(n, name, parent_n, have_childs) values (3, 'Desktop Computers', 2, false);
-insert into group_product(n, name, parent_n, have_childs) values (4, 'Notebooks', 2, false);
-insert into group_product(n, name, parent_n, have_childs) values (5, 'Monitors', 1, false);
+insert into group_product(n, name, parent_n, have_sub_groups) values (2, 'Computers', 1, true);
+insert into group_product(n, name, parent_n, have_sub_groups) values (3, 'Desktop Computers', 2, false);
+insert into group_product(n, name, parent_n, have_sub_groups) values (4, 'Notebooks', 2, false);
+insert into group_product(n, name, parent_n, have_sub_groups) values (5, 'Monitors', 1, false);
 
-insert into group_product(n, name, parent_n, have_childs) values (6, 'Hard drives', 1, false);
+insert into group_product(n, name, parent_n, have_sub_groups) values (6, 'Hard drives', 1, false);
 
-insert into group_product(n, name, parent_n, have_childs) values (7, 'UNKNOWN PRODUCTS', 1, false);
+insert into group_product(n, name, parent_n, have_sub_groups) values (7, 'UNKNOWN PRODUCTS', 1, false);
 
 insert into product(n, name, group_product_n) values (31, 'Desktop1', 3);
 insert into product(n, name, group_product_n) values (32, 'Desktop2', 3);

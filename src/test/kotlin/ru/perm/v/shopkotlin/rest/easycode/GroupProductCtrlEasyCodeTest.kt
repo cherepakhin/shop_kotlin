@@ -69,7 +69,7 @@ class GroupProductCtrlEasyCodeTest {
         }
 
         assertEquals(
-            "GroupProductDTO(n=1, name=, parentN=0, haveChilds=false) has errors: Name is empty\n",
+            "GroupProductDTO(n=1, name=, parentN=0, haveSubGroups=false) has errors: Name is empty\n",
             exception.message
         )
 

@@ -38,7 +38,6 @@ class PriceTypeServiceImplIntegrationTest {
     @ValueSource(ints = [1, 2])
     fun getByWithParamN(N: Long) {
         val priceTypeService = PriceTypeServiceImpl(priceTypeRepository)
-
         assertEquals(N, priceTypeService.getByN(N).n)
     }
 
