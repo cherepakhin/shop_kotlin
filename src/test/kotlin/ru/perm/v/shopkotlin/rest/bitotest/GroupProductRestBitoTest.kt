@@ -17,7 +17,8 @@ import ru.perm.v.shopkotlin.service.ProductService
  * Tests generated Bito (ChatGPT)
  */
 @SpringBootTest
-@Disabled // for DEMO work Bito
+// тесты отключены. Были рабочими. Перешел на GigaCode.
+@Disabled
 class GroupProductRestBitoTest {
 
     @MockBean

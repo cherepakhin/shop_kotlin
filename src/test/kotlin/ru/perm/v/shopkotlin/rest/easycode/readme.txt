@@ -1,4 +1,6 @@
 EasyCode вроде бесплатный. Боле-мене тесты осилил.
+// тесты отключены. Были рабочими. Перешел на GigaCode.
+@Disabled
 
 write unit tests for kotlin class:
 package ru.perm.v.shopkotlin.rest

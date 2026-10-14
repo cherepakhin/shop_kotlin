@@ -2,6 +2,7 @@ package ru.perm.v.shopkotlin.rest.bitotest
 
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mockito
@@ -22,6 +23,8 @@ import ru.perm.v.shopkotlin.service.ProductService
 @SpringBootTest
 @EnableCaching
 @ExtendWith(SpringExtension::class)
+// тесты отключены. Были рабочими. Перешел на GigaCode.
+@Disabled
 class ProductRestBitoTest {
     @MockBean
     private lateinit var productService: ProductService

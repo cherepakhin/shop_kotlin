@@ -1,6 +1,7 @@
 package ru.perm.v.shopkotlin.rest.easycode
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -13,6 +14,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @SpringBootTest
 @AutoConfigureMockMvc
+// тесты отключены. Были рабочими. Перешел на GigaCode.
+@Disabled
 class EchoCtrlEasyCodeTest(@Autowired private val mockMvc: MockMvc) {
 
     @Test

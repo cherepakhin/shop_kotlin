@@ -1,6 +1,7 @@
 package ru.perm.v.shopkotlin.rest.codeium
 
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.extension.ExtendWith
@@ -15,6 +16,8 @@ import ru.perm.v.shopkotlin.service.ProductService
 import kotlin.test.assertEquals
 
 @ExtendWith(MockitoExtension::class)
+// тесты отключены. Были рабочими. Перешел на GigaCode.
+@Disabled
 class ProductRestTest {
 
     @Test

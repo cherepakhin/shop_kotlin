@@ -2,6 +2,7 @@ package ru.perm.v.shopkotlin.rest.machinet
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
@@ -18,6 +19,8 @@ import ru.perm.v.shopkotlin.rest.ProductRest
 import ru.perm.v.shopkotlin.service.ProductService
 import kotlin.test.assertEquals
 
+// тесты отключены. Были рабочими. Перешел на GigaCode.
+@Disabled
 @WebMvcTest(ProductRest::class)
 class ProductRestMachinetTest(@Autowired private val mockMvc: MockMvc) {
 

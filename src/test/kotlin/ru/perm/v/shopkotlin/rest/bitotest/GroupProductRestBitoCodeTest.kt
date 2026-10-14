@@ -30,6 +30,7 @@ import java.util.*
  */
 @ExtendWith(SpringExtension::class)
 @WebMvcTest(GroupProductRest::class)
+// тесты отключены. Были рабочими. Перешел на GigaCode.
 @Disabled
 class GroupProductRestBitoCodeTest(@Autowired private val mockMvc: MockMvc) {
 

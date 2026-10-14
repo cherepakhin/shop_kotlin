@@ -1,6 +1,7 @@
 package ru.perm.v.shopkotlin.rest.easycode
 
 import org.junit.Assert
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
@@ -12,6 +13,8 @@ import ru.perm.v.shopkotlin.dto.ProductDTO
 import ru.perm.v.shopkotlin.rest.ProductRest
 import ru.perm.v.shopkotlin.service.ProductService
 
+// тесты отключены. Были рабочими. Перешел на GigaCode.
+@Disabled
 @ExtendWith(MockitoExtension::class)
 class ProductControllerTest {
 

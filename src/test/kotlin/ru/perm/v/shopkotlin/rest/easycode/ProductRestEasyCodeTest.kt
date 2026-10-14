@@ -2,6 +2,7 @@ package ru.perm.v.shopkotlin.rest.easycode
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.mockito.InjectMocks
 import org.mockito.Mock
@@ -13,7 +14,8 @@ import ru.perm.v.shopkotlin.dto.ProductDTO
 import ru.perm.v.shopkotlin.rest.ProductRest
 import ru.perm.v.shopkotlin.service.ProductService
 
-
+@Disabled
+// тесты отключены. Были рабочими. Перешел на GigaCode.
 class ProductRestEasyCodeTest {
 
     @Mock

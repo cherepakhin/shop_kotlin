@@ -3,6 +3,7 @@ package ru.perm.v.shopkotlin.rest.easycode
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
@@ -18,6 +19,8 @@ import javax.validation.Validator
 
 // Сгенерировано плагином EasyCode в VSCode (9.01.2024)
 // prompt: write unit test for GroupProductCtrl
+// тесты отключены. Были рабочими. Перешел на GigaCode.
+@Disabled
 class GroupProductCtrlEasyCodeTest {
 
     @Mock
