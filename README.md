@@ -80,6 +80,12 @@ Cоздать небольшое приложение на <b>Kotlin</b> с ис
 </ul>
 В качестве базы данных использовать in memory database, например H2.
 
+Java 11:
+
+````shell
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+````
+
 <a id="static_analize"></a>
 ### Статический анализатор Idea Analize
 
