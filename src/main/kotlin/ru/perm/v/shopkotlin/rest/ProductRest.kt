@@ -11,6 +11,7 @@ import ru.perm.v.shopkotlin.service.ProductService
 import java.lang.String.format
 import javax.validation.ConstraintViolation
 import javax.validation.Validation
+import ru.perm.v.shopkotlin.rest.ValidationException
 
 @RestController
 @RequestMapping("/product")
@@ -108,16 +109,10 @@ class ProductRest(val productService: ProductService) {
 
         if (violations.isNotEmpty()) {
             var messageError = ""
-// OLD STYLE
-//            for(violation in violations) {
-//                messageError = messageError.plus(violation.message + "\n")
-//            }
-
-// USED STREAM
             violations.forEach { violation ->
                 messageError = messageError.plus(violation.message + "\n")
             }
-            throw Exception("$productDTO has errors: $messageError")
+            throw ValidationException("$productDTO has errors: $messageError")
         }
     }
 

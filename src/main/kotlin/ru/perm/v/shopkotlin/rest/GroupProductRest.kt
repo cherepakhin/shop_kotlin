@@ -16,6 +16,9 @@ import ru.perm.v.shopkotlin.dto.GroupProductDTO
 import ru.perm.v.shopkotlin.service.GroupProductService
 import ru.perm.v.shopkotlin.service.ProductService
 import java.lang.String.format
+import ru.perm.v.shopkotlin.rest.ResourceNotFoundException
+import ru.perm.v.shopkotlin.rest.ResourceConflictException
+import ru.perm.v.shopkotlin.rest.ValidationException
 import javax.validation.ConstraintViolation
 import javax.validation.Valid
 import javax.validation.Validation
@@ -59,16 +62,10 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
 
         if (violations.size > 0) {
             var messageError = ""
-// OLD STYLE
-//            for(violation in violations) {
-//                messageError = messageError.plus(violation.message + "\n")
-//            }
-
-// USED STREAM
             violations.forEach { violation ->
                 messageError = messageError.plus(violation.message + "\n")
             }
-            throw Exception("$groupProductDTO has errors: $messageError")
+            throw ValidationException("$groupProductDTO has errors: $messageError")
         }
         return groupProductService.create(groupProductDTO)
     }
@@ -83,13 +80,12 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
         @PathVariable n: Long
     ): GroupProductDTO {
         if (n < 0) {
-            throw Exception(ErrMessages.ID_MUST_POSITIVE)
+            throw ValidationException(ErrMessages.ID_MUST_POSITIVE)
         }
-        try {
-            return groupProductService.getByN(n)
-        } catch (excpt: Exception) {
-            throw Exception(excpt.message)
+        if (!groupProductService.existsByN(n)) {
+            throw ResourceNotFoundException(format(NOT_FOUND_GROUP_BY_ID, n))
         }
+        return groupProductService.getByN(n)
     }
 
     /**
@@ -136,7 +132,7 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
 //        val groups = service.findByNameContaining(name).toList()
         val groups = groupProductService.findByNameContaining(name)
         if (groups.isEmpty()) {
-            throw Exception(format(ErrMessages.NOT_FOUND_GROUP_BY_NAME, name))
+            throw ResourceNotFoundException(format(ErrMessages.NOT_FOUND_GROUP_BY_NAME, name))
         }
         return groups.map { entity ->
             GroupProductDTO(entity.n, entity.name, entity.parentN, entity.haveSubGroups)
@@ -153,7 +149,7 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
         @PathVariable n: Long
     ): List<GroupProductDTO> {
         if (!groupProductService.existsByN(n)) {
-            throw Exception("Group product not found with id: $n")
+            throw ResourceNotFoundException("Group product not found with id: $n")
         }
         val subGroups = groupProductService.getSubGroups(n)
         return subGroups.map { entity ->
@@ -171,13 +167,13 @@ class GroupProductRest(val groupProductService: GroupProductService, val product
         @PathVariable n: Long
     ) {
         if (!groupProductService.existsByN(n)) {
-            throw Exception(format(NOT_FOUND_GROUP_BY_ID, n))
+            throw ResourceNotFoundException(format(NOT_FOUND_GROUP_BY_ID, n))
         }
         if (groupProductService.getSubGroups(n).isNotEmpty()) {
-            throw Exception(format(HAVE_SUBGROUPS, n))
+            throw ResourceConflictException(format(HAVE_SUBGROUPS, n))
         }
         if (productService.getByGroupProductN(n).isNotEmpty()) {
-            throw Exception(format(HAVE_PRODUCTS, n))
+            throw ResourceConflictException(format(HAVE_PRODUCTS, n))
         }
         groupProductService.deleteByN(n)
     }

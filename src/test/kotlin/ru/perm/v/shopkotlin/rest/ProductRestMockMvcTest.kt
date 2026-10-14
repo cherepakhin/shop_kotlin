@@ -9,6 +9,7 @@ import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mockito.`when`
 import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.doThrow
 import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 import org.springframework.beans.factory.annotation.Autowired
@@ -160,18 +161,15 @@ class ProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
     fun deleteByNotExistId() {
         val N = 10L
 
-        `when`(mockProductService.delete(N)).thenThrow(Exception("ERROR"))
+        doThrow(ResourceNotFoundException("Product not found with id: $N")).`when`(mockProductService).delete(N)
 
-        assertThrows<Exception> {
-            mockMvc.perform(
-                MockMvcRequestBuilders
-                    .delete("/product/" + N)
-                    .accept(MediaType.APPLICATION_JSON)
-                    .contentType(MediaType.APPLICATION_JSON)
-            )
-                .andExpect(MockMvcResultMatchers.status().isBadRequest)
-                .andReturn()
-        }
+        mockMvc.perform(
+            MockMvcRequestBuilders
+                .delete("/product/" + N)
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+        )
+            .andExpect(status().isNotFound)
     }
 
     @Test

@@ -3,20 +3,19 @@ package ru.perm.v.shopkotlin.rest
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mockito.`when`
+import org.mockito.kotlin.doReturn
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import ru.perm.v.shopkotlin.dto.GroupProductDTO
 import ru.perm.v.shopkotlin.service.GroupProductService
 import ru.perm.v.shopkotlin.service.ProductService
@@ -45,6 +44,7 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
 
     @Test
     fun getByNormalId() {
+        `when`(mockedGroupProductService.existsByN(1L)).thenReturn(true)
         `when`(mockedGroupProductService.getByN(1L)).thenReturn(GroupProductDTO(1L, "NAME_1"))
 
         val jsonGroup = mockMvc.perform(
@@ -60,14 +60,11 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
 
     @Test
     fun getByNegativeId() {
-        `when`(mockedGroupProductService.getByN(-1L)).thenThrow(Exception("ERROR"))
-        assertThrows<Exception> {
-            mockMvc.perform(
-                MockMvcRequestBuilders.get("/group_product/-1")
-                    .accept(MediaType.APPLICATION_JSON)
-            )
-                .andExpect(MockMvcResultMatchers.status().`is`(500))
-        }
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/group_product/-1")
+                .accept(MediaType.APPLICATION_JSON)
+        )
+            .andExpect(status().isBadRequest)
     }
 
     @Test
@@ -91,68 +88,34 @@ class GroupProductRestMockMvcTest(@Autowired private val mockMvc: MockMvc) {
 
     @Test
     fun getByNotExistId() {
-        `when`(mockedGroupProductService.getByN(100L)).thenThrow(Exception("NOT FOUND"))
+        `when`(mockedGroupProductService.existsByN(100L)).thenReturn(false)
 
-        val thrown = assertThrows<Exception> {
-            mockMvc.perform(
-                MockMvcRequestBuilders.get("/group_product/100")
-                    .accept(MediaType.APPLICATION_JSON)
-            )
-        }
-
-        assertEquals(
-            "Request processing failed; nested exception is java.lang.Exception: NOT FOUND",
-            thrown.message
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/group_product/100")
+                .accept(MediaType.APPLICATION_JSON)
         )
+            .andExpect(status().isNotFound)
     }
 
-// OK
-//        mockMvc.get("/group_product/1") {
-//            contentType = MediaType.APPLICATION_JSON
-//            accept = MediaType.APPLICATION_JSON
-//        }.andExpect {
-//            status { MockMvcResultMatchers.status().isOk }
-////            content { contentType(MediaType.APPLICATION_JSON) }
-////            content { json("{}") }
-//        }
-
-    //        mockMvc.get("/group_product/100") {
-//            contentType = MediaType.APPLICATION_JSON
-//            accept = MediaType.APPLICATION_JSON
-//        }.andExpect {
-//            status { MockMvcResultMatchers.status().is5xxServerError }
-////            content { contentType(MediaType.APPLICATION_JSON) }
-////            content { json("{}") }
-//        }
     @Test
     fun getByNotExistId_OtherVariant() {
-        `when`(mockedGroupProductService.getByN(100L)).thenThrow(Exception("NOT FOUND"))
+        `when`(mockedGroupProductService.existsByN(100L)).thenReturn(false)
 
-        try {
-            mockMvc.get("/group_product/100") {
-                contentType = MediaType.APPLICATION_JSON
-                accept = MediaType.APPLICATION_JSON
-            }
-
-        } catch (excp: Exception) {
-            assertEquals("Request processing failed; nested exception is java.lang.Exception: NOT FOUND", excp.message)
-        }
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/group_product/100")
+                .accept(MediaType.APPLICATION_JSON)
+        )
+            .andExpect(status().isNotFound)
     }
 
     @Test
     fun deleteForNotExist() {
         val N = 100L
         `when`(mockedGroupProductService.existsByN(N)).thenReturn(false)
-        val excpt = assertThrows<Exception> {
-            mockMvc.perform(
-                MockMvcRequestBuilders.delete("/group_product/" + N)
-            )
-        }
-        val ERROR_MESSAGE =
-            "Request processing failed; nested exception is java.lang.Exception: Group product not found with id=100"
 
-        assertEquals(ERROR_MESSAGE, excpt.message)
-        // Another way verify
-        assertTrue(excpt.message.equals(ERROR_MESSAGE))
+        mockMvc.perform(
+            MockMvcRequestBuilders.delete("/group_product/" + N)
+        )
+            .andExpect(status().isNotFound)
     }
 }
