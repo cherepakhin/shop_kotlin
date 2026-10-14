@@ -87,9 +87,12 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 ````
 
 <a id="static_analize"></a>
-### Статический анализатор Idea Analize
+### Статический анализатор 
 
-Проверка кода. Вызывается из контекстного меню Analize - Inspect Code.
+Проверка кода. Вызывается из контекстного меню:
+
+GigaIde: Code - Inspect Code
+Idea: Analize - Inspect Code.
 
 <a id="sonarcube"></a>
 ### Статический анализатор SonarCube
