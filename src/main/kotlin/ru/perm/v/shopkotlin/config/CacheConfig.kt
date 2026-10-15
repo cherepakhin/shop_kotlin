@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration
 
 
 @Configuration
-@EnableCaching
 class CacheConfig : CachingConfigurerSupport() {
     @Bean
     override fun cacheManager(): CacheManager {

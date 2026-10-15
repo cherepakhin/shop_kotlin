@@ -11,6 +11,7 @@ import ru.perm.v.shopkotlin.entity.GroupProductEntity
 import ru.perm.v.shopkotlin.entity.QGroupProductEntity
 import ru.perm.v.shopkotlin.filter.GroupProductFilter
 import ru.perm.v.shopkotlin.repository.GroupProductRepository
+import ru.perm.v.shopkotlin.rest.ResourceNotFoundException
 import ru.perm.v.shopkotlin.service.GroupProductService
 import ru.perm.v.shopkotlin.service.ProductService
 import java.lang.String.format
@@ -58,7 +59,7 @@ class GroupProductServiceImpl(
                 groupProductEntity.haveSubGroups
             )
         } else {
-            throw Exception(String.format(ErrMessages.NOT_FOUND_GROUP_BY_ID, n))
+            throw ResourceNotFoundException(String.format(ErrMessages.NOT_FOUND_GROUP_BY_ID, n))
         }
         //NOTE: В kotlin, при проверке на существование, можно короче, через '?'. Так:
         // val groupProductEntity = repository.getByN(n)?: throw Exception(String.format("GroupProduct with n=%s not exist ", n))
@@ -78,7 +79,7 @@ class GroupProductServiceImpl(
         if (filter.listN.isNotEmpty()) {
             booleanBuilder = booleanBuilder.and(QGroupProductEntity.groupProductEntity.n.`in`(filter.listN))
         }
-        if (filter.listN.isNotEmpty()) {
+        if (filter.name.isNotEmpty()) {
             booleanBuilder =
                 booleanBuilder.and(QGroupProductEntity.groupProductEntity.name.like("%" + filter.name + "%"))
         }
@@ -118,7 +119,7 @@ class GroupProductServiceImpl(
     @Throws(Exception::class)
     override fun update(groupProductDTO: GroupProductDTO): GroupProductDTO {
         if (!existsByN(groupProductDTO.n)) {
-            throw Exception(String.format(ErrMessages.NOT_FOUND_GROUP_BY_ID, groupProductDTO.n))
+            throw ResourceNotFoundException(String.format(ErrMessages.NOT_FOUND_GROUP_BY_ID, groupProductDTO.n))
         }
         val groupProductEntity = GroupProductEntity(
             groupProductDTO.n, groupProductDTO.name, groupProductDTO.parentN, groupProductDTO.haveSubGroups
@@ -135,7 +136,7 @@ class GroupProductServiceImpl(
     @Throws(Exception::class)
     override fun deleteByN(n: Long) {
         if (!existsByN(n)) {
-            throw Exception(String.format(ErrMessages.NOT_FOUND_GROUP_BY_ID, n))
+            throw ResourceNotFoundException(String.format(ErrMessages.NOT_FOUND_GROUP_BY_ID, n))
         }
         repository.deleteByN(n)
     }

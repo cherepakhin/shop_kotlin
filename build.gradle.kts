@@ -18,20 +18,6 @@ var shopKotlinExtDtoVersion = "0.0.5"
 
 configurations.create("querydsl")
 
-buildscript {
-    var kotlinVersion: String? by extra; kotlinVersion = "1.1.51"
-
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-    }
-
-    dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-    }
-
-}
-
 repositories {
     mavenCentral()
     mavenLocal()
@@ -45,9 +31,8 @@ repositories {
         url = uri("http://v:8081/repository/ru.perm.v") //OK
         isAllowInsecureProtocol = true
         credentials {
-            username = "admin"
-            password = "pass"
-
+            username = System.getenv("NEXUS_CRED_USR") ?: "admin"
+            password = System.getenv("NEXUS_CRED_PSW") ?: "pass"
 // export NEXUS_CI_USER=admin
 // echo $NEXUS_CI_USER
 //            username = System.getenv("NEXUS_CRED_USR") ?: extra.properties["nexus-ci-username"] as String?
@@ -56,6 +41,15 @@ repositories {
 //            password = System.getenv("NEXUS_CRED_PASS") ?: extra.properties["nexus-ci-password"] as String?
         }
     }
+}
+
+buildscript {
+    var kotlinVersion: String? by extra; kotlinVersion = "1.1.51"
+
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+    }
+
 }
 
 plugins {
@@ -135,7 +129,6 @@ dependencies {
     testImplementation ("org.springframework.boot:spring-boot-starter-test") {
         exclude("org.mockito", "mockito-core")
     }
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
     testImplementation("org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion")
     compileOnly("org.springframework.boot:spring-boot-starter-actuator")
@@ -215,8 +208,8 @@ publishing {
 //            username = System.getenv("NEXUS_CRED_USR")
 //            password = System.getenv("NEXUS_CRED_PSW")
             credentials {
-                username = "admin"
-                password = "pass"
+                username = System.getenv("NEXUS_CRED_USR") ?: "admin"
+                password = System.getenv("NEXUS_CRED_PSW") ?: "pass"
             }
         }
     }

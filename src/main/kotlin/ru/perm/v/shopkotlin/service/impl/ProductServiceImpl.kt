@@ -9,6 +9,8 @@ import ru.perm.v.shopkotlin.entity.ProductEntity
 import ru.perm.v.shopkotlin.entity.QProductEntity
 import ru.perm.v.shopkotlin.filter.ProductFilter
 import ru.perm.v.shopkotlin.repository.ProductRepository
+import ru.perm.v.shopkotlin.rest.ResourceNotFoundException
+import ru.perm.v.shopkotlin.rest.ValidationException
 import ru.perm.v.shopkotlin.service.GroupProductService
 import ru.perm.v.shopkotlin.service.ProductService
 
@@ -41,10 +43,10 @@ class ProductServiceImpl(var productRepository: ProductRepository,
     /**
      * ID in input dto will be ignored. ID will calculate
      */
-    @Throws(Exception::class)
+    @Throws(ResourceNotFoundException::class)
     override fun create(dto: ProductDTO): ProductDTO {
         if (!groupService.existsByN(dto.groupDtoN)) {
-            throw Exception(String.format("GroupProduct with n=%s not exist", dto.groupDtoN))
+            throw ResourceNotFoundException(String.format("GroupProduct with n=%s not exist", dto.groupDtoN))
         }
         val n = productRepository.getNextN()
         val savedProduct = productRepository.save(ProductEntity(n, dto.name, dto.groupDtoN))
@@ -67,7 +69,7 @@ class ProductServiceImpl(var productRepository: ProductRepository,
             val entity = product.get()
             return ProductDTO(entity.n, entity.name, entity.groupProductN)
         } else {
-            throw Exception(String.format(ErrMessages.NOT_FOUND_PRODUCT_BY_ID, n))
+            throw ResourceNotFoundException(String.format(ErrMessages.NOT_FOUND_PRODUCT_BY_ID, n))
         }
     }
 
@@ -116,10 +118,10 @@ class ProductServiceImpl(var productRepository: ProductRepository,
     @Throws(Exception::class)
     override fun update(dto: ProductDTO): ProductDTO {
         if (!groupService.existsByN(dto.groupDtoN)) {
-            throw Exception(String.format("GroupProduct with n=%s not exist", dto.groupDtoN))
+            throw ValidationException(String.format("GroupProduct with n=%s not exist", dto.groupDtoN))
         }
         if (!existByN(dto.n)) {
-            throw Exception(String.format("Product with n=%s not exist", dto.n))
+            throw ValidationException(String.format("Product with n=%s not exist", dto.n))
         }
         val savedProduct = productRepository.save(ProductEntity(dto.n, dto.name, dto.groupDtoN))
         return ProductDTO(savedProduct.n, savedProduct.name, savedProduct.groupProductN)
@@ -128,7 +130,7 @@ class ProductServiceImpl(var productRepository: ProductRepository,
     @Throws(Exception::class)
     override fun delete(n: Long) {
         if (!existByN(n)) {
-            throw Exception(String.format("Product with n=%s not exist", n))
+            throw ResourceNotFoundException(String.format("Product with n=%s not exist", n))
         }
         productRepository.deleteById(n)
     }
