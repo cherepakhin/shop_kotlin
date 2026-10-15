@@ -1,0 +1,1 @@
+scp build/libs/shop_kotlin*.jar v:/home/vasi/temp
