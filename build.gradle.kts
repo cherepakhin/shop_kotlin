@@ -22,23 +22,18 @@ repositories {
     mavenCentral()
     mavenLocal()
     maven {
-
-//      ERR  url = uri("http://192.168.1.20:8082/repository/ru.perm.v/ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
-//      ERR  url = uri("http://192.168.1.20:8082/ru.perm.v/ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
-//      ERR  url = uri("http://192.168.1.20:8082/ru/perm/v/shop_kotlin_extdto/0.0.2/shop_kotlin_extdto-0.0.2.jar")
-
 //        url = uri("http://v.perm.ru:8081/repository/ru.perm.v") //OK
         url = uri("http://v:8081/repository/ru.perm.v") //OK
         isAllowInsecureProtocol = true
         credentials {
             username = System.getenv("NEXUS_CRED_USR") ?: "admin"
             password = System.getenv("NEXUS_CRED_PSW") ?: "pass"
-// export NEXUS_CI_USER=admin
-// echo $NEXUS_CI_USER
-//            username = System.getenv("NEXUS_CRED_USR") ?: extra.properties["nexus-ci-username"] as String?
-// export NEXUS_CI_PASS=pass
-// echo $NEXUS_CI_PASS
-//            password = System.getenv("NEXUS_CRED_PASS") ?: extra.properties["nexus-ci-password"] as String?
+
+            // For set variables:
+            // export NEXUS_CRED_USR=admin
+            // echo $NEXUS_CRED_USR
+            // export NEXUS_CRED_PSW=pass
+            // echo $NEXUS_CRED_PSW
         }
     }
 }
@@ -66,8 +61,11 @@ plugins {
     java
     idea
     application
+// позволяет сделать классы и их члены открытыми (open), даже если сами классы объявлены final, что бывает нужно, например, для работы с Hibernate (для генерации прокси-объектов) или мокирования.
 //    kotlin("plugin.allopen")
+// автоматически генерирует конструктор без параметров
 //    kotlin("plugin.noarg")
+
 //	id 'io.qameta.allure' version '2.11.2' // version 2.10.0 WORK! NO WARNINGS for generate allure report
 }
 
@@ -76,14 +74,6 @@ apply(plugin = "org.springframework.boot")
 apply(plugin = "io.spring.dependency-management")
 apply(plugin = "kotlin-kapt")
 
-
-repositories {
-    mavenCentral()
-    maven {
-        url = uri("https://plugins.gradle.org/m2/")
-    }
-    gradlePluginPortal()
-}
 
 java.sourceSets["main"].java {
     srcDir("build/classes/java/main")
@@ -155,17 +145,13 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
 }
 
+// for build.gradle:
 //tasks.test{
 //    filter{
 //////skip classes test with name ends IntegrationTest
 //        excludeTestsMatching("**/*IntegrationTest")
 //    }
 //
-//}
-
-// WORKED!
-//tasks.withType<Test> {
-//    exclude("**/*IntegrationTest**")
 //}
 
 tasks.withType<Test> {
@@ -175,9 +161,6 @@ tasks.withType<Test> {
 //        events("standardOut", "started", "passed", "skipped", "failed")
         events("passed", "skipped", "failed")
     }
-//    if (project.hasProperty('excludeTests')) {
-//        exclude project.property('excludeTests')
-//    }
     filter {
         exclude("*IntegrationTest*")
     }
@@ -201,12 +184,9 @@ publishing {
         maven {
             url = uri("http://v:8081/repository/ru.perm.v/")
             isAllowInsecureProtocol = true
-            //  publish в nexus "./gradlew publish" из ноута и Jenkins проходит
+            //  publish to nexus "./gradlew publish" OK from work machine and from CI (Jenkins)
             // export NEXUS_CRED_USR=admin
             // echo $NEXUS_CRED_USR
-//TODO: import external shell env not work!
-//            username = System.getenv("NEXUS_CRED_USR")
-//            password = System.getenv("NEXUS_CRED_PSW")
             credentials {
                 username = System.getenv("NEXUS_CRED_USR") ?: "admin"
                 password = System.getenv("NEXUS_CRED_PSW") ?: "pass"
@@ -215,8 +195,10 @@ publishing {
     }
     publications {
         create<MavenPublication>("maven"){
+            // task see upper
             artifact(tasks["bootJar"])
         }
+// Other examples:
 //        register("mavenJava", MavenPublication::class) {
 //            from(components["java"])
 //        }
