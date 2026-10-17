@@ -1,0 +1,1 @@
+/usr/lib/jvm/java-11-openjdk-amd64/bin/java -jar /home/vasi/temp/shop_kotlin-0.24.0924.1.jar

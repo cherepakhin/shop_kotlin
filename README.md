@@ -16,7 +16,8 @@
 
 [Создание запускаемого файла и его запуск](#create_runable)<br/>
 [Publishing SpringBoot "FAT" jar](#publishing-springboot-fat-jar)<br/>
- 
+[Запуск в Linux как сервис](#run_as_linux_service)<br/>
+
 [Интеграционное тестирование](#integration_test_local)<br/>
 [Примеры тестов httpie](#httpie)<br/>
 [DataJpa tests](#datajpatest_test)<br/>
@@ -313,7 +314,7 @@ SPRING_PROFILES_ACTIVE=dev ./gradlew clean bootRun
 shop_kotlin/$ java -Xmx256M -jar build/libs/shop_kotlin-0.1.20.jar
 ````
 
-или так:
+или так [./run_jar_v.sh](./run_jar_v.sh):
 
 ````shell
 cd shop_kotlin/build/libs 
@@ -348,8 +349,28 @@ publishing {
 ````
 [https://stackoverflow.com/questions/64062905/unable-to-publish-jar-to-gitlab-package-registry-with-gradle](https://stackoverflow.com/questions/64062905/unable-to-publish-jar-to-gitlab-package-registry-with-gradle)
 
+<a id="run_as_linux_service"></a>
+### Запуск в Linux как сервис
+
+[doc/shop_kotlin.service](./doc/shop_kotlin.service)
+
+````shell
+[Unit]
+Description=Test shop_kotlin project
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/jvm/java-11-openjdk-amd64/bin/java -jar shop_kotlin-0.24.0924.1.jar
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
+````
+
 <a id="httpie"></a>
 ### Примеры тестов [httpie](https://httpie.io/)
+
 
 Echo запрос для простой проверки работоспособности (:8980/shop_kotlin/ базовый путь проекта):
 
@@ -905,10 +926,6 @@ logging:
 
 Рефакторинг
 ![Рефакторинг ChatGPT-EasyCode](doc/chatgpt_easycode/run_refactor_easycode.png)
-
-__Вещь!__
-
-А отечественный GigaCode, в течении нескольких недель, отвечает унылым ![](doc/gigacode.png) 
 
 <a id="todo"></a>
 ### TODO
